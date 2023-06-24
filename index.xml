@@ -7,18 +7,9 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Markdown Syntax Guide</title>
-        <link>http://example.org/post/firstpost/</link>
-        <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://example.org/post/firstpost/</guid>
-        <description>&lt;img src="http://example.org/post/firstpost/cover.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello hugo&lt;/h1&gt;
-</description>
-        </item>
-        <item>
         <title>Hugo 最佳实践</title>
         <link>http://example.org/post/hugo-best-practice/</link>
-        <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+        <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
         
         <guid>http://example.org/post/hugo-best-practice/</guid>
         <description>&lt;img src="http://example.org/post/hugo-best-practice/cover.jpg" alt="Featured image of post Hugo 最佳实践" /&gt;&lt;h1 id=&#34;hugo上手使用&#34;&gt;hugo上手使用&lt;/h1&gt;
@@ -42,6 +33,15 @@
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;diy环节&#34;&gt;DIY环节&lt;/h1&gt;
 &lt;p&gt;上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Markdown Syntax Guide</title>
+        <link>http://example.org/post/firstpost/</link>
+        <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://example.org/post/firstpost/</guid>
+        <description>&lt;img src="http://example.org/post/firstpost/cover.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello hugo&lt;/h1&gt;
 </description>
         </item>
         <item>
