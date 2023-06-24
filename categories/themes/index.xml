@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>themes on Asher&#39;s site</title>
+        <link>http://example.org/categories/themes/</link>
+        <description>Recent content in themes on Asher&#39;s site</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/categories/themes/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Markdown Syntax Guide</title>
+        <link>http://example.org/post/firstpost/</link>
+        <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+        
+        <guid>http://example.org/post/firstpost/</guid>
+        <description>&lt;img src="http://example.org/post/firstpost/cover.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello hugo&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
