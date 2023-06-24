@@ -1,49 +1,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Posts on Asher&#39;s site</title>
-        <link>http://example.org/post/</link>
-        <description>Recent content in Posts on Asher&#39;s site</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
-        <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Hugo 最佳实践</title>
-        <link>http://example.org/post/hugo-best-practice/</link>
-        <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://example.org/post/hugo-best-practice/</guid>
-        <description>&lt;img src="http://example.org/post/hugo-best-practice/cover.jpg" alt="Featured image of post Hugo 最佳实践" /&gt;&lt;h1 id=&#34;hugo上手使用&#34;&gt;hugo上手使用&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;
-在win10下推荐使用 &lt;code&gt;scoop install hugo-extended&lt;/code&gt; 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;使用hugo命令新建一个能让hugo识别的目录&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo new site blog
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中blog是自定义的目录名&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;进入目录&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd blog
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;在blog目录下git clone主题&lt;/strong&gt;
-这里需要将stack主题fork到自己的github，以便于后续的修改能够push&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone xxxx.git themes/stack
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;stack&lt;/code&gt;是自定义的&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;修改根目录config.toml&lt;/strong&gt;
-在文件中添加&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;theme &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;stack&amp;#39;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;在根目录下执行命令来构建&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo 
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;运行查看网站效果&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;hugo server
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;diy环节&#34;&gt;DIY环节&lt;/h1&gt;
-&lt;p&gt;上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Markdown Syntax Guide</title>
-        <link>http://example.org/post/firstpost/</link>
-        <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
-        
-        <guid>http://example.org/post/firstpost/</guid>
-        <description>&lt;img src="http://example.org/post/firstpost/cover.jpg" alt="Featured image of post Markdown Syntax Guide" /&gt;&lt;h1 id=&#34;hello-hugo&#34;&gt;Hello hugo&lt;/h1&gt;
-</description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>Posts on Asher&#39;s site</title>
+    <link>http://example.org/post/</link>
+    <description>Recent content in Posts on Asher&#39;s site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 24 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://example.org/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Markdown Syntax Guide</title>
+      <link>http://example.org/post/firstpost/</link>
+      <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/firstpost/</guid>
+      <description>Hello hugo </description>
+    </item>
+    
+    <item>
+      <title>Hugo 最佳实践</title>
+      <link>http://example.org/post/hugo-best-practice/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/post/hugo-best-practice/</guid>
+      <description>hugo上手使用 安装 在win10下推荐使用 scoop install hugo-extended 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。
+使用hugo命令新建一个能让hugo识别的目录
+hugo new site blog 其中blog是自定义的目录名
+进入目录
+cd blog 在blog目录下git clone主题 这里需要将stack主题fork到自己的github，以便于后续的修改能够push
+git clone xxxx.git themes/stack stack是自定义的
+修改根目录config.toml 在文件中添加
+theme = &amp;#39;stack&amp;#39; 在根目录下执行命令来构建
+hugo 运行查看网站效果
+hugo server DIY环节 上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。</description>
+    </item>
+    
+  </channel>
 </rss>

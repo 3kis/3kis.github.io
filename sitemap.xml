@@ -14,9 +14,6 @@
     <loc>http://example.org/tags/html/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/hugo-best-practice/</loc>
-    <lastmod>2023-06-24T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://example.org/tags/markdown/</loc>
     <lastmod>2023-06-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -46,6 +43,8 @@
   </url><url>
     <loc>http://example.org/page/about/</loc>
     <lastmod>2020-10-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://example.org/post/hugo-best-practice/</loc>
   </url><url>
     <loc>http://example.org/page/links/</loc>
   </url><url>
