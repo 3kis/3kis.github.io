@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Hugo 最佳实践'>
 <meta property='og:description' content='使用stack主题目录下的config文件修改来完成hugo的搭建.'>
 <meta property='og:url' content='http://example.org/post/hugo-best-practice/'>
-<meta property='og:site_name' content='Asher&#39;s site'>
+<meta property='og:site_name' content='Asher blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-25T11:15:59&#43;08:00'/><meta property='article:modified_time' content='2023-06-25T11:15:59&#43;08:00'/><meta property='og:image' content='http://example.org/post/hugo-best-practice/cover.jpg' />
 <meta name="twitter:title" content="Hugo 最佳实践">
 <meta name="twitter:description" content="使用stack主题目录下的config文件修改来完成hugo的搭建."><meta name="twitter:card" content="summary_large_image">
@@ -70,7 +70,7 @@
         
         
         <div class="site-meta">
-            <h1 class="site-name"><a href="/">Asher&#39;s site</a></h1>
+            <h1 class="site-name"><a href="/">Asher blog</a></h1>
             <h2 class="site-description">hello~</h2>
         </div>
     </header><ol class="menu" id="main-menu">
@@ -242,16 +242,29 @@
         
         <div class="widget--toc">
             <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#静态文件处理">静态文件处理</a></li>
-        <li><a href="#修改stack目录下的configyml">修改stack目录下的config.yml</a></li>
-        <li><a href="#得到第一篇文章">得到第一篇文章</a></li>
-        <li><a href="#配置github-pages与github-actions">配置Github Pages与GitHub Actions</a></li>
-      </ul>
+  <ol>
+    <li><a href="#hugo上手使用">hugo上手使用</a></li>
+    <li><a href="#diy环节">DIY环节</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#静态文件处理">静态文件处理</a></li>
+            <li><a href="#修改stack目录下的configyml">修改stack目录下的config.yml</a></li>
+            <li><a href="#得到第一篇文章">得到第一篇文章</a></li>
+            <li><a href="#配置github-pages与github-actions">配置Github Pages与GitHub Actions</a>
+              <ol>
+                <li><a href="#github-pages">Github Pages</a></li>
+                <li><a href="#github-actions">Github Actions</a></li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
     </li>
-  </ul>
+    <li><a href="#根据hugo官方的方式创建文章">根据Hugo官方的方式创建文章</a></li>
+    <li><a href="#根据stack官网的方式调整文章">根据Stack官网的方式调整文章</a></li>
+    <li><a href="#参考资料">参考资料</a></li>
+  </ol>
 </nav>
         </div>
     </section>
@@ -323,7 +336,7 @@
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -342,31 +355,85 @@
 <p><strong>安装</strong></p>
 <p>在win10下推荐使用 <code>scoop install hugo-extended</code> 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。</p>
 <p><strong>使用hugo命令新建一个能让hugo识别的目录</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site blog
-</span></span></code></pre></div><p>其中blog是自定义的目录名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site blog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中blog是自定义的目录名</p>
 <p><strong>进入目录</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd blog
-</span></span></code></pre></div><p><strong>在blog目录下git clone主题</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> blog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>在blog目录下git clone主题</strong></p>
 <p>这里需要将stack主题fork到自己的github，以便于后续的修改能够push
 注意！！ 如果想要后面能够使用github action，那么必须必须必须使用submodule的方式引入！！而不能是git clone的方式</p>
 <p><del>git clone xxxx.git themes/stack</del></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add xxxx.git themes/stack
-</span></span></code></pre></div><p><code>stack</code>这个目录名是自定义的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git submodule add xxxx.git themes/stack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>stack</code>这个目录名是自定义的</p>
 <p><strong>修改根目录config.toml</strong></p>
 <p>在文件中添加</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;stack&#39;</span>
-</span></span></code></pre></div><p><strong>在根目录下执行命令来构建</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo 
-</span></span></code></pre></div><p>运行查看网站效果</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server
-</span></span></code></pre></div><p>完整命令行步骤</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site blog
-</span></span><span style="display:flex;"><span>cd blog
-</span></span><span style="display:flex;"><span>git submodule add your_stack_repo.git themes/stack
-</span></span><span style="display:flex;"><span>echo theme<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;stack&#39;</span> &gt;&gt; config.toml
-</span></span><span style="display:flex;"><span>hugo
-</span></span><span style="display:flex;"><span>hugo server
-</span></span></code></pre></div><p>完整的文件目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">theme</span> <span class="o">=</span> <span class="s1">&#39;stack&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>在根目录下执行命令来构建</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>运行查看网站效果</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整命令行步骤</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new site blog
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> blog
+</span></span><span class="line"><span class="cl">git submodule add your_stack_repo.git themes/stack
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">theme</span><span class="o">=</span><span class="s1">&#39;stack&#39;</span> &gt;&gt; config.toml
+</span></span><span class="line"><span class="cl">hugo
+</span></span><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整的文件目录</p>
 <h1 id="diy环节">DIY环节</h1>
 <p>上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。</p>
 <h3 id="静态文件处理">静态文件处理</h3>
@@ -389,290 +456,584 @@
 <h3 id="修改stack目录下的configyml">修改stack目录下的config.yml</h3>
 <p>根据exampleSite目录下的config.yaml的内容，选取自己需要的内容复制粘贴到stack目录下的config.yaml并diy
 下面是我的修改后的文件：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">module</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hugoVersion</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">min</span>: <span style="color:#e6db74">&#34;0.87.0&#34;</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 上面的保持不变，表明这是一个submodule</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下面的参考exampleSite的yml配置，从exampleSite的config.yml的params开始参考</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mainSections</span>:
-</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">post</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">featuredImageField</span>: <span style="color:#ae81ff">image</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rssFullContent</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">favicon</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">footer</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">since</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">customText</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dateFormat</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">published</span>: <span style="color:#ae81ff">Jan 02, 2006</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">lastUpdated</span>: <span style="color:#ae81ff">Jan 02, 2006 15:04 MST</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sidebar</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">compact</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">emoji</span>: <span style="color:#ae81ff">✅</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">subtitle</span>: <span style="color:#ae81ff">hello~</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">avatar</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">local</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 静态资源存放在stack目录下的asset目录,因为当前配置文件是在stack目录下，所以静态资源目录的路径就是当前目录的asset目录</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">src</span>: <span style="color:#ae81ff">/img/OIP.png</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">article</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">math</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">toc</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">readingTime</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">license</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">default</span>: <span style="color:#ae81ff">Licensed under CC BY-NC-SA 4.0</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">comments</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">disqus</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">disqusjs</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">shortname</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">apiUrl</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">apiKey</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">admin</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">adminLabel</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">utterances</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">issueTerm</span>: <span style="color:#ae81ff">pathname</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">label</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">remark42</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">site</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">locale</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vssue</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">platform</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">owner</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientId</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientSecret</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">autoCreateIssue</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Waline client configuration see: https://waline.js.org/en/reference/client.html</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">waline</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">serverURL</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">visitor</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">avatar</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">emoji</span>:
-</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">requiredMeta</span>:
-</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">name</span>
-</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">email</span>
-</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">url</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">placeholder</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">locale</span>:
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">admin</span>: <span style="color:#ae81ff">Admin</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">twikoo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">envId</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">region</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">path</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">giscus</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repoID</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">category</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">categoryID</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">mapping</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">strict</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lightTheme</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">darkTheme</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">reactionsEnabled</span>: <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">emitMetadata</span>: <span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">inputPosition</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">gitalk</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">owner</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">admin</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientID</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientSecret</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cusdis</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">id</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">widgets</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># homepage: []</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># page: []</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">homepage</span>:
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">search</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archives</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">categories</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">tag-cloud</span>
-</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">page</span>:
-</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">toc</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">opengraph</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">twitter</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Your Twitter username</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">site</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Available values: summary, summary_large_image</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">card</span>: <span style="color:#ae81ff">summary_large_image</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultImage</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">opengraph</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">local</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">src</span>:
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">colorScheme</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Display toggle</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">toggle</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Available values: auto, light, dark</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">default</span>: <span style="color:#ae81ff">auto</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageProcessing</span>:
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cover</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">content</span>:
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意yml的语法是下一行缩进2个空格</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">main</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">indetifier</span>: <span style="color:#ae81ff">categories</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">categories</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/categories/</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">indetifier</span>: <span style="color:#ae81ff">tag</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tags</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/tags/</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
-</span></span></code></pre></div><p>这里说一下为什么我选择修改stack目录下的<code>config.yaml</code>文件而不是根目录下的<code>config.toml</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">module</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hugoVersion</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">min</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0.87.0&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 上面的保持不变，表明这是一个submodule</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 下面的参考exampleSite的yml配置，从exampleSite的config.yml的params开始参考</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">mainSections</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">post</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">featuredImageField</span><span class="p">:</span><span class="w"> </span><span class="l">image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">rssFullContent</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">favicon</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">footer</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">since</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">customText</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dateFormat</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">published</span><span class="p">:</span><span class="w"> </span><span class="l">Jan 02, 2006</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">lastUpdated</span><span class="p">:</span><span class="w"> </span><span class="l">Jan 02, 2006 15:04 MST</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sidebar</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">compact</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">emoji</span><span class="p">:</span><span class="w"> </span><span class="l">✅</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">hello~</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">avatar</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># 静态资源存放在stack目录下的asset目录,因为当前配置文件是在stack目录下，所以静态资源目录的路径就是当前目录的asset目录</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l">/img/OIP.png</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">article</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">math</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">toc</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">readingTime</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">license</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">Licensed under CC BY-NC-SA 4.0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">comments</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">disqus</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">disqusjs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">shortname</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">apiUrl</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">apiKey</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">admin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">adminLabel</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">utterances</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">issueTerm</span><span class="p">:</span><span class="w"> </span><span class="l">pathname</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">label</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">remark42</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">site</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">locale</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">vssue</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">platform</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientId</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">autoCreateIssue</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Waline client configuration see: https://waline.js.org/en/reference/client.html</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">waline</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">serverURL</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">lang</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">visitor</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">avatar</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">emoji</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span>- <span class="l">https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">requiredMeta</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span>- <span class="l">name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span>- <span class="l">email</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span>- <span class="l">url</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">placeholder</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">locale</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">admin</span><span class="p">:</span><span class="w"> </span><span class="l">Admin</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">twikoo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">envId</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">region</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">lang</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">giscus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repoID</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">category</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">categoryID</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">mapping</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">strict</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">lightTheme</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">darkTheme</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">reactionsEnabled</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">emitMetadata</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">inputPosition</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">lang</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">gitalk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">owner</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">admin</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">repo</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientID</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cusdis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">host</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">id</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">widgets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># homepage: []</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># page: []</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">homepage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">search</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">archives</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">tag-cloud</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">params</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                  </span><span class="nt">limit</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">page</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l">toc</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">opengraph</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">twitter</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># Your Twitter username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">site</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># Available values: summary, summary_large_image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">card</span><span class="p">:</span><span class="w"> </span><span class="l">summary_large_image</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">defaultImage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">opengraph</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">src</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">colorScheme</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Display toggle</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">toggle</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># Available values: auto, light, dark</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l">auto</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">imageProcessing</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cover</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">content</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># 注意yml的语法是下一行缩进2个空格</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">menu</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">main</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">indetifier</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">categories</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">/categories/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">indetifier</span><span class="p">:</span><span class="w"> </span><span class="l">tag</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">/tags/</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里说一下为什么我选择修改stack目录下的<code>config.yaml</code>文件而不是根目录下的<code>config.toml</code>文件</p>
 <p>1.因为我认为主题的配置应该在主题目录中而不是在根目录对于整个站点的配置中，如果以后需要使用其他主题，那么就不用过多的修改<code>config.toml</code>文件</p>
 <p>2.当我们在命令行中运行<code>hugo</code>命令的时候，可以发现，hugo是会将根目录下的<code>config.toml</code>和主题目录下的<code>config.yaml</code>文件同时当成配置文件来处理的，所以我们在stack目录下的配置文件也是可以生效的</p>
 <p>需要注意的是，如果需要配置<code>markup</code>参数，需要在根目录下的配置文件进行配置，猜测是因为这个配置项不属于主题，而属于hugo本身，所以在主题目录下的配置文件中无效</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├─archetypes
-</span></span><span style="display:flex;"><span>├─assets
-</span></span><span style="display:flex;"><span>├─content
-</span></span><span style="display:flex;"><span>│  ├─page
-</span></span><span style="display:flex;"><span>│  │  ├─about
-</span></span><span style="display:flex;"><span>│  │  ├─archives
-</span></span><span style="display:flex;"><span>│  │  ├─links
-</span></span><span style="display:flex;"><span>│  │  └─search
-</span></span><span style="display:flex;"><span>│  └─post
-</span></span><span style="display:flex;"><span>├─public
-</span></span><span style="display:flex;"><span>│  ├─categories
-</span></span><span style="display:flex;"><span>│  ├─img
-</span></span><span style="display:flex;"><span>│  ├─page
-</span></span><span style="display:flex;"><span>│  ├─post
-</span></span><span style="display:flex;"><span>│  ├─scss
-</span></span><span style="display:flex;"><span>│  ├─tags
-</span></span><span style="display:flex;"><span>├─resources
-</span></span><span style="display:flex;"><span>└─themes
-</span></span><span style="display:flex;"><span>    └─stack
-</span></span><span style="display:flex;"><span>        ├─archetypes
-</span></span><span style="display:flex;"><span>        ├─assets
-</span></span><span style="display:flex;"><span>        │  ├─icons
-</span></span><span style="display:flex;"><span>        │  ├─img
-</span></span><span style="display:flex;"><span>        │  ├─scss
-</span></span><span style="display:flex;"><span>        │  └─ts
-</span></span><span style="display:flex;"><span>        ├─data
-</span></span><span style="display:flex;"><span>        ├─exampleSite
-</span></span><span style="display:flex;"><span>        │  └─content
-</span></span><span style="display:flex;"><span>        │      ├─categories
-</span></span><span style="display:flex;"><span>        │      │  └─Test
-</span></span><span style="display:flex;"><span>        │      ├─page
-</span></span><span style="display:flex;"><span>        │      │  ├─about
-</span></span><span style="display:flex;"><span>        │      │  ├─archives
-</span></span><span style="display:flex;"><span>        │      │  ├─links
-</span></span><span style="display:flex;"><span>        │      │  └─search
-</span></span><span style="display:flex;"><span>        │      └─post
-</span></span><span style="display:flex;"><span>        │          ├─chinese-test
-</span></span><span style="display:flex;"><span>        │          ├─emoji-support
-</span></span><span style="display:flex;"><span>        │          ├─markdown-syntax
-</span></span><span style="display:flex;"><span>        │          ├─math-typesetting
-</span></span><span style="display:flex;"><span>        │          ├─placeholder-text
-</span></span><span style="display:flex;"><span>        │          └─rich-content
-</span></span><span style="display:flex;"><span>        ├─i18n
-</span></span><span style="display:flex;"><span>        ├─images
-</span></span><span style="display:flex;"><span>        └─layouts
-</span></span></code></pre></div><h3 id="得到第一篇文章">得到第一篇文章</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">├─archetypes
+</span></span><span class="line"><span class="cl">├─assets
+</span></span><span class="line"><span class="cl">├─content
+</span></span><span class="line"><span class="cl">│  ├─page
+</span></span><span class="line"><span class="cl">│  │  ├─about
+</span></span><span class="line"><span class="cl">│  │  ├─archives
+</span></span><span class="line"><span class="cl">│  │  ├─links
+</span></span><span class="line"><span class="cl">│  │  └─search
+</span></span><span class="line"><span class="cl">│  └─post
+</span></span><span class="line"><span class="cl">├─public
+</span></span><span class="line"><span class="cl">│  ├─categories
+</span></span><span class="line"><span class="cl">│  ├─img
+</span></span><span class="line"><span class="cl">│  ├─page
+</span></span><span class="line"><span class="cl">│  ├─post
+</span></span><span class="line"><span class="cl">│  ├─scss
+</span></span><span class="line"><span class="cl">│  ├─tags
+</span></span><span class="line"><span class="cl">├─resources
+</span></span><span class="line"><span class="cl">└─themes
+</span></span><span class="line"><span class="cl">    └─stack
+</span></span><span class="line"><span class="cl">        ├─archetypes
+</span></span><span class="line"><span class="cl">        ├─assets
+</span></span><span class="line"><span class="cl">        │  ├─icons
+</span></span><span class="line"><span class="cl">        │  ├─img
+</span></span><span class="line"><span class="cl">        │  ├─scss
+</span></span><span class="line"><span class="cl">        │  └─ts
+</span></span><span class="line"><span class="cl">        ├─data
+</span></span><span class="line"><span class="cl">        ├─exampleSite
+</span></span><span class="line"><span class="cl">        │  └─content
+</span></span><span class="line"><span class="cl">        │      ├─categories
+</span></span><span class="line"><span class="cl">        │      │  └─Test
+</span></span><span class="line"><span class="cl">        │      ├─page
+</span></span><span class="line"><span class="cl">        │      │  ├─about
+</span></span><span class="line"><span class="cl">        │      │  ├─archives
+</span></span><span class="line"><span class="cl">        │      │  ├─links
+</span></span><span class="line"><span class="cl">        │      │  └─search
+</span></span><span class="line"><span class="cl">        │      └─post
+</span></span><span class="line"><span class="cl">        │          ├─chinese-test
+</span></span><span class="line"><span class="cl">        │          ├─emoji-support
+</span></span><span class="line"><span class="cl">        │          ├─markdown-syntax
+</span></span><span class="line"><span class="cl">        │          ├─math-typesetting
+</span></span><span class="line"><span class="cl">        │          ├─placeholder-text
+</span></span><span class="line"><span class="cl">        │          └─rich-content
+</span></span><span class="line"><span class="cl">        ├─i18n
+</span></span><span class="line"><span class="cl">        ├─images
+</span></span><span class="line"><span class="cl">        └─layouts
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="得到第一篇文章">得到第一篇文章</h3>
 <p>现在，我们可以复制<code>blog\themes\stack\exampleSite\content\post</code>目录下的一篇文章到根目录下的<code>content\post</code>.这里我选择<code>markdown-syntax</code>目录。</p>
 <p>粘贴完之后，在命令行中运行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
-</span></span><span style="display:flex;"><span>hugo server
-</span></span></code></pre></div><p>然后就可以在localhost:1313看到自己的文章了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo
+</span></span><span class="line"><span class="cl">hugo server
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后就可以在localhost:1313看到自己的文章了</p>
 <h3 id="配置github-pages与github-actions">配置Github Pages与GitHub Actions</h3>
 <p>现在，在本地我们已经可以看到页面了，但是还希望能通过网络让别人访问到我们的博客，所以需要借助GitHub Pages和Github Actions</p>
 <h4 id="github-pages">Github Pages</h4>
 <p>首先在 GitHub 上创建一个 public repository，命名为 username.github.io（根据 <a class="link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site"  target="_blank" rel="noopener"
     >GitHub Pages</a>，如果想用这个域名作为博客地址，repo 必须命名为 username.github.io)。这个 repo 会用来存放博客的静态文件，也就是 hugo 创建的<code>public</code>文件夹。(username是自己的GitHub用户名)</p>
 <p>执行下面的命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git add remote origin username/username.github.io
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init commit&#34;</span>
-</span></span><span style="display:flex;"><span>git push --set-upstream origin main
-</span></span></code></pre></div><p>现在打开<code>https://username.github.io</code>， 应该就可以看到和<code>localhost:1313</code>一样的内容了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> public
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git add remote origin username/username.github.io
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;init commit&#34;</span>
+</span></span><span class="line"><span class="cl">git push --set-upstream origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>现在打开<code>https://username.github.io</code>， 应该就可以看到和<code>localhost:1313</code>一样的内容了</p>
 <h4 id="github-actions">Github Actions</h4>
 <p>接下来创建一个另外的 private repository（e.g. <code>blog_source</code>），用这个来存放原始文件（也就是整个根目录），以及设置用于自动部署的 GitHub Actions。GitHub Actions 设置还参考了 <a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-github/"  target="_blank" rel="noopener"
     >Hugo 官方教程</a>。</p>
 <p>在根目录下，新建目录<code>.github\workflows\</code>, 在这个目录中创建<code>gh-pages.yml</code>文件，内容为：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">hugo CI</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#ae81ff">main ]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-20.04</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
-</span></span><span style="display:flex;"><span>      
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 如果stack使用了远程仓库，那么必须以submodule的方式引入才能正常跑通现在这个github action。</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 当stack主题是通过submodule的方式来拉取的时候，应该采用下面四行代码来进行action的构建.</span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span> 
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">1</span>   
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">false</span>
-</span></span><span style="display:flex;"><span>          
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">xxxxxxx</span> <span style="color:#75715e">#写自己的GitHub personal token</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">username/username.github.io</span> <span style="color:#75715e"># the public repo hosting website</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span> <span style="color:#75715e"># branch hosting the website</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#f92672">commit_message</span>: <span style="color:#ae81ff">${{ github.event.head_commit.message }}</span>
-</span></span></code></pre></div><p>上面的示例中，后面有注释的行都需要自己去确认是否正确填入</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">hugo CI</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="l">main ]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">build</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-20.04</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 如果stack使用了远程仓库，那么必须以submodule的方式引入才能正常跑通现在这个github action。</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># 当stack主题是通过submodule的方式来拉取的时候，应该采用下面四行代码来进行action的构建.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">submodules</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> 
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">fetch-depth</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">   
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Setup Hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-hugo@v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">hugo-version</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;latest&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Build</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l">hugo</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">peaceiris/actions-gh-pages@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">personal_token</span><span class="p">:</span><span class="w"> </span><span class="l">xxxxxxx</span><span class="w"> </span><span class="c">#写自己的GitHub personal token</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">external_repository</span><span class="p">:</span><span class="w"> </span><span class="l">username/username.github.io</span><span class="w"> </span><span class="c"># the public repo hosting website</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_branch</span><span class="p">:</span><span class="w"> </span><span class="l">main</span><span class="w"> </span><span class="c"># branch hosting the website</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">publish_dir</span><span class="p">:</span><span class="w"> </span><span class="l">./public</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">commit_message</span><span class="p">:</span><span class="w"> </span><span class="l">${{ github.event.head_commit.message }}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的示例中，后面有注释的行都需要自己去确认是否正确填入</p>
 <p>因为我们需要从博客仓库推送到外部 GitHub Pages 仓库，需要特定权限，要在 GitHub 账户下 <code>Setting - Developer setting - Personal access tokens</code> 下创建一个 Token。</p>
 <p>创建自己的 <a class="link" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-token"  target="_blank" rel="noopener"
     >Github Personal Key</a></p>
@@ -680,53 +1041,116 @@
 <p>配置后复制生成的 Token（注：只会出现一次），然后在我们博客源仓库的 <code>Settings - Secrets - Actions</code> 中添加 <code>PERSONAL_TOKEN</code> 环境变量为刚才的 Token，这样 GitHub Action 就可以获取到 Token 了。</p>
 <p>完成上述配置后，推送代码至仓库，即可触发 GitHub Action，自动生成博客页面并推送至 GitHub Pages 仓库。</p>
 <p>现在在我们本地的hugo站点根目录blog关联到远程的blog_source仓库</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;public/&#34;</span> &gt;&gt; .gitignore
-</span></span><span style="display:flex;"><span>git init
-</span></span><span style="display:flex;"><span>git remote add origin https://github.com/username/blog_source.git
-</span></span><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init&#34;</span>
-</span></span><span style="display:flex;"><span>git push --set-upstream origin main
-</span></span></code></pre></div><p>注意：将 <code>public\</code>目录放到ignore文件中是必须要做的，因为public目录和另外的远程仓库关联了，对于git来说，如果想要拉取一个目录而同时在这个目录中有一个子目录被其他远程仓库关联了，那么要么把public作为一个submodule要么把public忽略。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;public/&#34;</span> &gt;&gt; .gitignore
+</span></span><span class="line"><span class="cl">git init
+</span></span><span class="line"><span class="cl">git remote add origin https://github.com/username/blog_source.git
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;init&#34;</span>
+</span></span><span class="line"><span class="cl">git push --set-upstream origin main
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注意：将 <code>public\</code>目录放到ignore文件中是必须要做的，因为public目录和另外的远程仓库关联了，对于git来说，如果想要拉取一个目录而同时在这个目录中有一个子目录被其他远程仓库关联了，那么要么把public作为一个submodule要么把public忽略。</p>
 <p>由于我们在Github Actions里对public进行推送，所以前者submodule的方式就不用考虑，选择后者。</p>
 <p>之后我们只需要执行</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
-</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;create a post&#34;</span>
-</span></span><span style="display:flex;"><span>git push
-</span></span></code></pre></div><p>就能自动部署到两个远程仓库了</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s2">&#34;create a post&#34;</span>
+</span></span><span class="line"><span class="cl">git push
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>就能自动部署到两个远程仓库了</p>
 <h1 id="根据hugo官方的方式创建文章">根据Hugo官方的方式创建文章</h1>
 <p>在blog目录下执行命令</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/my-first-post/index.md
-</span></span></code></pre></div><blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hugo new posts/my-first-post/index.md
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
 <p>Hugo created the file in the <code>content/posts/my-first-post</code> directory. Open the file with your editor.</p>
 </blockquote>
 <p>打开文件会发现文章顶部是</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
-</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;My First Post&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">date</span>: <span style="color:#e6db74">2022-11-20T09:03:20</span><span style="color:#ae81ff">-08</span>:<span style="color:#ae81ff">00</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
-</span></span><span style="display:flex;"><span>---
-</span></span></code></pre></div><p><code>draft: true</code>表明当前文章是草稿，执行``hugo <code>和 </code>hugo server`之后不会生成对应的文章在网页上膳食</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;My First Post&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2022-11-20T09:03:20</span><span class="m">-08</span><span class="p">:</span><span class="m">00</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">draft</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>draft: true</code>表明当前文章是草稿，执行``hugo <code>和 </code>hugo server`之后不会生成对应的文章在网页上膳食</p>
 <h1 id="根据stack官网的方式调整文章">根据Stack官网的方式调整文章</h1>
 <p>文章顶部可以有下面这几个字段</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">author</span> = <span style="color:#e6db74">&#34;Asher&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Markdown Syntax Guide&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#e6db74">&#34;2023-06-24&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Sample article showcasing basic Markdown syntax and formatting for HTML elements.&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> = [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;markdown&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;css&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;html&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;themes&#34;</span>,
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">categories</span> = [
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;themes&#34;</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;syntax&#34;</span>,
-</span></span><span style="display:flex;"><span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">series</span> = [<span style="color:#e6db74">&#34;Themes Guide&#34;</span>]
-</span></span><span style="display:flex;"><span><span style="color:#a6e22e">image</span> = <span style="color:#e6db74">&#34;cover.jpg&#34;</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
-</span></span></code></pre></div><p>tag表示文章的标签，我们不需要手动创建标签，只需要在文章顶部写上我们想设置的标签，stack主题和hugo会帮助我们生成tag。categories字段同理</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="err">+++</span>
+</span></span><span class="line"><span class="cl"><span class="nx">author</span> <span class="p">=</span> <span class="s2">&#34;Asher&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">title</span> <span class="p">=</span> <span class="s2">&#34;Markdown Syntax Guide&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">date</span> <span class="p">=</span> <span class="s2">&#34;2023-06-24&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">description</span> <span class="p">=</span> <span class="s2">&#34;Sample article showcasing basic Markdown syntax and formatting for HTML elements.&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">tags</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;markdown&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;css&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;html&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;themes&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">categories</span> <span class="p">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;themes&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;syntax&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">series</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;Themes Guide&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">image</span> <span class="p">=</span> <span class="s2">&#34;cover.jpg&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="err">+++</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>tag表示文章的标签，我们不需要手动创建标签，只需要在文章顶部写上我们想设置的标签，stack主题和hugo会帮助我们生成tag。categories字段同理</p>
 <p>image字段表示封面图，路径一般和文章一样</p>
 <p>文章顶部可以是toml格式也可以是yml格式，但是不能混用</p>
 <h1 id="参考资料">参考资料</h1>
@@ -768,7 +1192,7 @@
     <section class="copyright">
         &copy; 
         
-        2023 Asher&#39;s site
+        2023 Asher blog
     </section>
     
     <section class="powerby">
