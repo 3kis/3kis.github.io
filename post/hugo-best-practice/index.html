@@ -685,7 +685,9 @@
 </span></span><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init&#34;</span>
 </span></span><span style="display:flex;"><span>git push --set-upstream origin main
-</span></span></code></pre></div><p>之后我们只需要执行</p>
+</span></span></code></pre></div><p>注意：将 <code>public\</code>目录放到ignore文件中是必须要做的，因为public目录和另外的远程仓库关联了，对于git来说，如果想要拉取一个目录而同时在这个目录中有一个子目录被其他远程仓库关联了，那么要么把public作为一个submodule要么把public忽略。</p>
+<p>由于我们在Github Actions里对public进行推送，所以前者submodule的方式就不用考虑，选择后者。</p>
+<p>之后我们只需要执行</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
 </span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;create a post&#34;</span>
 </span></span><span style="display:flex;"><span>git push
