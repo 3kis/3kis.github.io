@@ -240,6 +240,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这里说一下为什么我选择修改stack目录下的&lt;code&gt;config.yaml&lt;/code&gt;文件而不是根目录下的&lt;code&gt;config.toml&lt;/code&gt;文件&lt;/p&gt;
 &lt;p&gt;1.因为我认为主题的配置应该在主题目录中而不是在根目录对于整个站点的配置中，如果以后需要使用其他主题，那么就不用过多的修改&lt;code&gt;config.toml&lt;/code&gt;文件&lt;/p&gt;
 &lt;p&gt;2.当我们在命令行中运行&lt;code&gt;hugo&lt;/code&gt;命令的时候，可以发现，hugo是会将根目录下的&lt;code&gt;config.toml&lt;/code&gt;和主题目录下的&lt;code&gt;config.yaml&lt;/code&gt;文件同时当成配置文件来处理的，所以我们在stack目录下的配置文件也是可以生效的&lt;/p&gt;
+&lt;p&gt;需要注意的是，如果需要配置&lt;code&gt;markup&lt;/code&gt;参数，需要在根目录下的配置文件进行配置，猜测是因为这个配置项不属于主题，而属于hugo本身，所以在主题目录下的配置文件中无效&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─archetypes
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─assets
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├─content
