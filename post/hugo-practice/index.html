@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='hugo上手使用 安装
+在win10下推荐使用 scoop install hugo-extended 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。
+使用hugo命令新建一个能让hugo识别的目录
+hugo new site blog 其中blog是自定义的目录名
+进入目录
+cd blog 在blog目录下git clone主题
+这里需要将stack主题fork到自己的github，以便于后续的修改能够push 注意！！ 如果想要后面能够使用github action，那么必须必须必须使用submodule的方式引入！！而不能是git clone的方式
+git clone xxxx.git themes/stack
+git submodule add xxxx.git themes/stack stack这个目录名是自定义的
+修改根目录config.toml
+在文件中添加
+theme = &amp;#39;stack&amp;#39; 在根目录下执行命令来构建
+hugo 运行查看网站效果
+hugo server 完整命令行步骤
+hugo new site blog cd blog git submodule add your_stack_repo.git themes/stack echo theme=&amp;#39;stack&amp;#39; &amp;gt;&amp;gt; config.toml hugo hugo server 完整的文件目录
+DIY环节 上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。
+静态文件处理 将themes/stack/exampleSite/content/的page目录复制到blog目录的content目录下 这样你就有了下面这几个在左侧边栏 修改stack目录下的config.yml 根据exampleSite目录下的config.yaml的内容，选取自己需要的内容复制粘贴到stack目录下的config.yaml并diy 下面是我的修改后的文件：'>
+<title>Hugo Practice</title>
+
+<link rel='canonical' href='http://example.org/post/hugo-practice/'>
+
+<link rel="stylesheet" href="/scss/style.min.5be32ca3f6e1a997c75795c4359147cc6d4fbd34948c0acd51e31d237033978a.css"><meta property='og:title' content='Hugo Practice'>
+<meta property='og:description' content='hugo上手使用 安装
+在win10下推荐使用 scoop install hugo-extended 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。
+使用hugo命令新建一个能让hugo识别的目录
+hugo new site blog 其中blog是自定义的目录名
+进入目录
+cd blog 在blog目录下git clone主题
+这里需要将stack主题fork到自己的github，以便于后续的修改能够push 注意！！ 如果想要后面能够使用github action，那么必须必须必须使用submodule的方式引入！！而不能是git clone的方式
+git clone xxxx.git themes/stack
+git submodule add xxxx.git themes/stack stack这个目录名是自定义的
+修改根目录config.toml
+在文件中添加
+theme = &amp;#39;stack&amp;#39; 在根目录下执行命令来构建
+hugo 运行查看网站效果
+hugo server 完整命令行步骤
+hugo new site blog cd blog git submodule add your_stack_repo.git themes/stack echo theme=&amp;#39;stack&amp;#39; &amp;gt;&amp;gt; config.toml hugo hugo server 完整的文件目录
+DIY环节 上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。
+静态文件处理 将themes/stack/exampleSite/content/的page目录复制到blog目录的content目录下 这样你就有了下面这几个在左侧边栏 修改stack目录下的config.yml 根据exampleSite目录下的config.yaml的内容，选取自己需要的内容复制粘贴到stack目录下的config.yaml并diy 下面是我的修改后的文件：'>
+<meta property='og:url' content='http://example.org/post/hugo-practice/'>
+<meta property='og:site_name' content='Asher&#39;s site'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-25T11:15:59&#43;08:00'/><meta property='article:modified_time' content='2023-06-25T11:15:59&#43;08:00'/>
+<meta name="twitter:title" content="Hugo Practice">
+<meta name="twitter:description" content="hugo上手使用 安装
+在win10下推荐使用 scoop install hugo-extended 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。
+使用hugo命令新建一个能让hugo识别的目录
+hugo new site blog 其中blog是自定义的目录名
+进入目录
+cd blog 在blog目录下git clone主题
+这里需要将stack主题fork到自己的github，以便于后续的修改能够push 注意！！ 如果想要后面能够使用github action，那么必须必须必须使用submodule的方式引入！！而不能是git clone的方式
+git clone xxxx.git themes/stack
+git submodule add xxxx.git themes/stack stack这个目录名是自定义的
+修改根目录config.toml
+在文件中添加
+theme = &amp;#39;stack&amp;#39; 在根目录下执行命令来构建
+hugo 运行查看网站效果
+hugo server 完整命令行步骤
+hugo new site blog cd blog git submodule add your_stack_repo.git themes/stack echo theme=&amp;#39;stack&amp;#39; &amp;gt;&amp;gt; config.toml hugo hugo server 完整的文件目录
+DIY环节 上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。
+静态文件处理 将themes/stack/exampleSite/content/的page目录复制到blog目录的content目录下 这样你就有了下面这几个在左侧边栏 修改stack目录下的config.yml 根据exampleSite目录下的config.yaml的内容，选取自己需要的内容复制粘贴到stack目录下的config.yaml并diy 下面是我的修改后的文件：">
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/OIP_hu7c183f8a9e3e07696e268c200f0e29e4_8019_300x0_resize_box_3.png" width="300"
+                            height="309" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">✅</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Asher&#39;s site</a></h1>
+            <h2 class="site-description">hello~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' >
+                
+                
+                
+                <span>categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                
+                
+                <span>tags</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#静态文件处理">静态文件处理</a></li>
+        <li><a href="#修改stack目录下的configyml">修改stack目录下的config.yml</a></li>
+        <li><a href="#得到第一篇文章">得到第一篇文章</a></li>
+        <li><a href="#配置github-pages与github-actions">配置Github Pages与GitHub Actions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hugo-practice/">Hugo Practice</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 25, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="hugo上手使用">hugo上手使用</h1>
+<p><strong>安装</strong></p>
+<p>在win10下推荐使用 <code>scoop install hugo-extended</code> 来安装hugo的拓展版，基础版本与拓展版本的命令一样，但是extended版本有更好的效果。</p>
+<p><strong>使用hugo命令新建一个能让hugo识别的目录</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site blog
+</span></span></code></pre></div><p>其中blog是自定义的目录名</p>
+<p><strong>进入目录</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd blog
+</span></span></code></pre></div><p><strong>在blog目录下git clone主题</strong></p>
+<p>这里需要将stack主题fork到自己的github，以便于后续的修改能够push
+注意！！ 如果想要后面能够使用github action，那么必须必须必须使用submodule的方式引入！！而不能是git clone的方式</p>
+<p><del>git clone xxxx.git themes/stack</del></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git submodule add xxxx.git themes/stack
+</span></span></code></pre></div><p><code>stack</code>这个目录名是自定义的</p>
+<p><strong>修改根目录config.toml</strong></p>
+<p>在文件中添加</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>theme <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;stack&#39;</span>
+</span></span></code></pre></div><p><strong>在根目录下执行命令来构建</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo 
+</span></span></code></pre></div><p>运行查看网站效果</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><p>完整命令行步骤</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site blog
+</span></span><span style="display:flex;"><span>cd blog
+</span></span><span style="display:flex;"><span>git submodule add your_stack_repo.git themes/stack
+</span></span><span style="display:flex;"><span>echo theme<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;stack&#39;</span> &gt;&gt; config.toml
+</span></span><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><p>完整的文件目录</p>
+<h1 id="diy环节">DIY环节</h1>
+<p>上面的步骤只能让我们看到网站简单的效果并上传文件，还需要做进一步的美化。</p>
+<h3 id="静态文件处理">静态文件处理</h3>
+<p>将<code>themes/stack/exampleSite/content/</code>的page目录复制到blog目录的content目录下
+这样你就有了下面这几个在左侧边栏
+<img src="/post/hugo-practice/image1.png"
+	width="234"
+	height="572"
+	srcset="/post/hugo-practice/image1_hub6a973cd02bd575700e5b7be06a034d1_536942_480x0_resize_box_3.png 480w, /post/hugo-practice/image1_hub6a973cd02bd575700e5b7be06a034d1_536942_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="Image 1"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="40"
+		data-flex-basis="98px"
+	
+></p>
+<h3 id="修改stack目录下的configyml">修改stack目录下的config.yml</h3>
+<p>根据exampleSite目录下的config.yaml的内容，选取自己需要的内容复制粘贴到stack目录下的config.yaml并diy
+下面是我的修改后的文件：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">module</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">hugoVersion</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">min</span>: <span style="color:#e6db74">&#34;0.87.0&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 上面的保持不变，表明这是一个submodule</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 下面的参考exampleSite的yml配置，从exampleSite的config.yml的params开始参考</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">mainSections</span>:
+</span></span><span style="display:flex;"><span>        - <span style="color:#ae81ff">post</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">featuredImageField</span>: <span style="color:#ae81ff">image</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">rssFullContent</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">favicon</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">footer</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">since</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">customText</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">dateFormat</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">published</span>: <span style="color:#ae81ff">Jan 02, 2006</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">lastUpdated</span>: <span style="color:#ae81ff">Jan 02, 2006 15:04 MST</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">sidebar</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">compact</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">emoji</span>: <span style="color:#ae81ff">✅</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">subtitle</span>: <span style="color:#ae81ff">hello~</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">avatar</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">local</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 静态资源存放在stack目录下的asset目录,因为当前配置文件是在stack目录下，所以静态资源目录的路径就是当前目录的asset目录</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">src</span>: <span style="color:#ae81ff">/img/OIP.png</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">article</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">math</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">toc</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">readingTime</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">license</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">default</span>: <span style="color:#ae81ff">Licensed under CC BY-NC-SA 4.0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">comments</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">provider</span>: <span style="color:#ae81ff">disqus</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">disqusjs</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">shortname</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">apiUrl</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">apiKey</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">admin</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">adminLabel</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">utterances</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">issueTerm</span>: <span style="color:#ae81ff">pathname</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">label</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">remark42</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">site</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">locale</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">vssue</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">platform</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">owner</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientId</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientSecret</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">autoCreateIssue</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Waline client configuration see: https://waline.js.org/en/reference/client.html</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">waline</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">serverURL</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">visitor</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">avatar</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">emoji</span>:
+</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">requiredMeta</span>:
+</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">name</span>
+</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">email</span>
+</span></span><span style="display:flex;"><span>                - <span style="color:#ae81ff">url</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">placeholder</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">locale</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">admin</span>: <span style="color:#ae81ff">Admin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">twikoo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">envId</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">region</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">path</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">giscus</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repoID</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">category</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">categoryID</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">mapping</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">strict</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lightTheme</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">darkTheme</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">reactionsEnabled</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">emitMetadata</span>: <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">inputPosition</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">lang</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">gitalk</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">owner</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">admin</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">repo</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientID</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">clientSecret</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cusdis</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">host</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">id</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">widgets</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># homepage: []</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># page: []</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">homepage</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">search</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">archives</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">tag-cloud</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#f92672">params</span>:
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">limit</span>: <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">page</span>:
+</span></span><span style="display:flex;"><span>            - <span style="color:#f92672">type</span>: <span style="color:#ae81ff">toc</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">opengraph</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">twitter</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Your Twitter username</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">site</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># Available values: summary, summary_large_image</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">card</span>: <span style="color:#ae81ff">summary_large_image</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">defaultImage</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">opengraph</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">local</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">src</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">colorScheme</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Display toggle</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">toggle</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># Available values: auto, light, dark</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">default</span>: <span style="color:#ae81ff">auto</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">imageProcessing</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">cover</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">content</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">enabled</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 注意yml的语法是下一行缩进2个空格</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">menu</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">main</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">indetifier</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">categories</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/categories/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">indetifier</span>: <span style="color:#ae81ff">tag</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">name</span>: <span style="color:#ae81ff">tags</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">url</span>: <span style="color:#ae81ff">/tags/</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">weight</span>: <span style="color:#ae81ff">30</span>
+</span></span></code></pre></div><p>这里说一下为什么我选择修改stack目录下的<code>config.yaml</code>文件而不是根目录下的<code>config.toml</code>文件</p>
+<p>1.因为我认为主题的配置应该在主题目录中而不是在根目录对于整个站点的配置中，如果以后需要使用其他主题，那么就不用过多的修改<code>config.toml</code>文件</p>
+<p>2.当我们在命令行中运行<code>hugo</code>命令的时候，可以发现，hugo是会将根目录下的<code>config.toml</code>和主题目录下的<code>config.yaml</code>文件同时当成配置文件来处理的，所以我们在stack目录下的配置文件也是可以生效的</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>├─archetypes
+</span></span><span style="display:flex;"><span>├─assets
+</span></span><span style="display:flex;"><span>├─content
+</span></span><span style="display:flex;"><span>│  ├─page
+</span></span><span style="display:flex;"><span>│  │  ├─about
+</span></span><span style="display:flex;"><span>│  │  ├─archives
+</span></span><span style="display:flex;"><span>│  │  ├─links
+</span></span><span style="display:flex;"><span>│  │  └─search
+</span></span><span style="display:flex;"><span>│  └─post
+</span></span><span style="display:flex;"><span>├─public
+</span></span><span style="display:flex;"><span>│  ├─categories
+</span></span><span style="display:flex;"><span>│  ├─img
+</span></span><span style="display:flex;"><span>│  ├─page
+</span></span><span style="display:flex;"><span>│  ├─post
+</span></span><span style="display:flex;"><span>│  ├─scss
+</span></span><span style="display:flex;"><span>│  ├─tags
+</span></span><span style="display:flex;"><span>├─resources
+</span></span><span style="display:flex;"><span>└─themes
+</span></span><span style="display:flex;"><span>    └─stack
+</span></span><span style="display:flex;"><span>        ├─archetypes
+</span></span><span style="display:flex;"><span>        ├─assets
+</span></span><span style="display:flex;"><span>        │  ├─icons
+</span></span><span style="display:flex;"><span>        │  ├─img
+</span></span><span style="display:flex;"><span>        │  ├─scss
+</span></span><span style="display:flex;"><span>        │  └─ts
+</span></span><span style="display:flex;"><span>        ├─data
+</span></span><span style="display:flex;"><span>        ├─exampleSite
+</span></span><span style="display:flex;"><span>        │  └─content
+</span></span><span style="display:flex;"><span>        │      ├─categories
+</span></span><span style="display:flex;"><span>        │      │  └─Test
+</span></span><span style="display:flex;"><span>        │      ├─page
+</span></span><span style="display:flex;"><span>        │      │  ├─about
+</span></span><span style="display:flex;"><span>        │      │  ├─archives
+</span></span><span style="display:flex;"><span>        │      │  ├─links
+</span></span><span style="display:flex;"><span>        │      │  └─search
+</span></span><span style="display:flex;"><span>        │      └─post
+</span></span><span style="display:flex;"><span>        │          ├─chinese-test
+</span></span><span style="display:flex;"><span>        │          ├─emoji-support
+</span></span><span style="display:flex;"><span>        │          ├─markdown-syntax
+</span></span><span style="display:flex;"><span>        │          ├─math-typesetting
+</span></span><span style="display:flex;"><span>        │          ├─placeholder-text
+</span></span><span style="display:flex;"><span>        │          └─rich-content
+</span></span><span style="display:flex;"><span>        ├─i18n
+</span></span><span style="display:flex;"><span>        ├─images
+</span></span><span style="display:flex;"><span>        └─layouts
+</span></span></code></pre></div><h3 id="得到第一篇文章">得到第一篇文章</h3>
+<p>现在，我们可以复制<code>blog\themes\stack\exampleSite\content\post</code>目录下的一篇文章到根目录下的<code>content\post</code>.这里我选择<code>markdown-syntax</code>目录。</p>
+<p>粘贴完之后，在命令行中运行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>hugo server
+</span></span></code></pre></div><p>然后就可以在localhost:1313看到自己的文章了</p>
+<h3 id="配置github-pages与github-actions">配置Github Pages与GitHub Actions</h3>
+<p>现在，在本地我们已经可以看到页面了，但是还希望能通过网络让别人访问到我们的博客，所以需要借助GitHub Pages和Github Actions</p>
+<h4 id="github-pages">Github Pages</h4>
+<p>首先在 GitHub 上创建一个 public repository，命名为 username.github.io（根据 <a class="link" href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site"  target="_blank" rel="noopener"
+    >GitHub Pages</a>，如果想用这个域名作为博客地址，repo 必须命名为 username.github.io)。这个 repo 会用来存放博客的静态文件，也就是 hugo 创建的<code>public</code>文件夹。(username是自己的GitHub用户名)</p>
+<p>执行下面的命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd public
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git add remote origin username/username.github.io
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init commit&#34;</span>
+</span></span><span style="display:flex;"><span>git push --set-upstream origin main
+</span></span></code></pre></div><p>现在打开<code>https://username.github.io</code>， 应该就可以看到和<code>localhost:1313</code>一样的内容了</p>
+<h4 id="github-actions">Github Actions</h4>
+<p>接下来创建一个另外的 private repository（e.g. <code>blog_source</code>），用这个来存放原始文件（也就是整个根目录），以及设置用于自动部署的 GitHub Actions。GitHub Actions 设置还参考了 <a class="link" href="https://gohugo.io/hosting-and-deployment/hosting-on-github/"  target="_blank" rel="noopener"
+    >Hugo 官方教程</a>。</p>
+<p>在根目录下，新建目录<code>.github\workflows\</code>, 在这个目录中创建<code>gh-pages.yml</code>文件，内容为：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yml" data-lang="yml"><span style="display:flex;"><span><span style="color:#f92672">name</span>: <span style="color:#ae81ff">hugo CI</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">on</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">push</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">branches</span>: [ <span style="color:#ae81ff">main ]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">jobs</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">build</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-20.04</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">steps</span>:
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 如果stack使用了远程仓库，那么必须以submodule的方式引入才能正常跑通现在这个github action。</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e"># 当stack主题是通过submodule的方式来拉取的时候，应该采用下面四行代码来进行action的构建.</span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span> 
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">fetch-depth</span>: <span style="color:#ae81ff">1</span>   
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Setup Hugo</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-hugo@v2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">hugo-version</span>: <span style="color:#e6db74">&#39;latest&#39;</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">extended</span>: <span style="color:#66d9ef">false</span>
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">run</span>: <span style="color:#ae81ff">hugo</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@v3</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">with</span>:
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">personal_token</span>: <span style="color:#ae81ff">xxxxxxx</span> <span style="color:#75715e">#写自己的GitHub personal token</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">external_repository</span>: <span style="color:#ae81ff">username/username.github.io</span> <span style="color:#75715e"># the public repo hosting website</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_branch</span>: <span style="color:#ae81ff">main</span> <span style="color:#75715e"># branch hosting the website</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">publish_dir</span>: <span style="color:#ae81ff">./public</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">commit_message</span>: <span style="color:#ae81ff">${{ github.event.head_commit.message }}</span>
+</span></span></code></pre></div><p>上面的示例中，后面有注释的行都需要自己去确认是否正确填入</p>
+<p>因为我们需要从博客仓库推送到外部 GitHub Pages 仓库，需要特定权限，要在 GitHub 账户下 <code>Setting - Developer setting - Personal access tokens</code> 下创建一个 Token。</p>
+<p>创建自己的 <a class="link" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-token"  target="_blank" rel="noopener"
+    >Github Personal Key</a></p>
+<p>权限需要勾选 <code>repo</code> 与 <code>workflow</code>。</p>
+<p>配置后复制生成的 Token（注：只会出现一次），然后在我们博客源仓库的 <code>Settings - Secrets - Actions</code> 中添加 <code>PERSONAL_TOKEN</code> 环境变量为刚才的 Token，这样 GitHub Action 就可以获取到 Token 了。</p>
+<p>完成上述配置后，推送代码至仓库，即可触发 GitHub Action，自动生成博客页面并推送至 GitHub Pages 仓库。</p>
+<p>现在在我们本地的hugo站点根目录blog关联到远程的blog_source仓库</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;public/&#34;</span> &gt;&gt; .gitignore
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/username/blog_source.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;init&#34;</span>
+</span></span><span style="display:flex;"><span>git push --set-upstream origin main
+</span></span></code></pre></div><p>之后我们只需要执行</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;create a post&#34;</span>
+</span></span><span style="display:flex;"><span>git push
+</span></span></code></pre></div><p>就能自动部署到两个远程仓库了</p>
+<h1 id="根据hugo官方的方式创建文章">根据Hugo官方的方式创建文章</h1>
+<p>在blog目录下执行命令</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/my-first-post/index.md
+</span></span></code></pre></div><blockquote>
+<p>Hugo created the file in the <code>content/posts/my-first-post</code> directory. Open the file with your editor.</p>
+</blockquote>
+<p>打开文件会发现文章顶部是</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span>---
+</span></span><span style="display:flex;"><span><span style="color:#f92672">title</span>: <span style="color:#e6db74">&#34;My First Post&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">date</span>: <span style="color:#e6db74">2022-11-20T09:03:20</span><span style="color:#ae81ff">-08</span>:<span style="color:#ae81ff">00</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">draft</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>---
+</span></span></code></pre></div><p><code>draft: true</code>表明当前文章是草稿，执行``hugo <code>和 </code>hugo server`之后不会生成对应的文章在网页上膳食</p>
+<h1 id="根据stack官网的方式调整文章">根据Stack官网的方式调整文章</h1>
+<p>文章顶部可以有下面这几个字段</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">author</span> = <span style="color:#e6db74">&#34;Asher&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Markdown Syntax Guide&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">date</span> = <span style="color:#e6db74">&#34;2023-06-24&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Sample article showcasing basic Markdown syntax and formatting for HTML elements.&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tags</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;markdown&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;css&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;html&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;themes&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">categories</span> = [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;themes&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;syntax&#34;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">series</span> = [<span style="color:#e6db74">&#34;Themes Guide&#34;</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">image</span> = <span style="color:#e6db74">&#34;cover.jpg&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">+++</span>
+</span></span></code></pre></div><p>tag表示文章的标签，我们不需要手动创建标签，只需要在文章顶部写上我们想设置的标签，stack主题和hugo会帮助我们生成tag。categories字段同理</p>
+<p>image字段表示封面图，路径一般和文章一样</p>
+<p>文章顶部可以是toml格式也可以是yml格式，但是不能混用</p>
+<h1 id="参考资料">参考资料</h1>
+<ol>
+<li><a class="link" href="https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/"  target="_blank" rel="noopener"
+    >Hugo + GitHub Action，搭建你的博客自动发布系统</a></li>
+<li><a class="link" href="https://fourxiajiao.github.io/2022/hugo-blog/"  target="_blank" rel="noopener"
+    >不是从零开始的 Hugo 建站笔记</a></li>
+<li><a class="link" href="https://docs.github.com/en"  target="_blank" rel="noopener"
+    >GitHub Docs</a></li>
+<li><a class="link" href="https://gohugo.io/"  target="_blank" rel="noopener"
+    >Hugo 官网</a></li>
+<li><a class="link" href="https://stack.jimmycai.com/writing/markdown"  target="_blank" rel="noopener"
+    >Stack Docs</a></li>
+</ol>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2023 Asher&#39;s site
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
