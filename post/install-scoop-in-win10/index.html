@@ -306,9 +306,16 @@
 <code>185.199.108.133     raw.githubusercontent.com</code>
 然后保存为ASCI编码</p>
 <p>在D盘创建D:\Scoop\UserScoopApps 和 D:\Scoop\GlobalScoopApps这两个目录
-接下来执行
-<code>.\install.ps1 -ScoopDir 'D:\Scoop\UserScoopApps' -ScoopGlobalDir 'D:\Scoop\GlobalScoopApps' -NoProxy</code>
-这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的</p>
+接下来执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">.<span class="se">\i</span>nstall.ps1 -ScoopDir <span class="s1">&#39;D:\Scoop\UserScoopApps&#39;</span> -ScoopGlobalDir <span class="s1">&#39;D:\Scoop\GlobalScoopApps&#39;</span> -NoProxy
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的</p>
 
 </section>
 
