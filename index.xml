@@ -830,6 +830,23 @@
 </description>
         </item>
         <item>
+        <title>Scoop自定义安装</title>
+        <link>http://example.org/post/install-scoop-in-win10/</link>
+        <pubDate>Sun, 25 Jun 2023 10:15:59 +0800</pubDate>
+        
+        <guid>http://example.org/post/install-scoop-in-win10/</guid>
+        <description>&lt;img src="http://example.org/post/install-scoop-in-win10/cover.jpg" alt="Featured image of post Scoop自定义安装" /&gt;&lt;p&gt;在D盘下执行
+&lt;code&gt;irm get.scoop.sh -outfile &#39;install.ps1&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;如果提示无法解析 raw.githubusercontent.com  那么就在host文件中添加
+&lt;code&gt;185.199.108.133     raw.githubusercontent.com&lt;/code&gt;
+然后保存为ASCI编码&lt;/p&gt;
+&lt;p&gt;在D盘创建D:\Scoop\UserScoopApps 和 D:\Scoop\GlobalScoopApps这两个目录
+接下来执行
+&lt;code&gt;.\install.ps1 -ScoopDir &#39;D:\Scoop\UserScoopApps&#39; -ScoopGlobalDir &#39;D:\Scoop\GlobalScoopApps&#39; -NoProxy&lt;/code&gt;
+这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Markdown Syntax Guide</title>
         <link>http://example.org/post/firstpost/</link>
         <pubDate>Sat, 24 Jun 2023 00:00:00 +0000</pubDate>
