@@ -23,7 +23,14 @@
 &lt;li&gt;用Java写过简易的RPC框架&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;技术栈&#34;&gt;技术栈&lt;/h1&gt;
-&lt;p&gt;Java SpringBoot Redis 分布式锁 MySQL MongoDB gRPC&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;掌握常见数据结构与算法、计算机网络、操作系统等基础知识&lt;/li&gt;
+&lt;li&gt;掌握Java语言。熟悉Spring，能熟练运用SpringBoot进行开发&lt;/li&gt;
+&lt;li&gt;掌握MySQL数据库（索引、事务）、熟悉Redis与分布式锁&lt;/li&gt;
+&lt;li&gt;熟悉RPC的基本原理与GRPC的使用&lt;/li&gt;
+&lt;li&gt;熟悉Linux基本命令、Git的使用&lt;/li&gt;
+&lt;li&gt;了解HTML、CSS和VUE&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h1 id=&#34;一些爱好&#34;&gt;一些爱好&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;排球🏐&lt;/li&gt;
