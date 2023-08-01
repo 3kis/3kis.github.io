@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2023-06-30T07:37:59.668Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36 Edg/114.0.1788.0" etag="Qo5_64tj9P29usfhqNGc" version="21.5.2" type="device">
+  <diagram name="第 1 页" id="2HEcS4Lj925MYmv4pzda">
+    <mxGraphModel dx="1690" dy="981" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="27x9nLaklZ5bT33S9Hc9-1" target="27x9nLaklZ5bT33S9Hc9-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27x9nLaklZ5bT33S9Hc9-1" value="分布式锁是什么？" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="-34" y="221" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="27x9nLaklZ5bT33S9Hc9-2" target="27x9nLaklZ5bT33S9Hc9-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;curved=1;" edge="1" parent="1" source="27x9nLaklZ5bT33S9Hc9-2" target="27x9nLaklZ5bT33S9Hc9-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;curved=1;" edge="1" parent="1" source="27x9nLaklZ5bT33S9Hc9-2" target="CQwVrBr5NKbErmxgt8WS-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27x9nLaklZ5bT33S9Hc9-2" value="为什么需要分布式锁" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="135" y="99" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="27x9nLaklZ5bT33S9Hc9-3" value="要做跟库存相关的系统，比如医疗的进销存卖药、电商的库存等，结果并发量太大导致库存超卖了，库存剩余量出现了负数。" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="299" y="-49" width="294" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="27x9nLaklZ5bT33S9Hc9-4" value="写个定时任务，但是现在都是集群部署，结果你发现你的定时任务同时在无数台机器上执行了，造成了数据混乱。" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="326" y="95" width="219" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-1" value="假设现在就做个同时在线人数的功能，那我们怎么做？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="366" y="221" width="147" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-2" value="这玩意线程安全吗？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="582" y="195" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-3" value="不安全的话，那怎么办呢？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="582" y="277" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-4" value="synchronized/ReentrantLock/AtomicInteger 等原子类，保证的是什么级别的线程安全？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="584" y="355" width="285" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-5" value="现在哪个项目不是集群部署？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="584" y="433" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-6" value="问题出现在哪？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="747" y="434" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-7" value="那这种集群下的锁怎么办？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="584" y="511" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-8" value="该如何实现一把分布式锁呢？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="368" y="681" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CQwVrBr5NKbErmxgt8WS-13" value="A 线程对test() 方法进行了上锁，test()方法内部又调用了一个 abc() 方法，这个 abc() 方法也有锁，那会出现什么情况呢？" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="582" y="603" width="329" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
