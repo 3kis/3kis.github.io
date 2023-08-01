@@ -10,10 +10,10 @@
 <meta property='og:description' content='记录一些写题过程中的关键点.'>
 <meta property='og:url' content='https://betaller99.github.io/post/leetcode-keytooffer/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-28T10:15:59&#43;08:00'/><meta property='article:modified_time' content='2023-06-28T10:15:59&#43;08:00'/><meta property='og:image' content='https://betaller99.github.io/cover.jpg' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-28T10:15:59&#43;08:00'/><meta property='article:modified_time' content='2023-06-28T10:15:59&#43;08:00'/><meta property='og:image' content='https://betaller99.github.io/post/leetcode-keytooffer/cover.png' />
 <meta name="twitter:title" content="leetcode剑指Offer题解记录">
 <meta name="twitter:description" content="记录一些写题过程中的关键点."><meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content='https://betaller99.github.io/cover.jpg' />
+    <meta name="twitter:image" content='https://betaller99.github.io/post/leetcode-keytooffer/cover.png' />
     </head>
     <body class="
     article-page
@@ -451,8 +451,12 @@
     <header class="article-header">
         <div class="article-image">
             <a href="/post/leetcode-keytooffer/">
-                
-                    <img src="/cover.jpg" loading="lazy" alt="Featured image of post leetcode剑指Offer题解记录" />
+                <img src="/post/leetcode-keytooffer/cover_hu3dd34d49d4ffe9e02b13e688a6caa01a_110270_800x0_resize_box_3.png"
+                        srcset="/post/leetcode-keytooffer/cover_hu3dd34d49d4ffe9e02b13e688a6caa01a_110270_800x0_resize_box_3.png 800w, /post/leetcode-keytooffer/cover_hu3dd34d49d4ffe9e02b13e688a6caa01a_110270_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="346" 
+                        loading="lazy"
+                        alt="Featured image of post leetcode剑指Offer题解记录" />
                 
             </a>
         </div>
@@ -520,6 +524,7 @@
     
     
     <p>刷题顺序按照：https://leetcode.cn/studyplan/coding-interviews/</p>
+<p>本题解中标题是链接，会直接跳转到leetcode界面，如果想要跳转到页面指定位置，需要点击目录前的小数字</p>
 <h1 id="剑指-offer-05-替换空格">剑指 Offer 05. 替换空格</h1>
 <p>关键点：替换字符串
 方法一：正则表达式 <code>\s</code>匹配空格</p>
@@ -3147,9 +3152,10 @@
 <h1 id="剑指-offer-42-连续子数组的最大和httpsleetcodecnproblemslian-xu-zi-shu-zu-de-zui-da-he-lcof"><a class="link" href="https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/"  target="_blank" rel="noopener"
     >剑指 Offer 42. 连续子数组的最大和</a></h1>
 <p>思路：若要达到O(N)的时间复杂度，那么就是要只遍历数组，对于连续子数组和的最小值，我们可以这么考虑：</p>
-<p>让数组的含义变成到nums[i]的前的连续子数组和的最大值，为了满足这个含义，我们需要遍历修改数组的值，修改方式如下：</p>
-<p>记录下数组的第一个元素的值为res，然后从第二个元素开始遍历数组，对于当前遍历到的元素，我们判断当前元素加上前一个元素（此时前一个元素的含义已经变成前面的最大连续子数组和了）之后的值和当前元素的值相比谁更大，将更大的值赋给当前元素，然后比较res和当前位置的值并更新res。</p>
+<p>让数组的含义变成：到nums[i]前(包括nums[i])的连续子数组和的最大值，为了满足这个含义，我们需要遍历修改数组的值，修改方式如下：</p>
+<p>使用一个额外的变量res记录数组的第一个元素的值，然后从第二个元素开始遍历数组nums，对于当前遍历到的元素，我们判断当前元素加上前一个元素（此时前一个元素的含义已经变成前面的最大连续子数组和了）之后的值和当前元素的值相比谁更大，将更大的值赋给当前元素nums[i]，然后比较res和当前位置的值并更新res。</p>
 <p>遍历结束后返回res</p>
+<p>注意：res在此处是必要的，因为我们在修改数组的值的过程中，使用的是<code>num[i-1]+nums[i]</code>, 数组的当前位置只能代表到他这里的最大和，但是如果他原本的值是负数，就会导致最大和变小，所以不能通过直接返回数组最后一位的方式来返回结果，只能用res去跟踪这个最大值。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
