@@ -2,16 +2,16 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='win10安装scoop.'>
-<title>Scoop自定义安装</title>
+<title>Scoop自定义安装与使用</title>
 
 <link rel='canonical' href='https://betaller99.github.io/post/install-scoop-in-win10/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Scoop自定义安装'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Scoop自定义安装与使用'>
 <meta property='og:description' content='win10安装scoop.'>
 <meta property='og:url' content='https://betaller99.github.io/post/install-scoop-in-win10/'>
 <meta property='og:site_name' content='Asher blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-06-25T10:15:59&#43;08:00'/><meta property='article:modified_time' content='2023-06-25T10:15:59&#43;08:00'/><meta property='og:image' content='https://betaller99.github.io/post/install-scoop-in-win10/cover.jpg' />
-<meta name="twitter:title" content="Scoop自定义安装">
+<meta name="twitter:title" content="Scoop自定义安装与使用">
 <meta name="twitter:description" content="win10安装scoop."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://betaller99.github.io/post/install-scoop-in-win10/cover.jpg' />
     </head>
@@ -221,7 +221,58 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#常用bucket">常用bucket</a></li>
+    <li><a href="#常用命令">常用命令</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#使用scoop的shim来添加环境变量path">使用scoop的shim来添加环境变量path</a></li>
+            <li><a href="#切换软件版本">切换软件版本</a></li>
+            <li><a href="#删除旧版本">删除旧版本</a></li>
+            <li><a href="#powershell命令">powershell命令</a>
+              <ol>
+                <li>
+                  <ol>
+                    <li><a href="#以其他命令的结果作为另一命令的一部分">以其他命令的结果作为另一命令的一部分</a></li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="has-image main-article">
@@ -233,7 +284,7 @@
                         width="800" 
                         height="450" 
                         loading="lazy"
-                        alt="Featured image of post Scoop自定义安装" />
+                        alt="Featured image of post Scoop自定义安装与使用" />
                 
             </a>
         </div>
@@ -244,7 +295,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/install-scoop-in-win10/">Scoop自定义安装</a>
+            <a href="/post/install-scoop-in-win10/">Scoop自定义安装与使用</a>
         </h2>
     
         
@@ -316,6 +367,49 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的</p>
+<h1 id="常用bucket">常用bucket</h1>
+<blockquote>
+<p>Name        Source</p>
+</blockquote>
+<hr>
+<p>Ash258      <a class="link" href="https://github.com/Ash258/Scoop-Ash258.git"  target="_blank" rel="noopener"
+    >https://github.com/Ash258/Scoop-Ash258.git</a>               <br>
+cvp         <a class="link" href="https://github.com/SayCV/scoop-cvp.git"  target="_blank" rel="noopener"
+    >https://github.com/SayCV/scoop-cvp.git</a>                <br>
+dorado      <a class="link" href="https://github.com/chawyehsu/dorado"  target="_blank" rel="noopener"
+    >https://github.com/chawyehsu/dorado</a>                   <br>
+echo        <a class="link" href="https://github.com/echoiron/echo-scoop"  target="_blank" rel="noopener"
+    >https://github.com/echoiron/echo-scoop</a>          <br>
+extras      <a class="link" href="https://github.com/ScoopInstaller/Extras"  target="_blank" rel="noopener"
+    >https://github.com/ScoopInstaller/Extras</a>        <br>
+java        <a class="link" href="https://github.com/ScoopInstaller/Java"  target="_blank" rel="noopener"
+    >https://github.com/ScoopInstaller/Java</a>          <br>
+Main        <a class="link" href="https://github.com/ScoopInstaller/Main.git"  target="_blank" rel="noopener"
+    >https://github.com/ScoopInstaller/Main.git</a>      <br>
+nerd-fonts  <a class="link" href="https://github.com/matthewjberger/scoop-nerd-fonts"  target="_blank" rel="noopener"
+    >https://github.com/matthewjberger/scoop-nerd-fonts</a>
+nirsoft     <a class="link" href="https://github.com/kodybrown/scoop-nirsoft"  target="_blank" rel="noopener"
+    >https://github.com/kodybrown/scoop-nirsoft</a>      <br>
+nonportable <a class="link" href="https://github.com/ScoopInstaller/Nonportable"  target="_blank" rel="noopener"
+    >https://github.com/ScoopInstaller/Nonportable</a>   <br>
+Scoop-Apps  <a class="link" href="https://github.com/ACooper81/scoop-apps"  target="_blank" rel="noopener"
+    >https://github.com/ACooper81/scoop-apps</a>         <br>
+scoop-bear  <a class="link" href="https://github.com/AStupidBear/scoop-bear"  target="_blank" rel="noopener"
+    >https://github.com/AStupidBear/scoop-bear</a>       <br>
+scoopcn     <a class="link" href="https://github.com/scoopcn/scoopcn.git"  target="_blank" rel="noopener"
+    >https://github.com/scoopcn/scoopcn.git</a>          <br>
+versions    <a class="link" href="https://github.com/ScoopInstaller/Versions"  target="_blank" rel="noopener"
+    >https://github.com/ScoopInstaller/Versions</a></p>
+<h1 id="常用命令">常用命令</h1>
+<h3 id="使用scoop的shim来添加环境变量path">使用scoop的shim来添加环境变量path</h3>
+<p><code>scoop shim add $习惯命令名  $执行命令的文件(格式为：路径+文件名。如果不确定是哪一个文件起作用就去chatgpt问一问) </code></p>
+<h3 id="切换软件版本">切换软件版本</h3>
+<p><code>scoop reset &lt;java&gt;[@&lt;version&gt;]</code></p>
+<h3 id="删除旧版本">删除旧版本</h3>
+<p><code>scoop cleanup &lt;app&gt;</code></p>
+<h3 id="powershell命令">powershell命令</h3>
+<h5 id="以其他命令的结果作为另一命令的一部分">以其他命令的结果作为另一命令的一部分</h5>
+<p><code>在 PowerShell 中，可以使用 $() 语法将命令的返回值作为参数传递给其他命令。</code></p>
 
 </section>
 

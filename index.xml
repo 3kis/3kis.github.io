@@ -4433,12 +4433,12 @@
 </description>
         </item>
         <item>
-        <title>Scoop自定义安装</title>
+        <title>Scoop自定义安装与使用</title>
         <link>https://betaller99.github.io/post/install-scoop-in-win10/</link>
         <pubDate>Sun, 25 Jun 2023 10:15:59 +0800</pubDate>
         
         <guid>https://betaller99.github.io/post/install-scoop-in-win10/</guid>
-        <description>&lt;img src="https://betaller99.github.io/post/install-scoop-in-win10/cover.jpg" alt="Featured image of post Scoop自定义安装" /&gt;&lt;p&gt;在D盘下执行
+        <description>&lt;img src="https://betaller99.github.io/post/install-scoop-in-win10/cover.jpg" alt="Featured image of post Scoop自定义安装与使用" /&gt;&lt;p&gt;在D盘下执行
 &lt;code&gt;irm get.scoop.sh -outfile &#39;install.ps1&#39;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;如果提示无法解析 raw.githubusercontent.com  那么就在host文件中添加
 &lt;code&gt;185.199.108.133     raw.githubusercontent.com&lt;/code&gt;
@@ -4454,6 +4454,49 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的&lt;/p&gt;
+&lt;h1 id=&#34;常用bucket&#34;&gt;常用bucket&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Name        Source&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;p&gt;Ash258      &lt;a class=&#34;link&#34; href=&#34;https://github.com/Ash258/Scoop-Ash258.git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Ash258/Scoop-Ash258.git&lt;/a&gt;               &lt;br&gt;
+cvp         &lt;a class=&#34;link&#34; href=&#34;https://github.com/SayCV/scoop-cvp.git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/SayCV/scoop-cvp.git&lt;/a&gt;                &lt;br&gt;
+dorado      &lt;a class=&#34;link&#34; href=&#34;https://github.com/chawyehsu/dorado&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/chawyehsu/dorado&lt;/a&gt;                   &lt;br&gt;
+echo        &lt;a class=&#34;link&#34; href=&#34;https://github.com/echoiron/echo-scoop&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/echoiron/echo-scoop&lt;/a&gt;          &lt;br&gt;
+extras      &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Extras&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ScoopInstaller/Extras&lt;/a&gt;        &lt;br&gt;
+java        &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Java&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ScoopInstaller/Java&lt;/a&gt;          &lt;br&gt;
+Main        &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Main.git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ScoopInstaller/Main.git&lt;/a&gt;      &lt;br&gt;
+nerd-fonts  &lt;a class=&#34;link&#34; href=&#34;https://github.com/matthewjberger/scoop-nerd-fonts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/matthewjberger/scoop-nerd-fonts&lt;/a&gt;
+nirsoft     &lt;a class=&#34;link&#34; href=&#34;https://github.com/kodybrown/scoop-nirsoft&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kodybrown/scoop-nirsoft&lt;/a&gt;      &lt;br&gt;
+nonportable &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Nonportable&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ScoopInstaller/Nonportable&lt;/a&gt;   &lt;br&gt;
+Scoop-Apps  &lt;a class=&#34;link&#34; href=&#34;https://github.com/ACooper81/scoop-apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ACooper81/scoop-apps&lt;/a&gt;         &lt;br&gt;
+scoop-bear  &lt;a class=&#34;link&#34; href=&#34;https://github.com/AStupidBear/scoop-bear&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/AStupidBear/scoop-bear&lt;/a&gt;       &lt;br&gt;
+scoopcn     &lt;a class=&#34;link&#34; href=&#34;https://github.com/scoopcn/scoopcn.git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/scoopcn/scoopcn.git&lt;/a&gt;          &lt;br&gt;
+versions    &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Versions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ScoopInstaller/Versions&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
+&lt;h3 id=&#34;使用scoop的shim来添加环境变量path&#34;&gt;使用scoop的shim来添加环境变量path&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;scoop shim add $习惯命令名  $执行命令的文件(格式为：路径+文件名。如果不确定是哪一个文件起作用就去chatgpt问一问) &lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;切换软件版本&#34;&gt;切换软件版本&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;scoop reset &amp;lt;java&amp;gt;[@&amp;lt;version&amp;gt;]&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;删除旧版本&#34;&gt;删除旧版本&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;scoop cleanup &amp;lt;app&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;powershell命令&#34;&gt;powershell命令&lt;/h3&gt;
+&lt;h5 id=&#34;以其他命令的结果作为另一命令的一部分&#34;&gt;以其他命令的结果作为另一命令的一部分&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;在 PowerShell 中，可以使用 $() 语法将命令的返回值作为参数传递给其他命令。&lt;/code&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
