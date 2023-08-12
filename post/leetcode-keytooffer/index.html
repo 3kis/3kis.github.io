@@ -508,7 +508,7 @@
 
 
                 <time class="article-time--reading">
-                    29 minute read
+                    30 minute read
                 </time>
             </div>
         
@@ -596,6 +596,9 @@
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
@@ -615,7 +618,8 @@
 </span></span><span class="line"><span class="cl">            <span class="n">i</span><span class="o">++;</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1">//判断符号位是否存在，存在的话是什么,这里不用循环，就可以避免“+++”、“+-+”这种情况
+</span></span><span class="line"><span class="cl">        <span class="c1">//首先需要判断下标是否会越过数组长度
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="c1">//判断符号位是否存在，存在的话是什么,这里不用循环，就可以避免“+++”、“+-+”这种情况
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;+&#39;</span> <span class="o">||</span> <span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="o">))</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="n">sign</span> <span class="o">=</span> <span class="o">(</span><span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="o">)</span> <span class="o">?</span> <span class="o">-</span><span class="mi">1</span> <span class="o">:</span> <span class="mi">1</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">            <span class="n">i</span><span class="o">++;</span>
@@ -623,8 +627,10 @@
 </span></span><span class="line"><span class="cl">        
 </span></span><span class="line"><span class="cl">        <span class="c1">//判断数字位，并且在添加下一个数之前判断是否溢出
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">while</span> <span class="o">(</span><span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">Character</span><span class="o">.</span><span class="na">isDigit</span><span class="o">(</span><span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">])){</span>
-</span></span><span class="line"><span class="cl">            <span class="kt">long</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//res*10之后可能会越界导致数据溢出，造成结果不准确，所以一开始的res要用long类型
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="kt">long</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">+</span> <span class="n">charArray</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">-</span> <span class="sc">&#39;0&#39;</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//判断是否会越界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="c1">//这里要带上符号位来比较大小
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="o">(</span><span class="n">tmp</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&gt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">){</span>
 </span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MAX_VALUE</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">            <span class="o">}</span><span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">tmp</span> <span class="o">*</span> <span class="n">sign</span> <span class="o">&lt;</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">){</span>
@@ -723,11 +729,13 @@
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
+</span><span class="lnt">29
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">Node</span> <span class="nf">copyRandomList</span><span class="o">(</span><span class="n">Node</span> <span class="n">head</span><span class="o">)</span> <span class="o">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//这里判断条件不能有head.next==null，否则会导致下面对应的value节点不能正常生成
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">if</span> <span class="o">(</span><span class="n">head</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
 </span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">head</span><span class="o">;</span>
 </span></span><span class="line"><span class="cl">        <span class="o">}</span>
 </span></span><span class="line"><span class="cl">
@@ -948,8 +956,106 @@
 </div>
 </div><p>其实也不需要判断是否是空格字符串，只需要判断空串也能达到目的</p>
 <p>代码更简洁的思路：双指针</p>
-<p>使用一个StringBuilder B，用来存储最终结果。使用trim()删除函数接收到的字符串的前后空格得到新的s &ndash;》对s从后往前遍历，定义两个指针i j，遍历开始前都指向s的最后一个字符，让i往前走，遇到第一个空格停下，使用subString(i+1，j)截取到这个单词加上空格存到B中 &ndash;》i继续跳过空格且不超过s的头部字符，直到遇到字符停下来，让j跳到i的位置，继续遍历 &ndash;》 遍历结束后，再使用trim()删除前后的空格返回结果</p>
-<h1 id="剑指-offer-30-包含min函数的栈httpsleetcodecnproblemsbao-han-minhan-shu-de-zhan-lcof"><a class="link" href="https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/"  target="_blank" rel="noopener"
+<p>使用一个StringBuilder B，用来存储最终结果。使用trim()删除函数接收到的字符串的前后空格得到新的s &ndash;》对s从后往前遍历，定义两个指针i j，遍历开始前都指向s的最后一个字符，让i往前走，遇到第一个空格停下，使用subString(i+1，j)截取到这个单词加上空格存到B中 &ndash;》i继续跳过空格且不超过s的头部字符，直到遇到字符停下来，让j跳到i+1的位置，继续遍历 &ndash;》 遍历结束后，再使用trim()删除前后的空格返回结果</p>
+<p>双指针细节：</p>
+<ol>
+<li>
+<p>对s进行清空前后空白字符的操作</p>
+</li>
+<li>
+<p>先让left指针移动到s中空白区，也就是 <code>while(left&gt;=0&amp;&amp;s.charAt(left)!=' ')</code></p>
+</li>
+<li>
+<p>存储下此时left和right之间的字符串</p>
+</li>
+<li>
+<p>接下来让left指针移动到s中非空白区，也就是<code>while(left&gt;=0&amp;&amp;s.charAt(left)==' ')</code></p>
+</li>
+<li>
+<p>修改right指针的位置，让他到达left指针后面，也就是空白区的第一个位置</p>
+</li>
+<li>
+<p>循环继续</p>
+</li>
+</ol>
+<p>上面中的第2步和第4步使得left指针能在s中的字符区和空白区进行移动，并且保证了先走出字符区，再走出空白区</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">String</span> <span class="nf">reverseWords</span><span class="o">(</span><span class="n">String</span> <span class="n">s</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">            &#34;the        sky         is         blue&#34;
+</span></span></span><span class="line"><span class="cl"><span class="cm">            字符区[空白区]字符区[空白区]字符区[空白区]字符区
+</span></span></span><span class="line"><span class="cl"><span class="cm">             */</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="n">StringBuilder</span> <span class="n">sb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//trim保证了left指针一开始就是在字符区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="na">trim</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">            <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//先让left指针移动到空白区，使得left和right能包裹住这片字符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//只要移动了left，一定要保证不会越界，当left走到第一个位置的时候，还会执行left--，这就会导致越界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">)</span> <span class="o">!=</span> <span class="sc">&#39; &#39;</span><span class="o">){</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">left</span><span class="o">--;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//情况一：此时left走到了空白区的最后一个位置, 我们把字符区给截取下来
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">//情况二：此时left为-1，越界，我们也可以截取下来
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">s</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">left</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span> <span class="n">right</span><span class="o">));</span>
+</span></span><span class="line"><span class="cl">                <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&#34; &#34;</span><span class="o">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//接下来让left指针走出空白区
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">while</span> <span class="o">(</span><span class="n">left</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">left</span><span class="o">)</span> <span class="o">==</span> <span class="sc">&#39; &#39;</span><span class="o">)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="n">left</span><span class="o">--;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//现在left指针走到了字符区，修改right指针的位置，重复循环
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">right</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">sb</span><span class="o">.</span><span class="na">toString</span><span class="o">().</span><span class="na">trim</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="剑指-offer-30-包含min函数的栈httpsleetcodecnproblemsbao-han-minhan-shu-de-zhan-lcof"><a class="link" href="https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof/"  target="_blank" rel="noopener"
     >剑指 Offer 30. 包含min函数的栈</a></h1>
 <p>易错点：再push的时候条件要搞清楚，要满足两个条件，①min队列为空时可直接加入  ②min队列最小值大于等于当前push的数字时，可直接加入min</p>
 <p>如果没考虑等于最小值也能入最小栈的情况，就可能把push部分写成：</p>
@@ -1572,13 +1678,27 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>容易忽略的点：B可以是A的中间一部分结构，而不需要满足是到某个非叶子节点到叶子节点的结构</p>
-<p>思路：使用递归，对于给定的两个节点，如果俩个节点任一一个为null，则isSubStructure应立即返回false，否则，将这两个节点作为参数，调用isSameStruct函数 || 判断当前A的左子树是否和B相同  || 判断A的右子树是否和B相同 &ndash;》在isSameStruct中，需要确定自己调用自己时的递归终止条件，①如果传入的B节点已经为null了，说明此前的判断都顺利通过了，返回true ②如果传入的A为null 或者 A的值和B的值不同，则说明A所在的树走到了尽头，B还没走到尽头,应该返回false  &ndash;》经过上面两个终止条件之后，说明此时还可以继续判断，那么对这两个节点的左子树和右子树判断是否相同。</p>
-<p><img src="/offer26.png"
-	
-	
-	
+<p>思路：目前仅有的函数是判断是否为子结构，但是这能让我们直接判断出来吗？显然是不行的，判断是否为子结构，就必须要去判断某个部分是否相等，所以我们应该单独写一个函数判断两棵树是否相等，我们将函数定义为<code>boolean isSameTree(TreeNode A, TreeNode B)</code></p>
+<p>对于<code>isSameTree</code>函数，我们想想什么时候函数应该返回true，什么时候返回false</p>
+<p>如果我们要让函数返回false，那么就应该判断树的每一个节点是否都相等，如果不相等，那么就应该返回false。</p>
+<p>那么不相等有什么情况呢：1. A的节点此时为null了，那么就不行了   2. A的val与B的val不相等。</p>
+<p>上述两种情况就是false的情况。</p>
+<p>那么什么时候返回true呢？我们现在要判断这两个树是否相等，显然当B为null的时候，说明B之前的节点都能顺利走完了，所以到B为null的时候整颗树B都已经校验完了，此时应该返回null。</p>
+<p>当我们确定了返回true、false的条件之后，还需要考虑经过了判断条件之后怎么继续进行下一步，当前经过判断条件之后，我们把当前节点确认了，那么接下来就应该确认这两个节点的左右节点，所以我们给他们的左右节点做一个递归调用，将结果<code>&amp;&amp;</code>起来。这就完成了整个<code>boolean isSameTree(TreeNode A, TreeNode B)</code>函数的逻辑</p>
+<p>接下来考虑如何在<code>isSubStruct</code>这个函数里面调用这个函数</p>
+<p>对于<code>isSubStruct</code>，如果B为null，那么肯定返回false。</p>
+<p>接下来就要考虑<strong>A的左子树和B是否能成为子结构</strong> 或者 <strong>A的左子树和B是否能成为子结构</strong>  或者 <strong>A本身是否和B同</strong></p>
+<p>这三个条件只要有一个满足，即可让整个函数返回true</p>
+<p><img src="/post/leetcode-keytooffer/offer26.png"
+	width="2922"
+	height="1436"
+	srcset="/post/leetcode-keytooffer/offer26_hu4a0b03078adc1a7cb04657e40457c101_346438_480x0_resize_box_3.png 480w, /post/leetcode-keytooffer/offer26_hu4a0b03078adc1a7cb04657e40457c101_346438_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="203"
+		data-flex-basis="488px"
 	
 ></p>
 <div class="highlight"><div class="chroma">
