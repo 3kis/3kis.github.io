@@ -2438,7 +2438,9 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>由于每次都需要判断左右节点是否为二叉平衡树，因此时间复杂度就高了</p>
+</div><p>由于每次都需要判断左右节点是否为二叉平衡树，因此时间复杂度就高了，$时间复杂度 = 每层执行复杂度 \times 层数复杂度 = O(N×logN)。$</p>
+<p>最差情况下（为 “满二叉树” 时）， isBalanced(root) 遍历树所有节点，判断每个节点的深度 depth(root) 需要遍历 各子树的所有节点 。
+满二叉树高度的复杂度 O(logN) ，将满二叉树按层分为 log(N+1) 层；</p>
 <p>解法二：保存子问题的结果，避免重复计算</p>
 <blockquote>
 <p>关于这个优化到 O(n) 算法,我们可以从以下几个方面说明:</p>

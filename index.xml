@@ -1927,7 +1927,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;由于每次都需要判断左右节点是否为二叉平衡树，因此时间复杂度就高了&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;由于每次都需要判断左右节点是否为二叉平衡树，因此时间复杂度就高了，$时间复杂度 = 每层执行复杂度 \times 层数复杂度 = O(N×logN)。$&lt;/p&gt;
+&lt;p&gt;最差情况下（为 “满二叉树” 时）， isBalanced(root) 遍历树所有节点，判断每个节点的深度 depth(root) 需要遍历 各子树的所有节点 。
+满二叉树高度的复杂度 O(logN) ，将满二叉树按层分为 log(N+1) 层；&lt;/p&gt;
 &lt;p&gt;解法二：保存子问题的结果，避免重复计算&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;关于这个优化到 O(n) 算法,我们可以从以下几个方面说明:&lt;/p&gt;
@@ -4574,6 +4576,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的&lt;/p&gt;
+&lt;p&gt;安装完之后要重启电脑或者任务管理器中重启资源管理器之后才能在powershell和cmd中都生效，不重启不只能在powershell中使用&lt;/p&gt;
 &lt;h1 id=&#34;常用bucket&#34;&gt;常用bucket&lt;/h1&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Name        Source&lt;/p&gt;
@@ -4607,7 +4610,20 @@ scoopcn     &lt;a class=&#34;link&#34; href=&#34;https://github.com/scoopcn/scoo
     &gt;https://github.com/scoopcn/scoopcn.git&lt;/a&gt;          &lt;br&gt;
 versions    &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstaller/Versions&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ScoopInstaller/Versions&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
+&lt;p&gt;添加bucket：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scoop bucket add extras   https://github.com/ScoopInstaller/Extras
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scoop bucket add Scoop-Apps  https://github.com/ACooper81/scoop-apps   
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;scoop bucket add versions    https://github.com/ScoopInstaller/Versions    
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 &lt;h3 id=&#34;使用scoop的shim来添加环境变量path&#34;&gt;使用scoop的shim来添加环境变量path&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;scoop shim add $习惯命令名  $执行命令的文件(格式为：路径+文件名。如果不确定是哪一个文件起作用就去chatgpt问一问) &lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;切换软件版本&#34;&gt;切换软件版本&lt;/h3&gt;

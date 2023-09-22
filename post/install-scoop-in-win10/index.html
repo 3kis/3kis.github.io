@@ -367,6 +367,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>这里最好global和非global的目录不是同一个，因为同一个的话会导致每次下一个app都会多下一个全局的</p>
+<p>安装完之后要重启电脑或者任务管理器中重启资源管理器之后才能在powershell和cmd中都生效，不重启不只能在powershell中使用</p>
 <h1 id="常用bucket">常用bucket</h1>
 <blockquote>
 <p>Name        Source</p>
@@ -400,7 +401,20 @@ scoopcn     <a class="link" href="https://github.com/scoopcn/scoopcn.git"  targe
     >https://github.com/scoopcn/scoopcn.git</a>          <br>
 versions    <a class="link" href="https://github.com/ScoopInstaller/Versions"  target="_blank" rel="noopener"
     >https://github.com/ScoopInstaller/Versions</a></p>
-<h1 id="常用命令">常用命令</h1>
+<p>添加bucket：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">scoop bucket add extras   https://github.com/ScoopInstaller/Extras
+</span></span><span class="line"><span class="cl">scoop bucket add Scoop-Apps  https://github.com/ACooper81/scoop-apps   
+</span></span><span class="line"><span class="cl">scoop bucket add versions    https://github.com/ScoopInstaller/Versions    
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="常用命令">常用命令</h1>
 <h3 id="使用scoop的shim来添加环境变量path">使用scoop的shim来添加环境变量path</h3>
 <p><code>scoop shim add $习惯命令名  $执行命令的文件(格式为：路径+文件名。如果不确定是哪一个文件起作用就去chatgpt问一问) </code></p>
 <h3 id="切换软件版本">切换软件版本</h3>
