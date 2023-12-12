@@ -38,7 +38,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;(ps: 印象中 macos13开始就默认的是 zsh 作为 shell 终端了, 笔者的环境是zsh, 所以就直接 echo 到.zshrc 了, 如果有旧版本的 macos 也可以自己改为.bashrc)&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;(ps: 印象中 macos13开始就默认的是 zsh 作为 shell 了, 笔者的环境是zsh, 所以就直接 echo 到.zshrc 了, 如果有旧版本的 macos 也可以自己改为.bashrc)&lt;/p&gt;
 &lt;p&gt;之后想要 push 新的 commit 到 remote repo 就可以直接&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
