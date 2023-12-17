@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='MySQL 的一些知识点'>
-<title>MySQL 学习笔记</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='通过本文快速配置可用于开发的新到手的macbook'>
+<title>快速配置新的macbook</title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/mysql-notes/'>
+<link rel='canonical' href='https://betaller99.github.io/post/newmac-init-config/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='MySQL 学习笔记'>
-<meta property='og:description' content='MySQL 的一些知识点'>
-<meta property='og:url' content='https://betaller99.github.io/post/mysql-notes/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='快速配置新的macbook'>
+<meta property='og:description' content='通过本文快速配置可用于开发的新到手的macbook'>
+<meta property='og:url' content='https://betaller99.github.io/post/newmac-init-config/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-14T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-14T21:12:59&#43;08:00'/>
-<meta name="twitter:title" content="MySQL 学习笔记">
-<meta name="twitter:description" content="MySQL 的一些知识点">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-17T12:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-17T12:12:59&#43;08:00'/>
+<meta name="twitter:title" content="快速配置新的macbook">
+<meta name="twitter:description" content="通过本文快速配置可用于开发的新到手的macbook">
     </head>
     <body class="
     article-page
@@ -220,56 +220,7 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#mysql-架构">MySQL 架构</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#mysql-存储">MySQL 存储</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#mysql-执行流程">MySQL 执行流程</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#简化版">简化版</a></li>
-            <li><a href="#详细版">详细版</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -280,12 +231,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/mysql-notes/">MySQL 学习笔记</a>
+            <a href="/post/newmac-init-config/">快速配置新的macbook</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            MySQL 的一些知识点
+            通过本文快速配置可用于开发的新到手的macbook
         </h3>
         
     </div>
@@ -306,7 +257,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 14, 2023</time>
+                <time class="article-time--published">Dec 17, 2023</time>
             </div>
         
 
@@ -336,94 +287,124 @@
     <section class="article-content">
     
     
-    <h1 id="mysql-架构">MySQL 架构</h1>
-<p><img src="/image-20231214211424094.png"
+    <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">/bin/bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#使用 $USER 作为变量代替用户名避免用户名不同导致失败的情况</span>
+</span></span><span class="line"><span class="cl"> <span class="o">(</span>echo<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39;</span><span class="o">)</span> &gt;&gt; /Users/<span class="nv">$USER</span>/.zprofile
+</span></span><span class="line"><span class="cl">    <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>/opt/homebrew/bin/brew shellenv<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">brew install --cask iterm2
+</span></span><span class="line"><span class="cl"><span class="c1"># 后续可使用iterm2 进行操作, 也可继续在 terminal 内操作</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 在 terminal 中打开 iterm2</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#open -a iTerm</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">brew install --cask google-chrome
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># install oh-my-zsh</span>
+</span></span><span class="line"><span class="cl">sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># used to edit .zshrc easily</span>
+</span></span><span class="line"><span class="cl">brew install --cask visual-studio-code
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/.oh-my-zsh/custom/plugins/
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/.oh-my-zsh/custom/plugins/
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+</span></span><span class="line"><span class="cl">code ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="c1">#  手动在 vscode 上修改plugin， 添加 zsh-syntax-highlighting和zsh-autosuggestions, zsh-syntax-highlighting一定要写在最后</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">brew install --cask intellij-idea
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 8无法安装在m1上, 选择安装jdk11</span>
+</span></span><span class="line"><span class="cl">brew install openjdk@11
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#If you need to have openjdk@11 first in your PATH, run:</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export PATH=&#34;/opt/homebrew/opt/openjdk@11/bin:$PATH&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#For compilers to find openjdk@11 you may need to set:</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">&#34;-I/opt/homebrew/opt/openjdk@11/include&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 隐藏shell用户名和主机名:这是对shell进行操作.所以对iterm2和terminal都能生效,所以不用担心在terminal里面执行无法看到iterm2的效果</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;PROMPT=&#34;%1~ %# &#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>homebrew中科大源</p>
+<p><a class="link" href="https://mirrors.ustc.edu.cn/help/brew.git.html"  target="_blank" rel="noopener"
+    >https://mirrors.ustc.edu.cn/help/brew.git.html</a></p>
+<p><a class="link" href="https://www.jianshu.com/p/75eff447613c"  target="_blank" rel="noopener"
+    >简书:Mac中iTerm22+Oh My Zsh安装、配置和使用</a></p>
+<p>安装插件后再<code>.zshrc</code> 中写好插件名(如下图):</p>
+<p><img src="https://txh0fqv842.feishu.cn/space/api/box/stream/download/asynccode/?code=OTQ3NTcwMmMwOGZiNGQ1ZDNkOTQwNjViMWYzMmNkZWJfNHVVZ3RiazB6M2tnWUJzUDJpYXBKMHhheUs4bWVURWdfVG9rZW46R2pMQ2Jmb3JYb3dwdnd4am9HSmNtS2NXbkxoXzE3MDI3ODU0MjY6MTcwMjc4OTAyNl9WNA"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231214211424094"
+		alt="img"
 	
-	
-></p>
-<p>从上往下, 从左往右是数据的流动顺序:</p>
-<p><strong>Connetors</strong>: 一些连接 MySQL 的 client, 比如我们常用 jdbc.</p>
-<p><strong>Connection Pool</strong>(MySQL 的网络模块): client 的连接在 Connection Pool 中进行统一的管理, 比如身份认证, 线程的复用, 连接数量限制.</p>
-<p>这一部分的 IO 操作模式是 BIO, 由于是 BIO, 所以能力较弱</p>
-<p><strong>SQL Interface</strong>: sql 的接口, 会尝试查缓存, 查不到走 Parser</p>
-<p><strong>Parser</strong>: sql 解析, 知道我们要拿什么数据, 要处理什么数据</p>
-<p><strong>Optimizer</strong>: 对复杂的 sql 进行优化</p>
-<p><strong>Caches &amp; Buffers</strong>: 如果能命中缓存, 可能就直接从缓存走了</p>
-<p><strong>Pluggable Storage Engines</strong>: 可插拔的组件, 组件可以使用内存, 索引 和管理存储空间</p>
-<p><strong>File System</strong>: 文件系统, 存储各种文件如日志文件(redo log, undo log 等等) , 索引文件</p>
-<p><strong>Enterprise Management</strong>: 企业管理工具, 有备份, 回复, 复制, 等功能</p>
-<p>在上面的这些组成部分中, <strong>Pluggable Storage Engine</strong> 是可以替换的, 也是我们想要对 MySQL 拓展时能进行拓展的点</p>
-<h3 id="mysql-存储">MySQL 存储</h3>
-<p>MySQL 对于表的相关信息存储可分为共享模式和独占模式, 独占模式是默认的.
-<strong>独占模式</strong>: 一个 database(schema) 中各个表的相关信息分开存放, 放在不同的文件里
-<strong>共享模式</strong>: 一个 database(schema) 中所有表的信息放一个文件里.</p>
-<p>在<strong>独占模式</strong>下有以下几种文件:</p>
-<ol>
-<li>日志组文件: *.ib_logfile0, *.ib_logfile1   默认大小为 5M, ib 是 innnodb 的缩写</li>
-<li>独占表空间文件: *.ibd   在独占模式下, 每个表都会用一个文件存储自己的信息, ibd 表示 innodb 的 data</li>
-<li>表结构文件: *.frm</li>
-<li>字符集和排序规则文件: db.opt       opt 表示option</li>
-<li>binlog 二进制文件: 记录主数据库服务器 DDL 和 DML 的操作, 也就是记录对数据库本身的结构做的修改操作和对数据的修改操作</li>
-<li>二进制日志索引文件: master-bin.index</li>
-</ol>
-<p>通过设置<code>innodb_file_per_table=OFF</code> 即可改为共享模式</p>
-<p>在<strong>共享模式</strong>下:</p>
-<p>​	一个 schema 的所有表空间文件内容和表结构文件内容会放到一个文件里, 这个共享表文件的名称为<code>ibdata1</code></p>
-<p>从物理上和逻辑上理解独占模式和共享模式的区别(如下图): 在物理上, 我们认为一个MySQL数据库就是 MySQL运行的服务器, 里面管理着多个逻辑上的数据库(database 或者叫 schema), 也就是说一个物理的MySQL Server 的实例可以放多个逻辑数据库</p>
-<p>我们说MySQL Server 这个进程or 这个服务器 时指的是一个 MySQL实例.</p>
-<p>当我们说存取数据的基本单元的时候, 我们说的是逻辑的一个一个 schema</p>
-<p>每个 database(schema) 在MySQL 的数据文件夹下是一个单独的子文件夹, 里面存放里自己的表结构文件和表空间文件. 默认情况下(也就是独占模式 ), 每个表都会有自己的独占表空间文件和表结构文件</p>
-<p><img src="/post/mysql-notes/image-20231217104011781.png"
-	width="715"
-	height="875"
-	srcset="/post/mysql-notes/image-20231217104011781_hu02f2bd207e4f12cef096e37a7d094f14_53562_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217104011781_hu02f2bd207e4f12cef096e37a7d094f14_53562_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231217104011781"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="81"
-		data-flex-basis="196px"
-	
-></p>
-<h1 id="mysql-执行流程">MySQL 执行流程</h1>
-<h3 id="简化版">简化版</h3>
-<p><img src="/post/mysql-notes/image-20231217105536439.png"
-	width="1612"
-	height="1314"
-	srcset="/post/mysql-notes/image-20231217105536439_hu4a1f778cf947c1d7a0189640a41cc675_1499322_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217105536439_hu4a1f778cf947c1d7a0189640a41cc675_1499322_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231217105536439"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="122"
-		data-flex-basis="294px"
-	
-></p>
-<p>先查询缓存, 如果缓存中存在对应的查询记录, 并且从上一次到这一次的时间段之内数据没有被修改过, 那么就直接把缓存结果返回.</p>
-<p>查不到缓存, 解析器对 sql 语句进行解析得到 一颗抽象语法树 AST, 交由预处理器预处理, 接下来优化器来进行优化判断什么方式是最优的(相当于我们打车, 得到几条打车路线, 这几条打车路线哪个最快? 接下来就要考虑那条路线是最优的), 得到他认为执行效率最高的方式(最优的路径)之后, 生成<strong>执行计划</strong> , 将执行计划发送给引擎, 存储引擎按照执行计划的操作方式去查表, 查索引, 数据拼接,返回结果给调用方并存入缓存.</p>
-<h3 id="详细版">详细版</h3>
-<p><img src="/post/mysql-notes/image-20231217105802936.png"
-	width="1494"
-	height="1024"
-	srcset="/post/mysql-notes/image-20231217105802936_hu35f62729a08b7ce26e3236b819de14ed_1359255_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217105802936_hu35f62729a08b7ce26e3236b819de14ed_1359255_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231217105802936"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="145"
-		data-flex-basis="350px"
 	
 ></p>
 
