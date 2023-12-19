@@ -261,6 +261,7 @@
         </li>
       </ol>
     </li>
+    <li><a href="#mysql对-sql-的执行顺序">MySQL对 SQL 的执行顺序</a></li>
   </ol>
 </nav>
         </div>
@@ -321,7 +322,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -428,6 +429,60 @@
 		class="gallery-image" 
 		data-flex-grow="145"
 		data-flex-basis="350px"
+	
+></p>
+<p>从大的层次来看, 可以分成 Server 层和引擎层</p>
+<p>在 Server 层主要做了 &ldquo;接受请求, 语句的解析, 执行计划的生成&rdquo;, 过程如下:</p>
+<p>client 发来一条 update 语句, 连接器首先获取到连接, 然后交给分析器, 分析器查询缓存, 如果存在缓存就直接返回, 否则交给优化器, 优化器生成执行计划, 然后让执行器去调用引擎层来执行</p>
+<p>在引擎层的流程为:</p>
+<ol>
+<li>
+<p>写 undo log, 因为现在是对数据的更新操作, 涉及到事务(此处的事务是隐式的),所以要先写 undo log</p>
+<blockquote>
+<p>Q1: 如果没有手动开启事务的话, 还会写 undo log 吗</p>
+<p>​		会, 即使用户没有显式地使用 <code>START TRANSACTION</code> 或 <code>BEGIN</code> 命令开始一个事务，InnoDB 会为每一个单独的 SQL 语句启		动一个隐式事务，并且在语句执行完毕后立即进行提交</p>
+</blockquote>
+</li>
+<li>
+<p>找记录所在的目标页</p>
+<ol>
+<li>如果目标页在内存中, 直接修改内存</li>
+<li>如果目标页不在内存中, 那么去我们的 file system 中读取记录然后拉到内存中在进行修改</li>
+</ol>
+</li>
+<li>
+<p>写 redo log</p>
+</li>
+<li>
+<p>写 bin log</p>
+</li>
+<li>
+<p>提交事务</p>
+</li>
+<li>
+<p>后续步骤和图中一致</p>
+</li>
+</ol>
+<blockquote>
+<p>Q&amp;A</p>
+<p>Q1: 为什么要先写 undo log 再写别的 log 呢?</p>
+<p>​		因为 undo log 是用来回滚的, 后续的过程比较长, 一旦发生了变动, 那么必须有一个 checkpoint 来进行回退, 所以最开始就得先		写 undolog</p>
+<p>​		redo log 是和事务深度绑定的, 如果我们的事务成功, 但是事务没来得及刷磁盘的数据块, 那么当我们恢复的时候, 还是		会去		执行 redo log 完成刷盘(redo log 用到的磁盘数据块和事务修改对应数据的磁盘数据块不是同一个数据块)</p>
+<p>​		bin log 是用来主从复制的, 所以需要有binlog</p>
+</blockquote>
+<h1 id="mysql对-sql-的执行顺序">MySQL对 SQL 的执行顺序</h1>
+<p><img src="/post/mysql-notes/image-20231219234212777.png"
+	width="1246"
+	height="1098"
+	srcset="/post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="image-20231219234212777"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="113"
+		data-flex-basis="272px"
 	
 ></p>
 

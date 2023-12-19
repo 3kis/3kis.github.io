@@ -63,6 +63,8 @@
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;47
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;48
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;49
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;50
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;51
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;/bin/bash -c &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;$(&lt;/span&gt;curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh&lt;span class=&#34;k&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
@@ -113,7 +115,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;PROMPT=&amp;#34;%1~ %# &amp;#34;&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome intellij-idea utools macs-fan-control wechat
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install golang
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome intellij-idea utools macs-fan-control wechat goland navicat-premium
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;homebrew中科大源&lt;/p&gt;
@@ -326,6 +330,60 @@
 		class=&#34;gallery-image&#34; 
 		data-flex-grow=&#34;145&#34;
 		data-flex-basis=&#34;350px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;从大的层次来看, 可以分成 Server 层和引擎层&lt;/p&gt;
+&lt;p&gt;在 Server 层主要做了 &amp;ldquo;接受请求, 语句的解析, 执行计划的生成&amp;rdquo;, 过程如下:&lt;/p&gt;
+&lt;p&gt;client 发来一条 update 语句, 连接器首先获取到连接, 然后交给分析器, 分析器查询缓存, 如果存在缓存就直接返回, 否则交给优化器, 优化器生成执行计划, 然后让执行器去调用引擎层来执行&lt;/p&gt;
+&lt;p&gt;在引擎层的流程为:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;写 undo log, 因为现在是对数据的更新操作, 涉及到事务(此处的事务是隐式的),所以要先写 undo log&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q1: 如果没有手动开启事务的话, 还会写 undo log 吗&lt;/p&gt;
+&lt;p&gt;​		会, 即使用户没有显式地使用 &lt;code&gt;START TRANSACTION&lt;/code&gt; 或 &lt;code&gt;BEGIN&lt;/code&gt; 命令开始一个事务，InnoDB 会为每一个单独的 SQL 语句启		动一个隐式事务，并且在语句执行完毕后立即进行提交&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;找记录所在的目标页&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;如果目标页在内存中, 直接修改内存&lt;/li&gt;
+&lt;li&gt;如果目标页不在内存中, 那么去我们的 file system 中读取记录然后拉到内存中在进行修改&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;写 redo log&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;写 bin log&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;提交事务&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;后续步骤和图中一致&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Q&amp;amp;A&lt;/p&gt;
+&lt;p&gt;Q1: 为什么要先写 undo log 再写别的 log 呢?&lt;/p&gt;
+&lt;p&gt;​		因为 undo log 是用来回滚的, 后续的过程比较长, 一旦发生了变动, 那么必须有一个 checkpoint 来进行回退, 所以最开始就得先		写 undolog&lt;/p&gt;
+&lt;p&gt;​		redo log 是和事务深度绑定的, 如果我们的事务成功, 但是事务没来得及刷磁盘的数据块, 那么当我们恢复的时候, 还是		会去		执行 redo log 完成刷盘(redo log 用到的磁盘数据块和事务修改对应数据的磁盘数据块不是同一个数据块)&lt;/p&gt;
+&lt;p&gt;​		bin log 是用来主从复制的, 所以需要有binlog&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;mysql对-sql-的执行顺序&#34;&gt;MySQL对 SQL 的执行顺序&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/mysql-notes/image-20231219234212777.png&#34;
+	width=&#34;1246&#34;
+	height=&#34;1098&#34;
+	srcset=&#34;https://betaller99.github.io/post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_480x0_resize_box_3.png 480w, https://betaller99.github.io/post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20231219234212777&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;113&#34;
+		data-flex-basis=&#34;272px&#34;
 	
 &gt;&lt;/p&gt;
 </description>
