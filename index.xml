@@ -6,7 +6,134 @@
         <description>Recent content on Asher blog</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 27 Dec 2023 21:12:59 +0800</lastBuildDate><atom:link href="https://betaller99.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 30 Dec 2023 21:12:59 +0800</lastBuildDate><atom:link href="https://betaller99.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>markdown latex 语法</title>
+        <link>https://betaller99.github.io/post/markdownsyntax/</link>
+        <pubDate>Sat, 30 Dec 2023 21:12:59 +0800</pubDate>
+        
+        <guid>https://betaller99.github.io/post/markdownsyntax/</guid>
+        <description>&lt;h1 id=&#34;markdown-自带上标下标&#34;&gt;markdown 自带上标下标&lt;/h1&gt;
+&lt;p&gt;b~1~   &amp;ndash;&amp;gt; &lt;code&gt;b~1~&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;b^2^   &amp;mdash;&amp;gt; &lt;code&gt;b^2^&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;b^3x-2^ &amp;mdash;&amp;gt; &lt;code&gt;b^3x-2^&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;开启-latex-公式&#34;&gt;开启 latex 公式&lt;/h1&gt;
+&lt;p&gt;使用两个美元符号把公式内容包裹住 &lt;code&gt;$ latex $&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;在-latex-中使用上标和下标&#34;&gt;在 latex 中使用上标和下标&lt;/h1&gt;
+&lt;h3 id=&#34;上标-&#34;&gt;上标 ^&lt;/h3&gt;
+&lt;p&gt;$10^2$   &amp;mdash;&amp;gt; &lt;code&gt; $10^2$&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;$10^{20-x}$   &amp;mdash;-&amp;gt;  &lt;code&gt;$10^{20-x}$&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&#34;下标-_&#34;&gt;下标 _&lt;/h3&gt;
+&lt;p&gt;$a_i$  &amp;mdash;&amp;gt; &lt;code&gt;$a_i$&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;$a_{i+1}$  &amp;mdash;&amp;gt; &lt;code&gt;$a_{i+1}$&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;在-latex-中使用求和公式&#34;&gt;在 latex 中使用求和公式&lt;/h1&gt;
+&lt;p&gt;$\sum_{i=1}^{n} i$  &amp;ndash;&amp;gt;  &lt;code&gt;$\sum_{i=1}^{n} i$&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&#34;在-latex-中写分数&#34;&gt;在 latex 中写分数&lt;/h1&gt;
+&lt;p&gt;$\frac{n(n+1)}{2}$  &amp;mdash;&amp;gt; &lt;code&gt;$\frac{n(n+1)}{2}$&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>双指针算法</title>
+        <link>https://betaller99.github.io/post/algorithm0101-twopointers/</link>
+        <pubDate>Sat, 30 Dec 2023 21:12:59 +0800</pubDate>
+        
+        <guid>https://betaller99.github.io/post/algorithm0101-twopointers/</guid>
+        <description>&lt;p&gt;双指针(Two pointers)有两大类&lt;/p&gt;
+&lt;p&gt;情况一: 两个指针指向两个不同的序列, 比如归并排序&lt;/p&gt;
+&lt;p&gt;情况二: 两个指针指向同一个序列, 这种出现的更多一些, 比如快排&lt;/p&gt;
+&lt;p&gt;一般的写法只有一种:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;//一重循环, i 从 0开始, j 从某个点开始, 这里以 0 开始作为演示.  然后 i 把整个序列扫描一遍
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//对于 j, 每次 i 更新完之后我们要更新我们的 j, 第一个判断条件是 j 的范围, 一定要在合法范围内,这里用 j&amp;lt;=i 来演示. 
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;//第二个条件就是满足某一个性质, 两个条件都满足, 则j++
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;check&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;c1&#34;&gt;//题目本身的逻辑
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;解释: 让i把数组扫描一遍, j与i以某种性质维护一个区间&lt;/p&gt;
+&lt;p&gt;解题思路: 先用朴素算法O(N^2)来暴力解决问题, 然后看i j之间他们有没有单调关系, 有单调关系则利用单调关系套用模板把整个枚举的状态数量从N^2变为N&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>差分</title>
+        <link>https://betaller99.github.io/post/algorithm1230-difference/</link>
+        <pubDate>Sat, 30 Dec 2023 21:12:59 +0800</pubDate>
+        
+        <guid>https://betaller99.github.io/post/algorithm1230-difference/</guid>
+        <description>&lt;p&gt;差分是前缀和的逆运算&lt;/p&gt;
+&lt;p&gt;对于数组 a1, a2, a3&amp;hellip;.an 和数组 b1, b2, b3&amp;hellip;bn  如果 $a_i = b_1+b_2+b_3+..+b_i$, 那么我们称 a 数组是 b 数组的前缀和, b 数组是 a 数组的差分. 对于任意 bi 有 $b_i = a_i - a_{i-1}$&lt;/p&gt;
+&lt;p&gt;如何构造出b~n~ 呢?&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;b~1~ = a~1~&lt;/p&gt;
+&lt;p&gt;b~2~ = a~2~ - a~1~&lt;/p&gt;
+&lt;p&gt;b~3~ = a~3~ - a~2~&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;p&gt;b~n~ = a~n~ - a~n-1~&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;差分有什么用&#34;&gt;差分有什么用?&lt;/h1&gt;
+&lt;p&gt;假设我们已经有b 数组了, 那么我们如果想要求原数组, 只要求一遍前缀和就可以了.&lt;/p&gt;
+&lt;p&gt;那么我们就可以 以 O(N)的时间从 b 数组得到 a 数组&lt;/p&gt;
+&lt;p&gt;前缀和的作用是什么呢?&lt;/p&gt;
+&lt;p&gt;对于给定的区间 [l, r] , 让 a 在这个区间的数全部加上常数&lt;code&gt;c&lt;/code&gt; , 如果暴力遍历这些数那么就是 O(N)的&lt;/p&gt;
+&lt;p&gt;但是如果用差分来做的话就可以做到 O(1)&lt;/p&gt;
+&lt;p&gt;为什么呢?&lt;/p&gt;
+&lt;p&gt;考虑当我们对 a 数组做了加常数 c 的操作, b 数组发生了什么变化? 或者说 b 数组的什么操作能使得 a 数组在指定区间内的数都加上 c&lt;/p&gt;
+&lt;p&gt;其实就是对 $b_l $ 加上常数 c 之后再求前缀和即可得到 $a_l + c$ .&lt;/p&gt;
+&lt;p&gt;当我们对$b_l+c$之后, 会导致 原数组的 [$a_l, a_{l+1}, a_{l+2},&amp;hellip;, a_r, a_{r+1}, a_{r+2},&amp;hellip;,a_n$]这些数全部加上 c, 也就会变成 [$a_l+c, a_{l+1}+c, a_{l+2}+c,&amp;hellip;, a_r+c, a_{r+1}+c, a_{r+2}+c,&amp;hellip;,a_n+c$]&lt;/p&gt;
+&lt;p&gt;但是我们只需要让 [$l,r$]之间的数加上常数 c, (r+1)之后的数不能加上 c, 所以我们就得打一个补丁来进行修正, 也就是让 $b_{r+1} - c $  , 这样(r+1)之后的原数组的数就不会加上 c 了. 如下图所示&lt;/p&gt;
+&lt;p&gt;原本我们想要让前缀和数组的数在 [$l,r$]之间的数加上&lt;code&gt;c&lt;/code&gt;需要 O(N)的时间复杂度, 现在我们只需要修改差分数组的两个数$b_l 和 b_{r+1}$就可以O(1)了&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3.jpeg&#34;
+	width=&#34;1760&#34;
+	height=&#34;1959&#34;
+	srcset=&#34;https://betaller99.github.io/post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3_hu911ea2367987fde97971bb266155bed2_682150_480x0_resize_q75_box.jpeg 480w, https://betaller99.github.io/post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3_hu911ea2367987fde97971bb266155bed2_682150_1024x0_resize_q75_box.jpeg 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;89&#34;
+		data-flex-basis=&#34;215px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;那么我们就可以得到一个公式来通过 b 数组保证 a 数组只有指定范围内会变化, 公式如下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;insert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;&lt;strong&gt;假设 a 数组全部是 0, 那么差分数组 b 也就全部是 0&lt;/strong&gt; &amp;mdash;- 这是我们不需要考虑构造 b 数组的关键, 我们只需要考虑插入就可以了&lt;/p&gt;
+&lt;p&gt;但是现在 a 数组不是 0, 我们可以看成是让原数组进行了 n 次加c操作进而得到了a 数组, 第一次是让数组[1,1]加上a~1~,第二次是让原数组[2,2]区间加上 a~2~ ,第三次是让原数组[3,3]区间间加上 a~3~ , 一直到第 n 次是让原数组[n,n]区间加上了 a~n~&lt;/p&gt;
+&lt;p&gt;我们知道, 要让原数组加上&lt;code&gt;c&lt;/code&gt;只需要在差分数组中进行 $b_l + c$ 和$b_{r+1}-c$ 即可, 那么在这里就是 $(b_1 +a_1 &amp;amp;&amp;amp; b_2-a_1)$ 即可确定对应原数组中区间[1,1]的数, $b_2+a_2&amp;amp;&amp;amp;b_3-a_2$ 即可确定原数组区间[2,2]的数, 以此类推 $(b_n+a_n&amp;amp;&amp;amp;b_{n+1}-a_n)$ 原数组区间[n,n]的数.&lt;/p&gt;
+&lt;p&gt;对于原地插入, 直接调用函数 &lt;code&gt;insert(1,1,a[1]);   insert(2,2,a[2]);  insert(3,3,a[3]); .... insert(n,n,a[n]); &lt;/code&gt; 即可保证能从b 数组求出前缀和&lt;/p&gt;
+&lt;p&gt;要原地求前缀和, 直接 $b_i = b_i+b_{i-1}$  这样求出的 b 数组直接和 a 数组等价了&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;求前缀和是一个递推过程&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;所以在实际使用中, 我们不需要考虑如何构造差分数组, 只需要让原数组都为 0, 然后遍历本来应插入的值, 由差分数组进行插入即可&lt;/p&gt;
+&lt;h1 id=&#34;二维差分&#34;&gt;二维差分&lt;/h1&gt;
+&lt;p&gt;一维差分的作用是对一段区间加上一个值, 那么二维差分就是给某一块子矩阵加上值&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>docker 运行 MySQL</title>
         <link>https://betaller99.github.io/post/docker-mysql/</link>
         <pubDate>Wed, 27 Dec 2023 21:12:59 +0800</pubDate>
@@ -122,14 +249,14 @@
 &lt;p&gt;对于一组数 a1, a2, a3, a4, a5&lt;/p&gt;
 &lt;p&gt;其前缀和为 Si = a1 + a2 + .. + ai&lt;/p&gt;
 &lt;h1 id=&#34;如何求前缀和&#34;&gt;如何求前缀和&lt;/h1&gt;
-&lt;p&gt;在其中 i 的初始下标为 1,  我们可以得到递推公式 Si = S(i-1) + a[i]&lt;/p&gt;
+&lt;p&gt;在其中 i 的初始下标为 1,  我们可以得到递推公式 $S_i = S_{(i-1)} + a[i]$&lt;/p&gt;
 &lt;p&gt;让 i 从 1 开始且定义 S[0] = 0, 这是为了方便我们计算出指定区间的元素和&lt;/p&gt;
 &lt;h1 id=&#34;前缀和有什么用&#34;&gt;前缀和有什么用&lt;/h1&gt;
-&lt;p&gt;比如当我们计算[l,r]的和, 就可以直接 S[r] = S[l-1]&lt;/p&gt;
+&lt;p&gt;比如当我们计算区间[l,r]的所有数的和, 就可以直接 S[r] = S[l-1]&lt;/p&gt;
 &lt;p&gt;现在要求 [1,10]之前的和, 就可以直接 S[10] - S[0]即可得解&lt;/p&gt;
 &lt;p&gt;即 &lt;code&gt;s[r]-s[l-1]&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&#34;为啥不直接-for-循环求l-r&#34;&gt;为啥不直接 for 循环求[l, r]&lt;/h3&gt;
-&lt;p&gt;因为如果我们有很多个 [l,r]要求, 那么就得来十次 for 循环, 而采用前缀和只需要一次从头到尾的 for 循环即可&lt;/p&gt;
+&lt;p&gt;因为如果我们有很多个 [l,r]区间要求, 那么就得来十次 for 循环, 而采用前缀和只需要一次从头到尾的 for 循环后面直接相减即可&lt;/p&gt;
 &lt;p&gt;例题:   &lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/797/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;前缀和&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;二维前缀和&#34;&gt;二维前缀和&lt;/h1&gt;

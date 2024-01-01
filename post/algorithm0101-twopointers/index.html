@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='学习前缀和'>
-<title>前缀和</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='学习双指针算法'>
+<title>双指针算法</title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/learnalgorithom1221/'>
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm0101-twopointers/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='前缀和'>
-<meta property='og:description' content='学习前缀和'>
-<meta property='og:url' content='https://betaller99.github.io/post/learnalgorithom1221/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='双指针算法'>
+<meta property='og:description' content='学习双指针算法'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm0101-twopointers/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-21T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-21T21:12:59&#43;08:00'/>
-<meta name="twitter:title" content="前缀和">
-<meta name="twitter:description" content="学习前缀和">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-30T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-30T21:12:59&#43;08:00'/>
+<meta name="twitter:title" content="双指针算法">
+<meta name="twitter:description" content="学习双指针算法">
     </head>
     <body class="
     article-page
@@ -220,50 +220,7 @@
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ol>
-    <li><a href="#什么是前缀和">什么是前缀和</a></li>
-    <li><a href="#如何求前缀和">如何求前缀和</a></li>
-    <li><a href="#前缀和有什么用">前缀和有什么用</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#为啥不直接-for-循环求l-r">为啥不直接 for 循环求[l, r]</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#二维前缀和">二维前缀和</a></li>
-    <li><a href="#二维前缀和的作用">二维前缀和的作用?</a></li>
-  </ol>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -274,12 +231,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/learnalgorithom1221/">前缀和</a>
+            <a href="/post/algorithm0101-twopointers/">双指针算法</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            学习前缀和
+            学习双指针算法
         </h3>
         
     </div>
@@ -300,7 +257,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 21, 2023</time>
+                <time class="article-time--published">Dec 30, 2023</time>
             </div>
         
 
@@ -330,44 +287,34 @@
     <section class="article-content">
     
     
-    <h1 id="什么是前缀和">什么是前缀和</h1>
-<p>对于一组数 a1, a2, a3, a4, a5</p>
-<p>其前缀和为 Si = a1 + a2 + .. + ai</p>
-<h1 id="如何求前缀和">如何求前缀和</h1>
-<p>在其中 i 的初始下标为 1,  我们可以得到递推公式 $S_i = S_{(i-1)} + a[i]$</p>
-<p>让 i 从 1 开始且定义 S[0] = 0, 这是为了方便我们计算出指定区间的元素和</p>
-<h1 id="前缀和有什么用">前缀和有什么用</h1>
-<p>比如当我们计算区间[l,r]的所有数的和, 就可以直接 S[r] = S[l-1]</p>
-<p>现在要求 [1,10]之前的和, 就可以直接 S[10] - S[0]即可得解</p>
-<p>即 <code>s[r]-s[l-1]</code></p>
-<h3 id="为啥不直接-for-循环求l-r">为啥不直接 for 循环求[l, r]</h3>
-<p>因为如果我们有很多个 [l,r]区间要求, 那么就得来十次 for 循环, 而采用前缀和只需要一次从头到尾的 for 循环后面直接相减即可</p>
-<p>例题:   <a class="link" href="https://www.acwing.com/problem/content/797/"  target="_blank" rel="noopener"
-    >前缀和</a></p>
-<h1 id="二维前缀和">二维前缀和</h1>
-<p>同理, 二维数组的前缀和也是每个 index 对应的 value 之和</p>
-<p><img src="/post/learnalgorithom1221/IMG_6D7F95814E49-1.jpeg"
-	width="1717"
-	height="1453"
-	srcset="/post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_480x0_resize_q75_box.jpeg 480w, /post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_1024x0_resize_q75_box.jpeg 1024w"
-	loading="lazy"
-	
-		alt="IMG_6D7F95814E49-1"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="118"
-		data-flex-basis="283px"
-	
-></p>
-<h1 id="二维前缀和的作用">二维前缀和的作用?</h1>
-<p><strong>求子矩阵的和</strong></p>
-<p>现在我们要求 S33 和 S11 围起来的这块子矩阵的和, 那么可以根据前缀和求解.</p>
-<p>他等于 S33 - S31 - S13 + a00</p>
-<p>可以看到这个一维前缀和<code>s[r]-s[l-1]</code> 是类似的, 只不过最后要加上一块缺的角</p>
-<p>即: 求 <code>[x1][y1]到 [x2][y2]</code>的公式为 <code>S[x2][y2] - S[x1-1][y2] - S[x2][y2-1] + a[x1-1][y1-1]</code></p>
-<p>例题: <a class="link" href="https://www.acwing.com/problem/content/798/"  target="_blank" rel="noopener"
-    >子矩阵的和</a></p>
+    <p>双指针(Two pointers)有两大类</p>
+<p>情况一: 两个指针指向两个不同的序列, 比如归并排序</p>
+<p>情况二: 两个指针指向同一个序列, 这种出现的更多一些, 比如快排</p>
+<p>一般的写法只有一种:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//一重循环, i 从 0开始, j 从某个点开始, 这里以 0 开始作为演示.  然后 i 把整个序列扫描一遍
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//对于 j, 每次 i 更新完之后我们要更新我们的 j, 第一个判断条件是 j 的范围, 一定要在合法范围内,这里用 j&lt;=i 来演示. 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//第二个条件就是满足某一个性质, 两个条件都满足, 则j++
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span><span class="o">(</span><span class="n">j</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">check</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">))</span> <span class="n">j</span><span class="o">++;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//题目本身的逻辑
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>解释: 让i把数组扫描一遍, j与i以某种性质维护一个区间</p>
+<p>解题思路: 先用朴素算法O(N^2)来暴力解决问题, 然后看i j之间他们有没有单调关系, 有单调关系则利用单调关系套用模板把整个枚举的状态数量从N^2变为N</p>
 
 </section>
 

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='学习前缀和'>
-<title>前缀和</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='学习差分'>
+<title>差分</title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/learnalgorithom1221/'>
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm1230-difference/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='前缀和'>
-<meta property='og:description' content='学习前缀和'>
-<meta property='og:url' content='https://betaller99.github.io/post/learnalgorithom1221/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='差分'>
+<meta property='og:description' content='学习差分'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm1230-difference/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-21T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-21T21:12:59&#43;08:00'/>
-<meta name="twitter:title" content="前缀和">
-<meta name="twitter:description" content="学习前缀和">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-30T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-30T21:12:59&#43;08:00'/>
+<meta name="twitter:title" content="差分">
+<meta name="twitter:description" content="学习差分">
     </head>
     <body class="
     article-page
@@ -242,19 +242,8 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#什么是前缀和">什么是前缀和</a></li>
-    <li><a href="#如何求前缀和">如何求前缀和</a></li>
-    <li><a href="#前缀和有什么用">前缀和有什么用</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#为啥不直接-for-循环求l-r">为啥不直接 for 循环求[l, r]</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#二维前缀和">二维前缀和</a></li>
-    <li><a href="#二维前缀和的作用">二维前缀和的作用?</a></li>
+    <li><a href="#差分有什么用">差分有什么用?</a></li>
+    <li><a href="#二维差分">二维差分</a></li>
   </ol>
 </nav>
         </div>
@@ -274,12 +263,12 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/learnalgorithom1221/">前缀和</a>
+            <a href="/post/algorithm1230-difference/">差分</a>
         </h2>
     
         
         <h3 class="article-subtitle">
-            学习前缀和
+            学习差分
         </h3>
         
     </div>
@@ -300,7 +289,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 21, 2023</time>
+                <time class="article-time--published">Dec 30, 2023</time>
             </div>
         
 
@@ -315,7 +304,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -330,44 +319,64 @@
     <section class="article-content">
     
     
-    <h1 id="什么是前缀和">什么是前缀和</h1>
-<p>对于一组数 a1, a2, a3, a4, a5</p>
-<p>其前缀和为 Si = a1 + a2 + .. + ai</p>
-<h1 id="如何求前缀和">如何求前缀和</h1>
-<p>在其中 i 的初始下标为 1,  我们可以得到递推公式 $S_i = S_{(i-1)} + a[i]$</p>
-<p>让 i 从 1 开始且定义 S[0] = 0, 这是为了方便我们计算出指定区间的元素和</p>
-<h1 id="前缀和有什么用">前缀和有什么用</h1>
-<p>比如当我们计算区间[l,r]的所有数的和, 就可以直接 S[r] = S[l-1]</p>
-<p>现在要求 [1,10]之前的和, 就可以直接 S[10] - S[0]即可得解</p>
-<p>即 <code>s[r]-s[l-1]</code></p>
-<h3 id="为啥不直接-for-循环求l-r">为啥不直接 for 循环求[l, r]</h3>
-<p>因为如果我们有很多个 [l,r]区间要求, 那么就得来十次 for 循环, 而采用前缀和只需要一次从头到尾的 for 循环后面直接相减即可</p>
-<p>例题:   <a class="link" href="https://www.acwing.com/problem/content/797/"  target="_blank" rel="noopener"
-    >前缀和</a></p>
-<h1 id="二维前缀和">二维前缀和</h1>
-<p>同理, 二维数组的前缀和也是每个 index 对应的 value 之和</p>
-<p><img src="/post/learnalgorithom1221/IMG_6D7F95814E49-1.jpeg"
-	width="1717"
-	height="1453"
-	srcset="/post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_480x0_resize_q75_box.jpeg 480w, /post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_1024x0_resize_q75_box.jpeg 1024w"
+    <p>差分是前缀和的逆运算</p>
+<p>对于数组 a1, a2, a3&hellip;.an 和数组 b1, b2, b3&hellip;bn  如果 $a_i = b_1+b_2+b_3+..+b_i$, 那么我们称 a 数组是 b 数组的前缀和, b 数组是 a 数组的差分. 对于任意 bi 有 $b_i = a_i - a_{i-1}$</p>
+<p>如何构造出b~n~ 呢?</p>
+<blockquote>
+<p>b~1~ = a~1~</p>
+<p>b~2~ = a~2~ - a~1~</p>
+<p>b~3~ = a~3~ - a~2~</p>
+<p>&hellip;</p>
+<p>b~n~ = a~n~ - a~n-1~</p>
+</blockquote>
+<h1 id="差分有什么用">差分有什么用?</h1>
+<p>假设我们已经有b 数组了, 那么我们如果想要求原数组, 只要求一遍前缀和就可以了.</p>
+<p>那么我们就可以 以 O(N)的时间从 b 数组得到 a 数组</p>
+<p>前缀和的作用是什么呢?</p>
+<p>对于给定的区间 [l, r] , 让 a 在这个区间的数全部加上常数<code>c</code> , 如果暴力遍历这些数那么就是 O(N)的</p>
+<p>但是如果用差分来做的话就可以做到 O(1)</p>
+<p>为什么呢?</p>
+<p>考虑当我们对 a 数组做了加常数 c 的操作, b 数组发生了什么变化? 或者说 b 数组的什么操作能使得 a 数组在指定区间内的数都加上 c</p>
+<p>其实就是对 $b_l $ 加上常数 c 之后再求前缀和即可得到 $a_l + c$ .</p>
+<p>当我们对$b_l+c$之后, 会导致 原数组的 [$a_l, a_{l+1}, a_{l+2},&hellip;, a_r, a_{r+1}, a_{r+2},&hellip;,a_n$]这些数全部加上 c, 也就会变成 [$a_l+c, a_{l+1}+c, a_{l+2}+c,&hellip;, a_r+c, a_{r+1}+c, a_{r+2}+c,&hellip;,a_n+c$]</p>
+<p>但是我们只需要让 [$l,r$]之间的数加上常数 c, (r+1)之后的数不能加上 c, 所以我们就得打一个补丁来进行修正, 也就是让 $b_{r+1} - c $  , 这样(r+1)之后的原数组的数就不会加上 c 了. 如下图所示</p>
+<p>原本我们想要让前缀和数组的数在 [$l,r$]之间的数加上<code>c</code>需要 O(N)的时间复杂度, 现在我们只需要修改差分数组的两个数$b_l 和 b_{r+1}$就可以O(1)了</p>
+<p><img src="/post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3.jpeg"
+	width="1760"
+	height="1959"
+	srcset="/post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3_hu911ea2367987fde97971bb266155bed2_682150_480x0_resize_q75_box.jpeg 480w, /post/algorithm1230-difference/%E4%B8%80%E7%BB%B4%E5%B7%AE%E5%88%86%E5%9B%BE%E8%A7%A3_hu911ea2367987fde97971bb266155bed2_682150_1024x0_resize_q75_box.jpeg 1024w"
 	loading="lazy"
-	
-		alt="IMG_6D7F95814E49-1"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="118"
-		data-flex-basis="283px"
+		data-flex-grow="89"
+		data-flex-basis="215px"
 	
 ></p>
-<h1 id="二维前缀和的作用">二维前缀和的作用?</h1>
-<p><strong>求子矩阵的和</strong></p>
-<p>现在我们要求 S33 和 S11 围起来的这块子矩阵的和, 那么可以根据前缀和求解.</p>
-<p>他等于 S33 - S31 - S13 + a00</p>
-<p>可以看到这个一维前缀和<code>s[r]-s[l-1]</code> 是类似的, 只不过最后要加上一块缺的角</p>
-<p>即: 求 <code>[x1][y1]到 [x2][y2]</code>的公式为 <code>S[x2][y2] - S[x1-1][y2] - S[x2][y2-1] + a[x1-1][y1-1]</code></p>
-<p>例题: <a class="link" href="https://www.acwing.com/problem/content/798/"  target="_blank" rel="noopener"
-    >子矩阵的和</a></p>
+<p>那么我们就可以得到一个公式来通过 b 数组保证 a 数组只有指定范围内会变化, 公式如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="p">[</span><span class="n">r</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">c</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>假设 a 数组全部是 0, 那么差分数组 b 也就全部是 0</strong> &mdash;- 这是我们不需要考虑构造 b 数组的关键, 我们只需要考虑插入就可以了</p>
+<p>但是现在 a 数组不是 0, 我们可以看成是让原数组进行了 n 次加c操作进而得到了a 数组, 第一次是让数组[1,1]加上a~1~,第二次是让原数组[2,2]区间加上 a~2~ ,第三次是让原数组[3,3]区间间加上 a~3~ , 一直到第 n 次是让原数组[n,n]区间加上了 a~n~</p>
+<p>我们知道, 要让原数组加上<code>c</code>只需要在差分数组中进行 $b_l + c$ 和$b_{r+1}-c$ 即可, 那么在这里就是 $(b_1 +a_1 &amp;&amp; b_2-a_1)$ 即可确定对应原数组中区间[1,1]的数, $b_2+a_2&amp;&amp;b_3-a_2$ 即可确定原数组区间[2,2]的数, 以此类推 $(b_n+a_n&amp;&amp;b_{n+1}-a_n)$ 原数组区间[n,n]的数.</p>
+<p>对于原地插入, 直接调用函数 <code>insert(1,1,a[1]);   insert(2,2,a[2]);  insert(3,3,a[3]); .... insert(n,n,a[n]); </code> 即可保证能从b 数组求出前缀和</p>
+<p>要原地求前缀和, 直接 $b_i = b_i+b_{i-1}$  这样求出的 b 数组直接和 a 数组等价了</p>
+<p><strong>求前缀和是一个递推过程</strong></p>
+<p>所以在实际使用中, 我们不需要考虑如何构造差分数组, 只需要让原数组都为 0, 然后遍历本来应插入的值, 由差分数组进行插入即可</p>
+<h1 id="二维差分">二维差分</h1>
+<p>一维差分的作用是对一段区间加上一个值, 那么二维差分就是给某一块子矩阵加上值</p>
 
 </section>
 
