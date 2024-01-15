@@ -125,6 +125,41 @@
 </description>
         </item>
         <item>
+        <title>Java 线程池任务队列的思考</title>
+        <link>https://betaller99.github.io/post/java-threadpool/</link>
+        <pubDate>Fri, 12 Jan 2024 23:42:59 +0800</pubDate>
+        
+        <guid>https://betaller99.github.io/post/java-threadpool/</guid>
+        <description>&lt;p&gt;关于 java 线程池等待队列长度的思考&lt;/p&gt;
+&lt;p&gt;根据是否可以接受任务长时间等待作为切入点来进行队列长度的选择&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;比如 hytrix 熔断, 他的底层实现就是 synchronousQueue, 因为他就需要响应快, 不能接受任务等待较长时间&lt;/li&gt;
+&lt;li&gt;比如有些任务, 是可以允许第二天再进入线程池执行的, 这种就可以把等待队列设置长一点, 让这些任务等久一点也无所谓, 甚至在有大流量冲击的时候, 长的等待队列还能起到一个缓冲的作用&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>golang 随笔</title>
+        <link>https://betaller99.github.io/post/golang-study/</link>
+        <pubDate>Sat, 06 Jan 2024 23:42:59 +0800</pubDate>
+        
+        <guid>https://betaller99.github.io/post/golang-study/</guid>
+        <description>&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;函数获取一个 string 的时获取到的是字节长度而不是字符长度, 如果要获取字符长度则应使用 &lt;code&gt;utf8.RuneCountInString(str string)&lt;/code&gt; , 如果确切的知道字符的编码, 那么&lt;code&gt;utf8&lt;/code&gt;可以改成别的, 不过大多数时候都是&lt;code&gt;utf8&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;用于数组是知道数组的长度&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;用于slice是已存储元素的个数&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cap()&lt;/code&gt;用于 slice 是知道 slice 的容量&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;:=&lt;/code&gt; 只能用于方法内命名变量&lt;/p&gt;
+&lt;p&gt;创建一个 slice 的最佳实践是 &lt;code&gt;make([]type, 0, capacity)&lt;/code&gt; 0表示 golang 帮助我们初始化的元素的个数, capacity 表示 slice 的容量有多少&lt;/p&gt;
+&lt;p&gt;capacity 相当于水桶的容量, len 相当于桶里面装了多少水&lt;/p&gt;
+&lt;p&gt;举几个例子来看看如果 0 写成其他数字会发生什么?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;b:=make([]int, 3, 4)&lt;/code&gt; , 此时 b 的元素为 &lt;code&gt;0,0,0&lt;/code&gt; , len(b)为 3, cap(b)为 4. 也就是说, 当我们指定了 golang 帮助我们初始化slice 的元素个数的时候, 那几个元素会被初始化为默认值&lt;/li&gt;
+&lt;li&gt;如果后面两个参数只写一个会发生什么? 那么此时 len==cap, 并且 golang 会把所有的元素初始化为默认值&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;slice如果要追加元素只能用 append 方法, 没法在 length(length&amp;lt;=capacity) 之外的 index 直接赋值, 会报错&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>markdown latex 语法</title>
         <link>https://betaller99.github.io/post/markdownsyntax/</link>
         <pubDate>Sat, 30 Dec 2023 21:12:59 +0800</pubDate>
@@ -6526,27 +6561,6 @@ versions    &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstall
 &lt;/div&gt;</description>
         </item>
         <item>
-        <title>golang 随笔</title>
-        <link>https://betaller99.github.io/post/golang-study/</link>
-        <pubDate>Fri, 06 Jan 2023 23:42:59 +0800</pubDate>
-        
-        <guid>https://betaller99.github.io/post/golang-study/</guid>
-        <description>&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;函数获取一个 string 的时获取到的是字节长度而不是字符长度, 如果要获取字符长度则应使用 &lt;code&gt;utf8.RuneCountInString(str string)&lt;/code&gt; , 如果确切的知道字符的编码, 那么&lt;code&gt;utf8&lt;/code&gt;可以改成别的, 不过大多数时候都是&lt;code&gt;utf8&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;用于数组是知道数组的长度&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;len()&lt;/code&gt;用于slice是已存储元素的个数&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cap()&lt;/code&gt;用于 slice 是知道 slice 的容量&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;:=&lt;/code&gt; 只能用于方法内命名变量&lt;/p&gt;
-&lt;p&gt;创建一个 slice 的最佳实践是 &lt;code&gt;make([]type, 0, capacity)&lt;/code&gt; 0表示 golang 帮助我们初始化的元素的个数, capacity 表示 slice 的容量有多少&lt;/p&gt;
-&lt;p&gt;capacity 相当于水桶的容量, len 相当于桶里面装了多少水&lt;/p&gt;
-&lt;p&gt;举几个例子来看看如果 0 写成其他数字会发生什么?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;b:=make([]int, 3, 4)&lt;/code&gt; , 此时 b 的元素为 &lt;code&gt;0,0,0&lt;/code&gt; , len(b)为 3, cap(b)为 4. 也就是说, 当我们指定了 golang 帮助我们初始化slice 的元素个数的时候, 那几个元素会被初始化为默认值&lt;/li&gt;
-&lt;li&gt;如果后面两个参数只写一个会发生什么? 那么此时 len==cap, 并且 golang 会把所有的元素初始化为默认值&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;slice如果要追加元素只能用 append 方法, 没法在 length(length&amp;lt;=capacity) 之外的 index 直接赋值, 会报错&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>Archives</title>
         <link>https://betaller99.github.io/page/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
@@ -6601,20 +6615,6 @@ versions    &lt;a class=&#34;link&#34; href=&#34;https://github.com/ScoopInstall
 &lt;p&gt;那么有如下推导&lt;/p&gt;
 &lt;p&gt;$(-x) = 0-x\(-x)=(32个 0)_2 - x\此时做减法,32个 0 会往前借一位,也就是\(-x)=(1+后面32个 0)-x\此时\(1+后面32 个 0)-x = \sim{x} + 1\故\减法用\sim{x+1}这个补码表示$&lt;/p&gt;
 &lt;p&gt;正数和零的原码表示和补码表示是一样的, 不需要专门求补码, 直接用原码表示&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://betaller99.github.io/post/java-threadpool/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://betaller99.github.io/post/java-threadpool/</guid>
-        <description>&lt;p&gt;关于 java 线程池等待队列长度的思考&lt;/p&gt;
-&lt;p&gt;根据是否可以接受任务长时间等待作为切入点来进行队列长度的选择&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;比如 hytrix 熔断, 他的底层实现就是 synchronousQueue, 因为他就需要响应快, 不能接受任务等待较长时间&lt;/li&gt;
-&lt;li&gt;比如有些任务, 是可以允许第二天再进入线程池执行的, 这种就可以把等待队列设置长一点, 让这些任务等久一点也无所谓, 甚至在有大流量冲击的时候, 长的等待队列还能起到一个缓冲的作用&lt;/li&gt;
-&lt;/ol&gt;
 </description>
         </item>
         <item>
