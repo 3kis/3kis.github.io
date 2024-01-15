@@ -439,6 +439,8 @@
 <p>Q1 为什么找红点的时候 mid 需要+1 再求</p>
 <p>A1 假设我们不加一看看会发生什么: 因为当 $l = r-1$ , 也就是 $l 和 r$是相邻的时候, 由于大多数编程语言都是向下取整, 所以此时求出来 $mid = \frac{l+r}{2} = \frac{l+l+1}{2} = \frac{2l}{2} + \frac{1}{2}向下取整没了= l$ , 即 $mid = l$ , 然后进行区间更新<code>l = mid</code>=  l , 那么那么这次循环就没把区间更新, 就会导致死循环,</p>
 <p>如果加一了, 那么区间就能更新为 <code>l=l+1=r</code> , 此时就可以正常退出 for 循环了</p>
+<p>Q2 单调性和二分的关系是什么?</p>
+<p>A2 有单调性必定能用二分, 用二分不一定有单调性. 单调性只是我们让我们使用二分的性质之一, 但不是唯一</p>
 </blockquote>
 <p>练习题: <a class="link" href="https://www.acwing.com/problem/content/791/"  target="_blank" rel="noopener"
     >数的范围</a></p>

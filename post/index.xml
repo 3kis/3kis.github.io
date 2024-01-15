@@ -101,6 +101,8 @@
 &lt;p&gt;Q1 为什么找红点的时候 mid 需要+1 再求&lt;/p&gt;
 &lt;p&gt;A1 假设我们不加一看看会发生什么: 因为当 $l = r-1$ , 也就是 $l 和 r$是相邻的时候, 由于大多数编程语言都是向下取整, 所以此时求出来 $mid = \frac{l+r}{2} = \frac{l+l+1}{2} = \frac{2l}{2} + \frac{1}{2}向下取整没了= l$ , 即 $mid = l$ , 然后进行区间更新&lt;code&gt;l = mid&lt;/code&gt;=  l , 那么那么这次循环就没把区间更新, 就会导致死循环,&lt;/p&gt;
 &lt;p&gt;如果加一了, 那么区间就能更新为 &lt;code&gt;l=l+1=r&lt;/code&gt; , 此时就可以正常退出 for 循环了&lt;/p&gt;
+&lt;p&gt;Q2 单调性和二分的关系是什么?&lt;/p&gt;
+&lt;p&gt;A2 有单调性必定能用二分, 用二分不一定有单调性. 单调性只是我们让我们使用二分的性质之一, 但不是唯一&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;练习题: &lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/791/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;数的范围&lt;/a&gt;&lt;/p&gt;
