@@ -1,42 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='len()函数获取一个 string 的时获取到的是字节长度而不是字符长度, 如果要获取字符长度则应使用 utf8.RuneCountInString(str string) , 如果确切的知道字符的编码, 那么utf8可以改成别的, 不过大多数时候都是utf8
-len()用于数组是知道数组的长度
-len()用于slice是已存储元素的个数
-cap()用于 slice 是知道 slice 的容量
-:= 只能用于方法内命名变量
-创建一个 slice 的最佳实践是 make([]type, 0, capacity) 0表示 golang 帮助我们初始化的元素的个数, capacity 表示 slice 的容量有多少
-capacity 相当于水桶的容量, len 相当于桶里面装了多少水
-举几个例子来看看如果 0 写成其他数字会发生什么?
-b:=make([]int, 3, 4) , 此时 b 的元素为 0,0,0 , len(b)为 3, cap(b)为 4. 也就是说, 当我们指定了 golang 帮助我们初始化slice 的元素个数的时候, 那几个元素会被初始化为默认值 如果后面两个参数只写一个会发生什么? 那么此时 len==cap, 并且 golang 会把所有的元素初始化为默认值 slice如果要追加元素只能用 append 方法, 没法在 length(length&amp;lt;=capacity) 之外的 index 直接赋值, 会报错'>
-<title></title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='随笔---合并 k 个有序数组'>
+<title>golang 随笔</title>
 
 <link rel='canonical' href='https://betaller99.github.io/post/golang-study/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content=''>
-<meta property='og:description' content='len()函数获取一个 string 的时获取到的是字节长度而不是字符长度, 如果要获取字符长度则应使用 utf8.RuneCountInString(str string) , 如果确切的知道字符的编码, 那么utf8可以改成别的, 不过大多数时候都是utf8
-len()用于数组是知道数组的长度
-len()用于slice是已存储元素的个数
-cap()用于 slice 是知道 slice 的容量
-:= 只能用于方法内命名变量
-创建一个 slice 的最佳实践是 make([]type, 0, capacity) 0表示 golang 帮助我们初始化的元素的个数, capacity 表示 slice 的容量有多少
-capacity 相当于水桶的容量, len 相当于桶里面装了多少水
-举几个例子来看看如果 0 写成其他数字会发生什么?
-b:=make([]int, 3, 4) , 此时 b 的元素为 0,0,0 , len(b)为 3, cap(b)为 4. 也就是说, 当我们指定了 golang 帮助我们初始化slice 的元素个数的时候, 那几个元素会被初始化为默认值 如果后面两个参数只写一个会发生什么? 那么此时 len==cap, 并且 golang 会把所有的元素初始化为默认值 slice如果要追加元素只能用 append 方法, 没法在 length(length&amp;lt;=capacity) 之外的 index 直接赋值, 会报错'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='golang 随笔'>
+<meta property='og:description' content='随笔---合并 k 个有序数组'>
 <meta property='og:url' content='https://betaller99.github.io/post/golang-study/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' />
-<meta name="twitter:title" content="">
-<meta name="twitter:description" content="len()函数获取一个 string 的时获取到的是字节长度而不是字符长度, 如果要获取字符长度则应使用 utf8.RuneCountInString(str string) , 如果确切的知道字符的编码, 那么utf8可以改成别的, 不过大多数时候都是utf8
-len()用于数组是知道数组的长度
-len()用于slice是已存储元素的个数
-cap()用于 slice 是知道 slice 的容量
-:= 只能用于方法内命名变量
-创建一个 slice 的最佳实践是 make([]type, 0, capacity) 0表示 golang 帮助我们初始化的元素的个数, capacity 表示 slice 的容量有多少
-capacity 相当于水桶的容量, len 相当于桶里面装了多少水
-举几个例子来看看如果 0 写成其他数字会发生什么?
-b:=make([]int, 3, 4) , 此时 b 的元素为 0,0,0 , len(b)为 3, cap(b)为 4. 也就是说, 当我们指定了 golang 帮助我们初始化slice 的元素个数的时候, 那几个元素会被初始化为默认值 如果后面两个参数只写一个会发生什么? 那么此时 len==cap, 并且 golang 会把所有的元素初始化为默认值 slice如果要追加元素只能用 append 方法, 没法在 length(length&amp;lt;=capacity) 之外的 index 直接赋值, 会报错">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-01-06T23:42:59&#43;08:00'/><meta property='article:modified_time' content='2023-01-06T23:42:59&#43;08:00'/>
+<meta name="twitter:title" content="golang 随笔">
+<meta name="twitter:description" content="随笔---合并 k 个有序数组">
     </head>
     <body class="
     article-page
@@ -255,9 +231,13 @@ b:=make([]int, 3, 4) , 此时 b 的元素为 0,0,0 , len(b)为 3, cap(b)为 4. �
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/golang-study/"></a>
+            <a href="/post/golang-study/">golang 随笔</a>
         </h2>
     
+        
+        <h3 class="article-subtitle">
+            随笔---合并 k 个有序数组
+        </h3>
         
     </div>
 
@@ -266,6 +246,19 @@ b:=make([]int, 3, 4) , 此时 b 的元素为 0,0,0 , len(b)为 3, cap(b)为 4. �
     
     
     <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 06, 2023</time>
+            </div>
         
 
         
