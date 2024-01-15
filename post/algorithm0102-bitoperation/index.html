@@ -1,18 +1,60 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='记录一些 markdown 的 latex 语法和上下标的操作'>
-<title>markdown latex 语法</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='位运算最常用的两种操作
+看 n 的第 k 位数字是几 一个整数 n, 其二进制表示中第 k 位数字是几, k从 0 开始计数
+n=15 ==&amp;gt; n=(1111)~2~
+①先把第 k 位移到最后一位: n &amp;raquo; k
+②看个位是几, 公式是$x&amp;amp;1$
+结合①②, 可得要求 n 的二进制第 k 位的公式为: $n &amp;raquo; k ;&amp;amp; 1$
+对于一个十进制数x, 如果我们从最高位(比如 32 位, 从 k=32)开始打印这个数,那么打印完之后得到的就是x 的二进制表示
+lowbit&amp;ndash;树状数组基本操作 lowbit(x) : 返回 x 的最后一位 1和后面的二进制数
+举例
+lowbit(1010~2~) = 10
+lowbit(1000~2~) = 1000
+lowbit实现方式
+$x &amp;amp; -x$
+在 c&#43;&#43;中, 一个整数的负数是原数的补码(补码是取反加一), 所以 -x 的二进制表示和 ~x&#43;1( x取反加一)的二进制表示是一样的
+∵-x = ~x&#43;1'>
+<title></title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/markdownsyntax/'>
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm0102-bitoperation/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='markdown latex 语法'>
-<meta property='og:description' content='记录一些 markdown 的 latex 语法和上下标的操作'>
-<meta property='og:url' content='https://betaller99.github.io/post/markdownsyntax/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content=''>
+<meta property='og:description' content='位运算最常用的两种操作
+看 n 的第 k 位数字是几 一个整数 n, 其二进制表示中第 k 位数字是几, k从 0 开始计数
+n=15 ==&amp;gt; n=(1111)~2~
+①先把第 k 位移到最后一位: n &amp;raquo; k
+②看个位是几, 公式是$x&amp;amp;1$
+结合①②, 可得要求 n 的二进制第 k 位的公式为: $n &amp;raquo; k ;&amp;amp; 1$
+对于一个十进制数x, 如果我们从最高位(比如 32 位, 从 k=32)开始打印这个数,那么打印完之后得到的就是x 的二进制表示
+lowbit&amp;ndash;树状数组基本操作 lowbit(x) : 返回 x 的最后一位 1和后面的二进制数
+举例
+lowbit(1010~2~) = 10
+lowbit(1000~2~) = 1000
+lowbit实现方式
+$x &amp;amp; -x$
+在 c&#43;&#43;中, 一个整数的负数是原数的补码(补码是取反加一), 所以 -x 的二进制表示和 ~x&#43;1( x取反加一)的二进制表示是一样的
+∵-x = ~x&#43;1'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm0102-bitoperation/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-30T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-30T21:12:59&#43;08:00'/>
-<meta name="twitter:title" content="markdown latex 语法">
-<meta name="twitter:description" content="记录一些 markdown 的 latex 语法和上下标的操作">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' />
+<meta name="twitter:title" content="">
+<meta name="twitter:description" content="位运算最常用的两种操作
+看 n 的第 k 位数字是几 一个整数 n, 其二进制表示中第 k 位数字是几, k从 0 开始计数
+n=15 ==&amp;gt; n=(1111)~2~
+①先把第 k 位移到最后一位: n &amp;raquo; k
+②看个位是几, 公式是$x&amp;amp;1$
+结合①②, 可得要求 n 的二进制第 k 位的公式为: $n &amp;raquo; k ;&amp;amp; 1$
+对于一个十进制数x, 如果我们从最高位(比如 32 位, 从 k=32)开始打印这个数,那么打印完之后得到的就是x 的二进制表示
+lowbit&amp;ndash;树状数组基本操作 lowbit(x) : 返回 x 的最后一位 1和后面的二进制数
+举例
+lowbit(1010~2~) = 10
+lowbit(1000~2~) = 1000
+lowbit实现方式
+$x &amp;amp; -x$
+在 c&#43;&#43;中, 一个整数的负数是原数的补码(补码是取反加一), 所以 -x 的二进制表示和 ~x&#43;1( x取反加一)的二进制表示是一样的
+∵-x = ~x&#43;1">
     </head>
     <body class="
     article-page
@@ -242,23 +284,9 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#markdown-自带上标下标">markdown 自带上标下标</a></li>
-    <li><a href="#开启-latex-公式">开启 latex 公式</a></li>
-    <li><a href="#在-latex-中使用上标和下标">在 latex 中使用上标和下标</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#上标-">上标 ^</a></li>
-            <li><a href="#下标-_">下标 _</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#在-latex-中使用求和公式">在 latex 中使用求和公式</a></li>
-    <li><a href="#在-latex-中写分数">在 latex 中写分数</a></li>
-    <li><a href="#在-latex-中使用空格">在 latex 中使用空格</a></li>
-    <li><a href="#在latex-中换行">在latex 中换行</a></li>
-    <li><a href="#在-latex-中表示">在 latex 中表示~</a></li>
+    <li><a href="#看-n-的第-k-位数字是几">看 n 的第 k 位数字是几</a></li>
+    <li><a href="#lowbit--树状数组基本操作">lowbit&ndash;树状数组基本操作</a></li>
+    <li><a href="#原码反码补码">原码,反码,补码</a></li>
   </ol>
 </nav>
         </div>
@@ -278,13 +306,9 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/markdownsyntax/">markdown latex 语法</a>
+            <a href="/post/algorithm0102-bitoperation/"></a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            记录一些 markdown 的 latex 语法和上下标的操作
-        </h3>
         
     </div>
 
@@ -293,19 +317,6 @@
     
     
     <footer class="article-time">
-        
-            <div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
-  <circle cx="18" cy="18" r="4" />
-  <path d="M15 3v4" />
-  <path d="M7 3v4" />
-  <path d="M3 11h16" />
-  <path d="M18 16.496v1.504l1 1" />
-</svg>
-                <time class="article-time--published">Dec 30, 2023</time>
-            </div>
         
 
         
@@ -334,30 +345,47 @@
     <section class="article-content">
     
     
-    <h1 id="markdown-自带上标下标">markdown 自带上标下标</h1>
-<p>b~1~   &ndash;&gt; <code>b~1~</code></p>
-<p>b^2^   &mdash;&gt; <code>b^2^</code></p>
-<p>b^3x-2^ &mdash;&gt; <code>b^3x-2^</code></p>
-<h1 id="开启-latex-公式">开启 latex 公式</h1>
-<p>使用两个美元符号把公式内容包裹住 <code>$ latex $</code></p>
-<h1 id="在-latex-中使用上标和下标">在 latex 中使用上标和下标</h1>
-<h3 id="上标-">上标 ^</h3>
-<p>$10^2$   &mdash;&gt; <code> $10^2$</code></p>
-<p>$10^{20-x}$   &mdash;-&gt;  <code>$10^{20-x}$</code></p>
-<h3 id="下标-_">下标 _</h3>
-<p>$a_i$  &mdash;&gt; <code>$a_i$</code></p>
-<p>$a_{i+1}$  &mdash;&gt; <code>$a_{i+1}$</code></p>
-<h1 id="在-latex-中使用求和公式">在 latex 中使用求和公式</h1>
-<p>$\sum_{i=1}^{n} i$  &ndash;&gt;  <code>$\sum_{i=1}^{n} i$</code></p>
-<h1 id="在-latex-中写分数">在 latex 中写分数</h1>
-<p>$\frac{n(n+1)}{2}$  &mdash;&gt; <code>$\frac{n(n+1)}{2}$</code></p>
-<h1 id="在-latex-中使用空格">在 latex 中使用空格</h1>
-<p><code>\;</code> 表示大一些的空格, 比如 <code>a\;b</code> 的效果为 $a;b$</p>
-<p><code>\,</code>表示小一些的空格,  比如 <code>a\,b</code> 的效果为 $a,b$</p>
-<h1 id="在latex-中换行">在latex 中换行</h1>
-<p><code>\\</code> 用于换行</p>
-<h1 id="在-latex-中表示">在 latex 中表示~</h1>
-<p><code>\sim{}</code>  ===&gt; $\sim{2}+1$</p>
+    <p>位运算最常用的两种操作</p>
+<h1 id="看-n-的第-k-位数字是几">看 n 的第 k 位数字是几</h1>
+<p>一个整数 n, 其二进制表示中第 k 位数字是几, k从 0 开始计数</p>
+<p>n=15 ==&gt; n=(1111)~2~</p>
+<p>①先把第 k 位移到最后一位: n &raquo; k</p>
+<p>②看个位是几, 公式是$x&amp;1$</p>
+<p>结合①②, 可得要求 n 的二进制第 k 位的公式为: $n &raquo; k ;&amp; 1$</p>
+<p>对于一个十进制数x, 如果我们从最高位(比如 32 位, 从 k=32)开始打印这个数,那么打印完之后得到的就是x 的二进制表示</p>
+<h1 id="lowbit--树状数组基本操作">lowbit&ndash;树状数组基本操作</h1>
+<p>lowbit(x) : 返回 x 的最后一位 1和后面的二进制数</p>
+<p>举例</p>
+<p>lowbit(1010~2~) = 10</p>
+<p>lowbit(1000~2~) = 1000</p>
+<p>lowbit实现方式</p>
+<p>$x &amp; -x$</p>
+<p>在 c++中, 一个整数的负数是原数的补码(补码是取反加一), 所以 -x 的二进制表示和 ~x+1( x取反加一)的二进制表示是一样的</p>
+<p>∵-x = ~x+1</p>
+<p>∴x&amp;-x ==&gt; x&amp;(~x+1)</p>
+<p>推导过程:</p>
+<p>![lowbit 推导过程](lowbit 推导过程.jpeg)</p>
+<p><code>~</code>表示取反</p>
+<p>应用</p>
+<ol>
+<li>
+<p>求 x 里面 1的个数</p>
+<p>每次将 x 中的 最后一个 1 减去, 直到x 变为 0, 我们记录减了几次, 就可以知道有多少个 1</p>
+<p><a class="link" href="https://www.acwing.com/problem/content/803/"  target="_blank" rel="noopener"
+    >题目:二进制一的个数</a></p>
+</li>
+</ol>
+<h1 id="原码反码补码">原码,反码,补码</h1>
+<p>令 x=1010~2~  假设是 32 位整数</p>
+<p>原码: 0000&hellip;..01010</p>
+<p>反码: 0111&hellip;..10101   原码除符号位外取反</p>
+<p>补码: 0111&hellip;..10110   反码加一 <code>~x+1</code></p>
+<p>为什么要有补码?</p>
+<p>因为在计算机里面没有减法, 需要用加法来做减法</p>
+<p>一个x 加上他的相反数-x 应该等于 0:  <code>x+(-x)=0</code></p>
+<p>那么有如下推导</p>
+<p>$(-x) = 0-x\(-x)=(32个 0)_2 - x\此时做减法,32个 0 会往前借一位,也就是\(-x)=(1+后面32个 0)-x\此时\(1+后面32 个 0)-x = \sim{x} + 1\故\减法用\sim{x+1}这个补码表示$</p>
+<p>正数和零的原码表示和补码表示是一样的, 不需要专门求补码, 直接用原码表示</p>
 
 </section>
 

@@ -272,7 +272,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -392,7 +392,7 @@
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">brew install golang
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">brew install --cask maccy keka iina google-chrome intellij-idea utools macs-fan-control wechat goland navicat-premium
+</span></span><span class="line"><span class="cl">brew install --cask maccy keka iina google-chrome intellij-idea utools macs-fan-control wechat goland apifox postman
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>homebrew中科大源</p>
@@ -416,7 +416,121 @@
 		data-flex-basis="689px"
 	
 ></p>
-
+<p>设置 Chrome 暗黑模式: 在浏览器地址栏写入 <code>chrome://flags/#enable-force-dark</code> 就能选择开启关闭或跟随系统主题了</p>
+<p>给 zsh 写几个函数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 使用方式: 在命令行中写下 lazygit &#34;My commit msg.&#34;   然后&#34;My commit msg.&#34; 便会作为 commit 消息</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> lazygit<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    git add .
+</span></span><span class="line"><span class="cl">    git commit -a -m <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    git push
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 使用方式: newhugo &#34;your_directory_name&#34; &#34;Your Title Here&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 中文名要用双引号, 英文可以直接写</span>
+</span></span><span class="line"><span class="cl"><span class="k">function</span> newhugo<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 检查是否提供了足够的参数（目录名和标题）</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> -z <span class="s2">&#34;</span><span class="nv">$2</span><span class="s2">&#34;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">echo</span> <span class="s2">&#34;Usage: create_md_with_dir &lt;directory_name&gt; &lt;title&gt;&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 定义固定目录和新目录的完整路径</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">local</span> <span class="nv">base_dir</span><span class="o">=</span><span class="s2">&#34;/Users/asher/code/blog_source/content/post&#34;</span>  <span class="c1"># 替换为您的固定目录路径</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">local</span> <span class="nv">new_dir</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$base_dir</span><span class="s2">/</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">local</span> <span class="nv">title</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$2</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 创建新目录</span>
+</span></span><span class="line"><span class="cl">  mkdir -p <span class="s2">&#34;</span><span class="nv">$new_dir</span><span class="s2">&#34;</span> <span class="o">||</span> <span class="k">return</span> <span class="m">2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 创建 index.md 文件并写入内容</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">local</span> <span class="nv">current_time</span><span class="o">=</span><span class="k">$(</span>date +<span class="s2">&#34;%Y-%m-%dT%H:%M:%S%z&#34;</span><span class="k">)</span>  <span class="c1"># 获取当前时间并格式化</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># 由于 macOS 的 date 命令和 GNU date 命令有所不同，我们需要进行适配</span>
+</span></span><span class="line"><span class="cl">  <span class="c1"># macOS 需要使用 `date +&#34;%Y-%m-%dT%H:%M:%S%z&#34;` 并手动插入冒号来符合 ISO 8601</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">current_time</span><span class="o">=</span><span class="si">${</span><span class="nv">current_time</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">22</span><span class="si">}</span>:<span class="si">${</span><span class="nv">current_time</span><span class="p">:</span><span class="nv">22</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">local</span> <span class="nv">index_md</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$new_dir</span><span class="s2">/index.md&#34;</span>
+</span></span><span class="line"><span class="cl">  cat &gt; <span class="s2">&#34;</span><span class="nv">$index_md</span><span class="s2">&#34;</span> <span class="s">&lt;&lt;EOF
+</span></span></span><span class="line"><span class="cl"><span class="s">+++
+</span></span></span><span class="line"><span class="cl"><span class="s">author = &#34;Asher&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">title = &#34;$title&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">date = &#34;$current_time&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">description = &#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">draft = false
+</span></span></span><span class="line"><span class="cl"><span class="s">+++
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="c1"># 返回成功</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">function</span> lazytypora<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">cd</span> ~/code/blog_source
+</span></span><span class="line"><span class="cl">    git add .
+</span></span><span class="line"><span class="cl">    git commit -a -m <span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    git push
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
 </section>
 
 
