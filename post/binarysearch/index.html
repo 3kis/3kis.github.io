@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='二分查找有两种写法, 应对的场景不同, 最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='二分查找有两种写法, 应对的场景不同, 从代码上看最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
 二分的本质 存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)
 如果这个性质存在, 那么就可以通过二分来找到区间的边界
-如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板'>
+如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板
+找红点 来看看找到红点对应的模板:
+二分分成以下几步
+①找到中间点 mid
+​	$mid=\frac{l&#43;r&#43;1}{2}$ 然后判断这个中间点是否满足我们的红色性质
+​	if(check(mid))
+② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 l=mid
+② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1
+1 2 3 4 5 6 7 8 int binarySearchLPoint(int l, int r) { while(l &amp;lt; r) { int mid = l &#43; r &#43; 1 &amp;gt;&amp;gt; 1; if(check(mid)) l = mid; else r = mid-1; } return l; } 找绿点 来看看找到红点对应的模板:'>
 <title>二分查找</title>
 
 <link rel='canonical' href='https://betaller99.github.io/post/binarysearch/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='二分查找'>
-<meta property='og:description' content='二分查找有两种写法, 应对的场景不同, 最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
+<meta property='og:description' content='二分查找有两种写法, 应对的场景不同, 从代码上看最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
 二分的本质 存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)
 如果这个性质存在, 那么就可以通过二分来找到区间的边界
-如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板'>
+如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板
+找红点 来看看找到红点对应的模板:
+二分分成以下几步
+①找到中间点 mid
+​	$mid=\frac{l&#43;r&#43;1}{2}$ 然后判断这个中间点是否满足我们的红色性质
+​	if(check(mid))
+② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 l=mid
+② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1
+1 2 3 4 5 6 7 8 int binarySearchLPoint(int l, int r) { while(l &amp;lt; r) { int mid = l &#43; r &#43; 1 &amp;gt;&amp;gt; 1; if(check(mid)) l = mid; else r = mid-1; } return l; } 找绿点 来看看找到红点对应的模板:'>
 <meta property='og:url' content='https://betaller99.github.io/post/binarysearch/'>
 <meta property='og:site_name' content='Asher blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-15T20:37:05&#43;08:00'/><meta property='article:modified_time' content='2024-01-15T20:37:05&#43;08:00'/>
 <meta name="twitter:title" content="二分查找">
-<meta name="twitter:description" content="二分查找有两种写法, 应对的场景不同, 最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
+<meta name="twitter:description" content="二分查找有两种写法, 应对的场景不同, 从代码上看最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标
 二分的本质 存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)
 如果这个性质存在, 那么就可以通过二分来找到区间的边界
-如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板">
+如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板
+找红点 来看看找到红点对应的模板:
+二分分成以下几步
+①找到中间点 mid
+​	$mid=\frac{l&#43;r&#43;1}{2}$ 然后判断这个中间点是否满足我们的红色性质
+​	if(check(mid))
+② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 l=mid
+② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1
+1 2 3 4 5 6 7 8 int binarySearchLPoint(int l, int r) { while(l &amp;lt; r) { int mid = l &#43; r &#43; 1 &amp;gt;&amp;gt; 1; if(check(mid)) l = mid; else r = mid-1; } return l; } 找绿点 来看看找到红点对应的模板:">
     </head>
     <body class="
     article-page
@@ -252,6 +276,9 @@
             <nav id="TableOfContents">
   <ol>
     <li><a href="#二分的本质">二分的本质</a></li>
+    <li><a href="#找红点">找红点</a></li>
+    <li><a href="#找绿点">找绿点</a></li>
+    <li><a href="#使用二分的考虑事项">使用二分的考虑事项</a></li>
   </ol>
 </nav>
         </div>
@@ -308,7 +335,7 @@
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -323,7 +350,7 @@
     <section class="article-content">
     
     
-    <p>二分查找有两种写法, 应对的场景不同, 最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标</p>
+    <p>二分查找有两种写法, 应对的场景不同, 从代码上看最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标</p>
 <h1 id="二分的本质">二分的本质</h1>
 <p>存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)</p>
 <p>如果这个性质存在, 那么就可以通过二分来找到区间的边界</p>
@@ -342,6 +369,79 @@
 	
 ></p>
 <p>如上图, 找到左边界的端点(红色点)或者找到右边界的端点(绿色点)对应的就是两个模板</p>
+<h1 id="找红点">找红点</h1>
+<p>来看看找到红点对应的模板:</p>
+<p>二分分成以下几步</p>
+<p>①找到中间点 mid</p>
+<p>​	$mid=\frac{l+r+1}{2}$   然后判断这个中间点是否满足我们的红色性质</p>
+<p>​	<code>if(check(mid))</code></p>
+<p>② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 <code>l=mid</code></p>
+<p>② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令<code>r=mid-1</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">binarySearchLPoint</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="找绿点">找绿点</h1>
+<p>来看看找到红点对应的模板:</p>
+<p>二分分成以下几步</p>
+<p>①找到中间点 mid</p>
+<p>​	$mid=\frac{l+r}{2}$   然后判断这个中间点是否 满足我们的红色性质</p>
+<p>​	<code>if(check(mid))</code></p>
+<p>② a. check 为 true, 那么说明 mid 一定满足绿色性质, 此时答案一定在[l, mid]之间, 因此,更新区间为$[l, mid]$, 则令<code>r=mid</code></p>
+<p>②b. check 为 false, 那么说明 mid 不满足绿色性质, 此时答案一定在 mid 的右边, 因此更新区间为$[mid+1, r]$, 则令<code>l=mid+1</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="kt">int</span> <span class="nf">binarySearchRPoint</span><span class="p">(</span><span class="kt">int</span> <span class="n">l</span><span class="p">,</span> <span class="kt">int</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">while</span><span class="p">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">int</span> <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span> <span class="o">+</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">check</span><span class="p">(</span><span class="n">mid</span><span class="p">))</span> <span class="n">r</span> <span class="o">=</span> <span class="n">mid</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="n">l</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="使用二分的考虑事项">使用二分的考虑事项</h1>
+<ol>
+<li>直接写出 <code>mid = l + r &gt;&gt; 1</code></li>
+<li>考虑 check 函数为 true时区间是如何变化的, 如果变成 <code>l=mid</code>, 那么回过头来修改第一步的 <code>mid = l + r + 1 &gt;&gt; 1</code> , 如果变成 <code>r=mid</code></li>
+</ol>
+<blockquote>
+<p>Q&amp;A</p>
+<p>Q1 为什么找红点的时候 mid 需要+1 再求</p>
+<p>A1 假设我们不加一看看会发生什么: 因为当 $l = r-1$ , 也就是 $l 和 r$是相邻的时候, 由于大多数编程语言都是向下取整, 所以此时求出来 $mid = \frac{l+r}{2} = \frac{l+l+1}{2} = \frac{2l}{2} + \frac{1}{2}向下取整没了= l$ , 即 $mid = l$ , 然后进行区间更新<code>l = mid</code>=  l , 那么那么这次循环就没把区间更新, 就会导致死循环,</p>
+<p>如果加一了, 那么区间就能更新为 <code>l=l+1=r</code> , 此时就可以正常退出 for 循环了</p>
+</blockquote>
+<p>练习题: <a class="link" href="https://www.acwing.com/problem/content/791/"  target="_blank" rel="noopener"
+    >数的范围</a></p>
 
 </section>
 
