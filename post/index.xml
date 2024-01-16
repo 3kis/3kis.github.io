@@ -8,20 +8,20 @@
         <language>en-us</language>
         <lastBuildDate>Mon, 15 Jan 2024 20:37:05 +0800</lastBuildDate><atom:link href="https://betaller99.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>二分查找</title>
-        <link>https://betaller99.github.io/post/binarysearch/</link>
+        <link>https://betaller99.github.io/post/algorithm0115-binarysearch/</link>
         <pubDate>Mon, 15 Jan 2024 20:37:05 +0800</pubDate>
         
-        <guid>https://betaller99.github.io/post/binarysearch/</guid>
+        <guid>https://betaller99.github.io/post/algorithm0115-binarysearch/</guid>
         <description>&lt;h1 id=&#34;二分用来干嘛&#34;&gt;二分用来干嘛?&lt;/h1&gt;
 &lt;p&gt;用来找到满足某种性质的区间的边界&lt;/p&gt;
 &lt;p&gt;二分查找有两种写法, 应对的场景不同, 从代码上看最核心的区别在于求 mid 下标时是否需要加一来求出 mid 下标&lt;/p&gt;
 &lt;h1 id=&#34;二分的本质&#34;&gt;二分的本质&lt;/h1&gt;
 &lt;p&gt;存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)&lt;/p&gt;
 &lt;p&gt;如果这个性质存在, 那么就可以通过二分来找到满足性质的区间的边界点&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/binarysearch/image-20240115204550018.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/algorithm0115-binarysearch/image-20240115204550018.png&#34;
 	width=&#34;1430&#34;
 	height=&#34;266&#34;
-	srcset=&#34;https://betaller99.github.io/post/binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_480x0_resize_box_3.png 480w, https://betaller99.github.io/post/binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_1024x0_resize_box_3.png 1024w&#34;
+	srcset=&#34;https://betaller99.github.io/post/algorithm0115-binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_480x0_resize_box_3.png 480w, https://betaller99.github.io/post/algorithm0115-binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image-20240115204550018&#34;
@@ -97,6 +97,7 @@
 &lt;ol&gt;
 &lt;li&gt;直接写出 &lt;code&gt;mid = l + r &amp;gt;&amp;gt; 1&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;考虑 check 函数为 true时区间是如何变化的, 如果变成 &lt;code&gt;l=mid&lt;/code&gt;, 那么回过头来修改第一步的 &lt;code&gt;mid = l + r + 1 &amp;gt;&amp;gt; 1&lt;/code&gt; , 如果变成 &lt;code&gt;r=mid&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;确定把区间一分为二的性质到底是什么, 然后根据这个性质判断我应该如何变换区间才能找到想要的边界点&lt;/li&gt;
 &lt;/ol&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Q&amp;amp;A&lt;/p&gt;
@@ -112,10 +113,10 @@
         </item>
         <item>
         <title>Discretization离散化</title>
-        <link>https://betaller99.github.io/post/discretization/</link>
+        <link>https://betaller99.github.io/post/algorithm0116-discretization/</link>
         <pubDate>Sun, 14 Jan 2024 17:25:41 +0800</pubDate>
         
-        <guid>https://betaller99.github.io/post/discretization/</guid>
+        <guid>https://betaller99.github.io/post/algorithm0116-discretization/</guid>
         <description>&lt;p&gt;离散化特指整数的离散化, 且是有序的离散化&lt;/p&gt;
 &lt;p&gt;离散化的含义: 有一些数, 值域比较大$[0,10^9]$ , 数量不多,大概是$10^5$个&lt;/p&gt;
 &lt;p&gt;有些题目, 我们可能需要以这些值为下标, 但是我们又不想开一个长度为$10^9$的数组, 所以我们需要一种方式把这$10^5$个数映射到连续的数$[0,n-1]$上&lt;/p&gt;
@@ -126,6 +127,16 @@
 &lt;li&gt;如何快速算出任意值 $x$ 离散化后的值 &amp;mdash;-&amp;gt; &lt;strong&gt;利用数组有序,然后二分求下标&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;离散化比较明显的好处就是节省空间&lt;/p&gt;
+&lt;p&gt;为这组数组建立离散化对应的下标: list+二分&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;现将所有的数存到 list 中, 去重, 排序.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;二分拿到数在 list 中的下标&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这样, 就能完成离散化的下标映射, 接下来就是利用这个新下标来做别的事情, 比如求区间和之类的&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -451,10 +462,10 @@
         </item>
         <item>
         <title>前缀和</title>
-        <link>https://betaller99.github.io/post/learnalgorithom1221/</link>
+        <link>https://betaller99.github.io/post/algorithm1221-prefixsum/</link>
         <pubDate>Thu, 21 Dec 2023 21:12:59 +0800</pubDate>
         
-        <guid>https://betaller99.github.io/post/learnalgorithom1221/</guid>
+        <guid>https://betaller99.github.io/post/algorithm1221-prefixsum/</guid>
         <description>&lt;h1 id=&#34;什么是前缀和&#34;&gt;什么是前缀和&lt;/h1&gt;
 &lt;p&gt;对于一组数 a1, a2, a3, a4, a5&lt;/p&gt;
 &lt;p&gt;其前缀和为 Si = a1 + a2 + .. + ai&lt;/p&gt;
@@ -471,10 +482,10 @@
     &gt;前缀和&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;二维前缀和&#34;&gt;二维前缀和&lt;/h1&gt;
 &lt;p&gt;同理, 二维数组的前缀和也是每个 index 对应的 value 之和&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/learnalgorithom1221/IMG_6D7F95814E49-1.jpeg&#34;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/algorithm1221-prefixsum/IMG_6D7F95814E49-1.jpeg&#34;
 	width=&#34;1717&#34;
 	height=&#34;1453&#34;
-	srcset=&#34;https://betaller99.github.io/post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_480x0_resize_q75_box.jpeg 480w, https://betaller99.github.io/post/learnalgorithom1221/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_1024x0_resize_q75_box.jpeg 1024w&#34;
+	srcset=&#34;https://betaller99.github.io/post/algorithm1221-prefixsum/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_480x0_resize_q75_box.jpeg 480w, https://betaller99.github.io/post/algorithm1221-prefixsum/IMG_6D7F95814E49-1_hued00b4e383b6d1439161a54ef2e820ba_222262_1024x0_resize_q75_box.jpeg 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;IMG_6D7F95814E49-1&#34;

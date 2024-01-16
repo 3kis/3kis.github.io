@@ -15,7 +15,7 @@
 ② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1'>
 <title>二分查找</title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/binarysearch/'>
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm0115-binarysearch/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='二分查找'>
 <meta property='og:description' content='二分用来干嘛? 用来找到满足某种性质的区间的边界
@@ -30,7 +30,7 @@
 ​	if(check(mid))
 ② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 l=mid
 ② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1'>
-<meta property='og:url' content='https://betaller99.github.io/post/binarysearch/'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm0115-binarysearch/'>
 <meta property='og:site_name' content='Asher blog'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-15T20:37:05&#43;08:00'/><meta property='article:modified_time' content='2024-01-15T20:37:05&#43;08:00'/>
 <meta name="twitter:title" content="二分查找">
@@ -299,7 +299,7 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/binarysearch/">二分查找</a>
+            <a href="/post/algorithm0115-binarysearch/">二分查找</a>
         </h2>
     
         
@@ -357,10 +357,10 @@
 <h1 id="二分的本质">二分的本质</h1>
 <p>存在一个性质, 通过这个性质我们可以把整个区间分成左右两个部分, 使得右半部分满足这个性质, 左半部分不满足这个性质, 左右两边没有交点(整数二分)</p>
 <p>如果这个性质存在, 那么就可以通过二分来找到满足性质的区间的边界点</p>
-<p><img src="/post/binarysearch/image-20240115204550018.png"
+<p><img src="/post/algorithm0115-binarysearch/image-20240115204550018.png"
 	width="1430"
 	height="266"
-	srcset="/post/binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_480x0_resize_box_3.png 480w, /post/binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_1024x0_resize_box_3.png 1024w"
+	srcset="/post/algorithm0115-binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_480x0_resize_box_3.png 480w, /post/algorithm0115-binarysearch/image-20240115204550018_hu38fd5580e1d531d3e74f1e2c6ef6b6e1_100340_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image-20240115204550018"
@@ -436,6 +436,7 @@
 <ol>
 <li>直接写出 <code>mid = l + r &gt;&gt; 1</code></li>
 <li>考虑 check 函数为 true时区间是如何变化的, 如果变成 <code>l=mid</code>, 那么回过头来修改第一步的 <code>mid = l + r + 1 &gt;&gt; 1</code> , 如果变成 <code>r=mid</code></li>
+<li>确定把区间一分为二的性质到底是什么, 然后根据这个性质判断我应该如何变换区间才能找到想要的边界点</li>
 </ol>
 <blockquote>
 <p>Q&amp;A</p>
