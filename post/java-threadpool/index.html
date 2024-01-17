@@ -19,6 +19,13 @@
 <meta name="twitter:description" content="关于 java 线程池等待队列长度的思考
 根据是否可以接受任务长时间等待作为切入点来进行队列长度的选择
 比如 hytrix 熔断, 他的底层实现就是 synchronousQueue, 因为他就需要响应快, 不能接受任务等待较长时间 比如有些任务, 是可以允许第二天再进入线程池执行的, 这种就可以把等待队列设置长一点, 让这些任务等久一点也无所谓, 甚至在有大流量冲击的时候, 长的等待队列还能起到一个缓冲的作用 ">
+
+        下面三行添加 katex 依赖包来加载 latex 公式
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AZwL5Gg8V/yzrPpZrjZ8kpJcqgsaqrv0Iyjd8JP0Q+Ytteru8I6JnCgl3RRQf+6B" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-AZwL5Gg8V/yzrPpZrjZ8kpJcqgsaqrv0Iyjd8JP0Q+Ytteru8I6JnCgl3RRQf+6B" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-MfOnlSqpk8Faa/8iZZUBGgkMLnZbR6jYhMv0/PZ9e7tgj3bili6Fv2LX/3eddn2v" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
     </head>
     <body class="
     article-page
