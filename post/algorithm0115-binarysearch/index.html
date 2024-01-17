@@ -46,13 +46,9 @@
 ​	if(check(mid))
 ② a. check 为 true , 那么说明 mid 一定满足红色性质, 那么此时答案一定在 [mid, r] 之间, 因为 mid 有可能是答案, 所以是闭区间, 因为我们要找的是端点, 所以肯定不会在已经满足性质的 mid 左边, 那么这个时候我们就可以更新区间为 $[mid, r]$ 则令 l=mid
 ② b. check 为 false, 那么说明 mid 不满足红色性质, 此时答案一定在 mid 的左边, 那么更新区间为 $[l, mid-1]$, 则令r=mid-1">
-
-        下面三行添加 katex 依赖包来加载 latex 公式
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AZwL5Gg8V/yzrPpZrjZ8kpJcqgsaqrv0Iyjd8JP0Q+Ytteru8I6JnCgl3RRQf+6B" crossorigin="anonymous">
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-AZwL5Gg8V/yzrPpZrjZ8kpJcqgsaqrv0Iyjd8JP0Q+Ytteru8I6JnCgl3RRQf+6B" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-MfOnlSqpk8Faa/8iZZUBGgkMLnZbR6jYhMv0/PZ9e7tgj3bili6Fv2LX/3eddn2v" crossorigin="anonymous"
-    onload="renderMathInElement(document.body);"></script>
-
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
     </head>
     <body class="
     article-page
