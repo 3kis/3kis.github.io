@@ -270,6 +270,7 @@
     </li>
     <li><a href="#根据hugo官方的方式创建文章">根据Hugo官方的方式创建文章</a></li>
     <li><a href="#根据stack官网的方式调整文章">根据Stack官网的方式调整文章</a></li>
+    <li><a href="#在新的电脑上继续你的-hugo">在新的电脑上继续你的 hugo</a></li>
     <li><a href="#参考资料">参考资料</a></li>
   </ol>
 </nav>
@@ -343,7 +344,7 @@
 
 
                 <time class="article-time--reading">
-                    5 minute read
+                    6 minute read
                 </time>
             </div>
         
@@ -1160,6 +1161,26 @@
 </div><p>tag表示文章的标签，我们不需要手动创建标签，只需要在文章顶部写上我们想设置的标签，stack主题和hugo会帮助我们生成tag。categories字段同理</p>
 <p>image字段表示封面图，路径一般和文章一样</p>
 <p>文章顶部可以是toml格式也可以是yml格式，但是不能混用</p>
+<h1 id="在新的电脑上继续你的-hugo">在新的电脑上继续你的 hugo</h1>
+<p>首先 <code>git clone</code> 源仓库是必不可少的, 但是一定要记得把 submodule 给初始化好, 这样在 git action 的构建中才能以最新的 submodule 来构建 hugo 站点</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git submodule update --init
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果在 github 远程仓库上面改动了 submodule 的仓库, 记得在本地仓库下执行</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git submodule update --remote themes/stack
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>当然还是更推荐 init之后在本地改动, 而不是在远程仓库改动, 因为我没有做过直接在远程仓库改动的实验</p>
 <h1 id="参考资料">参考资料</h1>
 <ol>
 <li><a class="link" href="https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/"  target="_blank" rel="noopener"

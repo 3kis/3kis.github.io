@@ -103,11 +103,14 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;确定把区间一分为二的性质到底是什么,也就是 check 函数到底是什么 然后根据这个性质判断我应该如何变换区间才能找到想要的边界点.&lt;/p&gt;
-&lt;p&gt;该性质把我想要的数放到了右区间, 那么我肯定得找想要的数的第一个点, 即 &lt;code&gt;r = mid&lt;/code&gt;.  因为后面的点就无法通过性质去取到了, 所以只能去找第一个点&lt;/p&gt;
-&lt;p&gt;该性质把我想要的数放到了左区间, 那么我肯定得找想要的数的最后一个, 即 &lt;code&gt;l = mid; mid=l+r+1&amp;gt;&amp;gt;1&lt;/code&gt; , 因为左边的点无法通过性质去取到想要的值了, 所以只能找最后一个点&lt;/p&gt;
+&lt;p&gt;该性质把我想要的数放到了右区间, 那么我就只能找想要的数的第一个点, 即 &lt;code&gt;r = mid&lt;/code&gt;.  因为后面的点就无法通过性质去取到了, 所以只能去找第一个点&lt;/p&gt;
+&lt;p&gt;该性质把我想要的数放到了左区间, 那么我只能找想要的数的最后一个点, 即 &lt;code&gt;l = mid; mid=l+r+1&amp;gt;&amp;gt;1&lt;/code&gt; , 因为左边的点无法通过性质去取到想要的值了, 所以只能找最后一个点&lt;/p&gt;
 &lt;p&gt;理解这第三点很重要!!!&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;除非是专门找起点终点, 不然直接默认找第一个点就行, 也就是:&lt;/p&gt;
+&lt;p&gt;$mid = l + r &amp;raquo; 1$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;check函数保证想要的数出现在右区间&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Q&amp;amp;A&lt;/p&gt;
 &lt;p&gt;Q1 为什么找红点的时候 mid 需要+1 再求&lt;/p&gt;
@@ -6263,6 +6266,26 @@
 &lt;/div&gt;&lt;p&gt;tag表示文章的标签，我们不需要手动创建标签，只需要在文章顶部写上我们想设置的标签，stack主题和hugo会帮助我们生成tag。categories字段同理&lt;/p&gt;
 &lt;p&gt;image字段表示封面图，路径一般和文章一样&lt;/p&gt;
 &lt;p&gt;文章顶部可以是toml格式也可以是yml格式，但是不能混用&lt;/p&gt;
+&lt;h1 id=&#34;在新的电脑上继续你的-hugo&#34;&gt;在新的电脑上继续你的 hugo&lt;/h1&gt;
+&lt;p&gt;首先 &lt;code&gt;git clone&lt;/code&gt; 源仓库是必不可少的, 但是一定要记得把 submodule 给初始化好, 这样在 git action 的构建中才能以最新的 submodule 来构建 hugo 站点&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule update --init
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;如果在 github 远程仓库上面改动了 submodule 的仓库, 记得在本地仓库下执行&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;git submodule update --remote themes/stack
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;当然还是更推荐 init之后在本地改动, 而不是在远程仓库改动, 因为我没有做过直接在远程仓库改动的实验&lt;/p&gt;
 &lt;h1 id=&#34;参考资料&#34;&gt;参考资料&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.pseudoyu.com/zh/2022/05/29/deploy_your_blog_using_hugo_and_github_action/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
