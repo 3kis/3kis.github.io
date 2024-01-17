@@ -40,8 +40,20 @@ a 中可能有重复元素 &amp;mdash;&amp;ndash;&amp;gt; 需要去重 如何快
 现将所有的数存到 list 中, 去重, 排序.
 二分拿到数在 list 中的下标
 这样, 就能完成离散化的下标映射, 接下来就是利用这个新下标来做别的事情, 比如求区间和之类的">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],  
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],  
+        processEscapes: true,
+        tags: 'ams'  
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
         
     </head>
     <body class="

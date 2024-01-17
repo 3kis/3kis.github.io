@@ -14,8 +14,20 @@
 <meta name="twitter:title" content="springboot 常用配置">
 <meta name="twitter:description" content="记录一些springboot 常用配置."><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://betaller99.github.io/post/springquickstart/cover.png' />
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],  
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],  
+        processEscapes: true,
+        tags: 'ams'  
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
         
     </head>
     <body class="

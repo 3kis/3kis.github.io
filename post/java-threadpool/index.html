@@ -19,8 +19,20 @@
 <meta name="twitter:description" content="关于 java 线程池等待队列长度的思考
 根据是否可以接受任务长时间等待作为切入点来进行队列长度的选择
 比如 hytrix 熔断, 他的底层实现就是 synchronousQueue, 因为他就需要响应快, 不能接受任务等待较长时间 比如有些任务, 是可以允许第二天再进入线程池执行的, 这种就可以把等待队列设置长一点, 让这些任务等久一点也无所谓, 甚至在有大流量冲击的时候, 长的等待队列还能起到一个缓冲的作用 ">
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],  
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],  
+        processEscapes: true,
+        tags: 'ams'  
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
         
     </head>
     <body class="
