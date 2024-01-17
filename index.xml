@@ -6188,6 +6188,145 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;就能自动部署到两个远程仓库了&lt;/p&gt;
+&lt;h3 id=&#34;在-stack-主题中开启-latex-支持&#34;&gt;在 stack 主题中开启 latex 支持&lt;/h3&gt;
+&lt;p&gt;找到这个&lt;code&gt;head.html&lt;/code&gt;文件&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;themes/stack/layouts/partials/head/head.html
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;在文件末尾加上&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- MathJax configuration for LaTeX support --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MathJax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;tex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;inlineMath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;\\(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]],&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 行内公式定界符
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;nx&#34;&gt;displayMath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;\\[&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\]&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]],&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 块级公式定界符
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;nx&#34;&gt;processEscapes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;ams&amp;#39;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 启用 AMS 数学环境
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;svg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;fontCache&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;global&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;MathJax-script&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;完整的文件内容如下&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
+&lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 2
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 3
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 4
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 5
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 6
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 7
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 8
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt; 9
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;10
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;11
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;12
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;13
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;14
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;15
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;16
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;17
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;18
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;19
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;20
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;21
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;22
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;23
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;24
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;25
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;26
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;27
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;28
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;29
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;30
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;31
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;32
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;33
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;35
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;36
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;37
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;38
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;39
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;40
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;41
+&lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;42
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class=&#34;lntd&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;charset&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;utf-8&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;viewport&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;width=device-width, initial-scale=1&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- $description := partialCached &amp;#34;data/description&amp;#34; . .RelPermalink -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;description&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;{{ $description }}&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{ with .Params.Keywords }}&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;meta&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;name&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;keywords&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;content&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ delimit . &amp;#34;&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;}}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ end }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- $title := partialCached &amp;#34;data/title&amp;#34; . .RelPermalink -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;{{ $title }}&lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;title&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;canonical&amp;#39;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#39;{{ .Permalink }}&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- partial &amp;#34;head/style.html&amp;#34; . -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- partial &amp;#34;head/script.html&amp;#34; . -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- partial &amp;#34;head/opengraph/include.html&amp;#34; . -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- range .AlternativeOutputFormats -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Rel }}&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .MediaType.Type }}&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ .Permalink | safeURL }}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- end -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{ with .Site.Params.favicon }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;link&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;rel&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;shortcut icon&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;href&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;{{ . }}&amp;#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{ end }}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- template &amp;#34;_internal/google_analytics.html&amp;#34; . -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;{{- partial &amp;#34;head/custom.html&amp;#34; . -}}
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c&#34;&gt;&amp;lt;!-- MathJax configuration for LaTeX support --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;nb&#34;&gt;window&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;MathJax&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;tex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;inlineMath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;\\(&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\)&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]],&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 行内公式定界符
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;nx&#34;&gt;displayMath&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;$$&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;\\[&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;\\]&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]],&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 块级公式定界符
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;nx&#34;&gt;processEscapes&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;kc&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;tags&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;ams&amp;#39;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 启用 AMS 数学环境
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;      &lt;span class=&#34;p&#34;&gt;},&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;nx&#34;&gt;svg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;        &lt;span class=&#34;nx&#34;&gt;fontCache&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;global&amp;#39;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;  &lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;id&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;MathJax-script&amp;#34;&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;na&#34;&gt;src&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;script&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;修改之后, 在 submodule 中&lt;code&gt;add commit push&lt;/code&gt; 然后再回到父repo 中进行&lt;code&gt;add commit push&lt;/code&gt;&lt;/p&gt;
 &lt;h1 id=&#34;根据hugo官方的方式创建文章&#34;&gt;根据Hugo官方的方式创建文章&lt;/h1&gt;
 &lt;p&gt;在blog目录下执行命令&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;

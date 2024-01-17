@@ -272,6 +272,7 @@
                 <li><a href="#github-actions">Github Actions</a></li>
               </ol>
             </li>
+            <li><a href="#在-stack-主题中开启-latex-支持">在 stack 主题中开启 latex 支持</a></li>
           </ol>
         </li>
       </ol>
@@ -352,7 +353,7 @@
 
 
                 <time class="article-time--reading">
-                    6 minute read
+                    7 minute read
                 </time>
             </div>
         
@@ -1091,6 +1092,145 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>就能自动部署到两个远程仓库了</p>
+<h3 id="在-stack-主题中开启-latex-支持">在 stack 主题中开启 latex 支持</h3>
+<p>找到这个<code>head.html</code>文件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">themes/stack/layouts/partials/head/head.html
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>在文件末尾加上</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- MathJax configuration for LaTeX support --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">tex</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\(&#39;</span><span class="p">,</span> <span class="s1">&#39;\\)&#39;</span><span class="p">]],</span>  <span class="c1">// 行内公式定界符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span> <span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>  <span class="c1">// 块级公式定界符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">tags</span><span class="o">:</span> <span class="s1">&#39;ams&#39;</span>  <span class="c1">// 启用 AMS 数学环境
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">svg</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fontCache</span><span class="o">:</span> <span class="s1">&#39;global&#39;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;MathJax-script&#34;</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>完整的文件内容如下</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#39;utf-8&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#39;viewport&#39;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#39;width=device-width, initial-scale=1&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- $description := partialCached &#34;data/description&#34; . .RelPermalink -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#39;description&#39;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#39;{{ $description }}&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{ with .Params.Keywords }}<span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;keywords&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;{{ delimit . &#34;</span><span class="err">,</span> <span class="err">&#34;</span> <span class="err">}}&#34;</span><span class="p">&gt;</span>{{ end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- $title := partialCached &#34;data/title&#34; . .RelPermalink -}}
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>{{ $title }}<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#39;canonical&#39;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#39;{{ .Permalink }}&#39;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- partial &#34;head/style.html&#34; . -}}
+</span></span><span class="line"><span class="cl">{{- partial &#34;head/script.html&#34; . -}}
+</span></span><span class="line"><span class="cl">{{- partial &#34;head/opengraph/include.html&#34; . -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- range .AlternativeOutputFormats -}}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;{{ .Rel }}&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;{{ .MediaType.Type }}&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ .Permalink | safeURL }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">{{- end -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{ with .Site.Params.favicon }}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;shortcut icon&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ . }}&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">{{ end }}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">{{- template &#34;_internal/google_analytics.html&#34; . -}}
+</span></span><span class="line"><span class="cl">{{- partial &#34;head/custom.html&#34; . -}}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">&lt;!-- MathJax configuration for LaTeX support --&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">window</span><span class="p">.</span><span class="nx">MathJax</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">tex</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">inlineMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\(&#39;</span><span class="p">,</span> <span class="s1">&#39;\\)&#39;</span><span class="p">]],</span>  <span class="c1">// 行内公式定界符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">displayMath</span><span class="o">:</span> <span class="p">[[</span><span class="s1">&#39;$$&#39;</span><span class="p">,</span> <span class="s1">&#39;$$&#39;</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;\\[&#39;</span><span class="p">,</span> <span class="s1">&#39;\\]&#39;</span><span class="p">]],</span>  <span class="c1">// 块级公式定界符
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="nx">processEscapes</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">tags</span><span class="o">:</span> <span class="s1">&#39;ams&#39;</span>  <span class="c1">// 启用 AMS 数学环境
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">svg</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">fontCache</span><span class="o">:</span> <span class="s1">&#39;global&#39;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;MathJax-script&#34;</span> <span class="na">async</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改之后, 在 submodule 中<code>add commit push</code> 然后再回到父repo 中进行<code>add commit push</code></p>
 <h1 id="根据hugo官方的方式创建文章">根据Hugo官方的方式创建文章</h1>
 <p>在blog目录下执行命令</p>
 <div class="highlight"><div class="chroma">
