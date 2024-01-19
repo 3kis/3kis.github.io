@@ -353,6 +353,19 @@
 </span><span class="lnt">23
 </span><span class="lnt">24
 </span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
@@ -363,23 +376,36 @@
 </span></span><span class="line"><span class="cl"><span class="nv">data_dir_name</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="nv">mysql</span><span class="si">}</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 创建项目目录结构</span>
-</span></span><span class="line"><span class="cl">mkdir -p <span class="si">${</span><span class="nv">project_name</span><span class="si">}</span>/<span class="o">{</span>app,bin,compose,<span class="si">${</span><span class="nv">data_dir_name</span><span class="si">}</span>/data<span class="o">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>cat <span class="s">&lt;&lt; EOF &gt; ${project_name}/bin/compose.sh
+</span></span><span class="line"><span class="cl">mkdir -p <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_name</span><span class="si">}</span><span class="s2">&#34;</span>/<span class="o">{</span>app,bin,compose,<span class="s2">&#34;</span><span class="si">${</span><span class="nv">data_dir_name</span><span class="si">}</span><span class="s2">&#34;</span>/data<span class="o">}</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建 compose.sh 文件</span>
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt; EOF &gt; &#34;${project_name}/bin/compose.sh&#34;
 </span></span></span><span class="line"><span class="cl"><span class="s">#!/bin/bash
 </span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s">root=\$(cd \`dirname \$0\`; dirname \`pwd\`)
+</span></span></span><span class="line"><span class="cl"><span class="s">root=\$(cd \$(dirname \$0); pwd -P)
 </span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s"># exec &#34;\$@&#34; 这行命令。\$@ 是 shell 脚本获取参数的符号，这里获得的是所有传入脚本的参数，而 exec 是执行命令，直接执行这些参数。
-</span></span></span><span class="line"><span class="cl"><span class="s"># sudo ./bin/compose down  ====&gt; down表示关闭 service 并删除 container
-</span></span></span><span class="line"><span class="cl"><span class="s"># sudo ./bin/compose up -d  ====&gt; up -d表示启动 container
-</span></span></span><span class="line"><span class="cl"><span class="s"># -p 参数指定项目名称。在这个例子中，项目名称被设置为 ${service_name}。Docker Compose 会使用这个名称作为容器、网络和卷名称的前缀，以便将它们与其他项目隔离开来
-</span></span></span><span class="line"><span class="cl"><span class="s"># -f 参数用来指定 docker-compose.yml 文件的位置。在这个例子中，文件位于当前目录下的 compose 子目录中
-</span></span></span><span class="line"><span class="cl"><span class="s">docker-compose -p ${service_name} -f \${root}/compose/docker-compose.yml &#34;\$@&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">docker-compose -p ${service_name} -f \${root}/../compose/docker-compose.yml &#34;\$@&#34;
 </span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 设置 compose.sh 为可执行文件</span>
-</span></span><span class="line"><span class="cl">chmod +x <span class="si">${</span><span class="nv">project_name</span><span class="si">}</span>/bin/compose.sh <span class="o">&amp;&amp;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>touch <span class="si">${</span><span class="nv">project_name</span><span class="si">}</span>/compose/docker-compose.yml
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建 stop.sh 文件</span>
+</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt; EOF &gt; &#34;${project_name}/bin/stop.sh&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s"># 停止并移除所有由docker-compose up创建的容器
+</span></span></span><span class="line"><span class="cl"><span class="s"># docker-compose down
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s"># 停止容器而不移除它们
+</span></span></span><span class="line"><span class="cl"><span class="s">docker-compose -f \$(cd \$(dirname \$0); pwd -P)/../compose/docker-compose.yml stop
+</span></span></span><span class="line"><span class="cl"><span class="s">
+</span></span></span><span class="line"><span class="cl"><span class="s"># 停止特定的服务，可以在stop命令后面加上服务的名称
+</span></span></span><span class="line"><span class="cl"><span class="s"># docker-compose stop myservice
+</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 设置 compose.sh 和 stop.sh 为可执行文件</span>
+</span></span><span class="line"><span class="cl">chmod +x <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_name</span><span class="si">}</span><span class="s2">/bin/compose.sh&#34;</span> <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_name</span><span class="si">}</span><span class="s2">/bin/stop.sh&#34;</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>
+</span></span><span class="line"><span class="cl"><span class="c1"># 创建 docker-compose.yml 文件</span>
+</span></span><span class="line"><span class="cl">touch <span class="s2">&#34;</span><span class="si">${</span><span class="nv">project_name</span><span class="si">}</span><span class="s2">/compose/docker-compose.yml&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>该脚本可以保存为一个文件，比如 <code>create_project.sh</code>。然后你可以赋予它执行权限并运行，传递相应的参数：</p>
