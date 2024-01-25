@@ -551,6 +551,20 @@
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>设置<strong>立即显示Dock（无动画）</strong></p>
+<p>第一行设置开启 dock 隐藏, 第二行设置立即显示 dock, 第三行重启 dock 使得设置生效</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">defaults write com.apple.dock autohide -bool <span class="nb">true</span>
+</span></span><span class="line"><span class="cl">defaults write com.apple.dock autohide-time-modifier -float <span class="m">0</span>
+</span></span><span class="line"><span class="cl">killall Dock
+</span></span></code></pre></td></tr></table>
+</div>
 </div>
 </section>
 

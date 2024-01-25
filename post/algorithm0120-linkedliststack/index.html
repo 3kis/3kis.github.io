@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='单链表
+双链表
+栈
+关于链表, 我们采用数组模拟的方式, 而不是以创建 struct 的方式, 因为new 一个 struct 太慢了, 数据量达到百万级的时候性能低
+单链表 用途: 创建邻接表. (邻接表的用途是用来存储树或图)
+模拟方式如下:
+链表中每个点存两个值: ①自己的 val ②下一个节点的指针
+采用两个数组, e数组和 ne数组, e数组用来存储当前节点的值, ne数组用来存储当前节点的下一节点的指针(也就是当前节点的下一个节点在什么位置==&amp;gt; 下一个节点的下标是什么)
+e[i]: 位置为 i 的节点的 value
+ne[i]: 位置为 i 的节点指向的下一个节点的位置, 还是一个下标
+e数组和 ne数组关联的方式是下标来关联
+那么对于链表的每个点, 他有两个值, 一个是 e, 一个是 ne, 他们使用下标关联起来的
+构造一个单链表并给基本的操作方法
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 const int N = 100010 int e[N], ne[N], head, idx; void init(){ head = -1; idx = 0; } void addToHead(int x) { e[idx] = x; ne[idx] = head; head = idx; idx&#43;&#43;; } void add(int k, int x) { e[idx] = x; ne[idx] = ne[k]; ne[k] = idx; idx&#43;&#43;; } void remove(int k) { ne[k] = ne[ne[k]]; } 注释版'>
+<title>链表&amp;栈</title>
+
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm0120-linkedliststack/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='链表&amp;栈'>
+<meta property='og:description' content='单链表
+双链表
+栈
+关于链表, 我们采用数组模拟的方式, 而不是以创建 struct 的方式, 因为new 一个 struct 太慢了, 数据量达到百万级的时候性能低
+单链表 用途: 创建邻接表. (邻接表的用途是用来存储树或图)
+模拟方式如下:
+链表中每个点存两个值: ①自己的 val ②下一个节点的指针
+采用两个数组, e数组和 ne数组, e数组用来存储当前节点的值, ne数组用来存储当前节点的下一节点的指针(也就是当前节点的下一个节点在什么位置==&amp;gt; 下一个节点的下标是什么)
+e[i]: 位置为 i 的节点的 value
+ne[i]: 位置为 i 的节点指向的下一个节点的位置, 还是一个下标
+e数组和 ne数组关联的方式是下标来关联
+那么对于链表的每个点, 他有两个值, 一个是 e, 一个是 ne, 他们使用下标关联起来的
+构造一个单链表并给基本的操作方法
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 const int N = 100010 int e[N], ne[N], head, idx; void init(){ head = -1; idx = 0; } void addToHead(int x) { e[idx] = x; ne[idx] = head; head = idx; idx&#43;&#43;; } void add(int k, int x) { e[idx] = x; ne[idx] = ne[k]; ne[k] = idx; idx&#43;&#43;; } void remove(int k) { ne[k] = ne[ne[k]]; } 注释版'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm0120-linkedliststack/'>
+<meta property='og:site_name' content='Asher blog'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-01-21T10:33:12&#43;08:00'/><meta property='article:modified_time' content='2024-01-21T10:33:12&#43;08:00'/>
+<meta name="twitter:title" content="链表&amp;栈">
+<meta name="twitter:description" content="单链表
+双链表
+栈
+关于链表, 我们采用数组模拟的方式, 而不是以创建 struct 的方式, 因为new 一个 struct 太慢了, 数据量达到百万级的时候性能低
+单链表 用途: 创建邻接表. (邻接表的用途是用来存储树或图)
+模拟方式如下:
+链表中每个点存两个值: ①自己的 val ②下一个节点的指针
+采用两个数组, e数组和 ne数组, e数组用来存储当前节点的值, ne数组用来存储当前节点的下一节点的指针(也就是当前节点的下一个节点在什么位置==&amp;gt; 下一个节点的下标是什么)
+e[i]: 位置为 i 的节点的 value
+ne[i]: 位置为 i 的节点指向的下一个节点的位置, 还是一个下标
+e数组和 ne数组关联的方式是下标来关联
+那么对于链表的每个点, 他有两个值, 一个是 e, 一个是 ne, 他们使用下标关联起来的
+构造一个单链表并给基本的操作方法
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 const int N = 100010 int e[N], ne[N], head, idx; void init(){ head = -1; idx = 0; } void addToHead(int x) { e[idx] = x; ne[idx] = head; head = idx; idx&#43;&#43;; } void add(int k, int x) { e[idx] = x; ne[idx] = ne[k]; ne[k] = idx; idx&#43;&#43;; } void remove(int k) { ne[k] = ne[ne[k]]; } 注释版">
+<script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],  
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],  
+        processEscapes: true,
+        tags: 'ams'  
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+        
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/OIP_hu7c183f8a9e3e07696e268c200f0e29e4_8019_300x0_resize_box_3.png" width="300"
+                            height="309" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">✅</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Asher blog</a></h1>
+            <h2 class="site-description">hello~</h2>
+        </div>
+    </header><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About Me</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/page/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' >
+                
+                
+                
+                <span>categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' >
+                
+                
+                
+                <span>tags</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#单链表">单链表</a></li>
+    <li><a href="#双链表">双链表</a>
+      <ol>
+        <li>
+          <ol>
+            <li><a href="#初始化">初始化</a></li>
+            <li><a href="#添加节点操作">添加节点操作</a></li>
+            <li><a href="#删除节点操作">删除节点操作</a></li>
+            <li><a href="#单链表和双链表的区别">单链表和双链表的区别</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li><a href="#栈">栈</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/algorithm0120-linkedliststack/">链表&amp;栈</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 21, 2024</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <p>单链表</p>
+<p>双链表</p>
+<p>栈</p>
+<p>关于链表, 我们采用数组模拟的方式, 而不是以创建 struct 的方式, 因为new 一个 struct 太慢了, 数据量达到百万级的时候性能低</p>
+<h1 id="单链表">单链表</h1>
+<p>用途: 创建邻接表. (邻接表的用途是用来存储树或图)</p>
+<p>模拟方式如下:</p>
+<p>链表中每个点存两个值: ①自己的 val  ②下一个节点的指针</p>
+<p>采用两个数组, e数组和 ne数组, e数组用来存储当前节点的值, ne数组用来存储当前节点的下一节点的指针(也就是当前节点的下一个节点在什么位置==&gt; 下一个节点的下标是什么)</p>
+<p>e[i]: 位置为 i 的节点的 value</p>
+<p>ne[i]: 位置为 i 的节点指向的下一个节点的位置, 还是一个下标</p>
+<p>e数组和 ne数组关联的方式是下标来关联</p>
+<p>那么对于链表的每个点, 他有两个值, 一个是 e, 一个是 ne, 他们使用下标关联起来的</p>
+<p><img src="/post/algorithm0120-linkedliststack/image-20240121104008971.png"
+	width="1854"
+	height="924"
+	srcset="/post/algorithm0120-linkedliststack/image-20240121104008971_hu2f6eea497588477546cb0bf93ecc7e69_590676_480x0_resize_box_3.png 480w, /post/algorithm0120-linkedliststack/image-20240121104008971_hu2f6eea497588477546cb0bf93ecc7e69_590676_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="数组模拟单链表"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="200"
+		data-flex-basis="481px"
+	
+></p>
+<p>构造一个单链表并给基本的操作方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100010</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">e</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">head</span><span class="p">,</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">head</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">addToHead</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">head</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>注释版</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//构建静态链表的大小----数组模拟链表就是构建了一个静态链表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//head始终表示头结点的下标, idx 表示的是当前操作节点的下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">e</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">ne</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">head</span><span class="p">,</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//初始化链表
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//head=-1说明当前为空集
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">head</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//idx=0表示要操作的节点的下标为 0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//向链表头插入一个数；
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">insertHead</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    1. 把这个数存到节点里
+</span></span></span><span class="line"><span class="cl"><span class="cm">    2. 让这个节点指向当前的头结点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    3. 让 head 指向当前节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    4. idx++, 让他指向下一个要操作的节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">head</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">head</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">// 删除下标为 k 的后一个节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    1. 找到下标为 k 的节点的下一个节点的下一个节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    2. 更新下标为 k 的节点的下一个节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//ne[k]表示下一个节点的位置, 由于ne[i]表示节点i的下一个节点位置, 所以 ne[ne[k]]表示下标为k的节点的下一个节点的下一个节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//在下标为k的节点后插入一个节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">insert</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="cm">/*
+</span></span></span><span class="line"><span class="cl"><span class="cm">    1. 把这个数存到节点里
+</span></span></span><span class="line"><span class="cl"><span class="cm">    2. 让当前操作节点指向下标 k 的节点的下一个节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    3. 让下标为k 的节点指向当前节点
+</span></span></span><span class="line"><span class="cl"><span class="cm">    4. 更新 idx 到下一个要操作的节点, idx++
+</span></span></span><span class="line"><span class="cl"><span class="cm">    */</span>
+</span></span><span class="line"><span class="cl">    <span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ne</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="n">ne</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>题目:</p>
+<p><a class="link" href="https://www.acwing.com/problem/content/828/"  target="_blank" rel="noopener"
+    >单链表</a></p>
+<p>单链表可能只能建立一个数组模拟链表的初步印象, 在&quot;寻找节点&quot;这一点上, 双链表可以加深理解</p>
+<h1 id="双链表">双链表</h1>
+<p>用途: 优化某些问题</p>
+<p>单链表的每个节点只有一个指针, 这个指针指向后一个节点</p>
+<p>双链表每个节点有两个指针, 一个指针指向前, 另一个指针指向后</p>
+<p>对于双链表, 我们直接用数组的 0 位表示 head节点, 1 位表示 tail节点, $l[i]$数组表示下标为 i 的节点的左指针, $r[i]$表示下标为 i 的节点的右指针</p>
+<h3 id="初始化">初始化</h3>
+<p>让 head节点右指针指向1(tail节点下标), tail节点左指针指向 0(head 节点下标). 表示空链表. 两个点不表示实质内容, 只表示边界节点</p>
+<h3 id="添加节点操作">添加节点操作</h3>
+<p>对于在下标为 k 的节点后面添加节点, 需要① 把新的值存进去 ②让新的节点右指针指向 k 节点的右节点 ③让新节点的左指针指向k 节点的右节点的左节点 ④让 k 节点的右节点的左指针指向当前节点 ⑤让 k 节点的右指针指向当前节点</p>
+<p>其中④⑤不能调换顺序, 因为我们只能通过 k 先找到右节点, 然后再把k节点的原右节点的左指针指向当前节点. 如果调换顺序我们就无法通过下标和 r[i]找不到 k 节点的原右节点了</p>
+<p>对于在下标为 k 的节点前面添加节点, 那么我们就直接找到下标为 k 的节点的左节点, 然后再调用添加节点到右边的方法就可以了</p>
+<p>找到下标为 k 的节点的左节点的方式就是通过 k 来找到, 即 $l[k]$</p>
+<h3 id="删除节点操作">删除节点操作</h3>
+<p>也就是让下标为 k 的节点的左节点右指针指向下标为 k 的节点的右节点, 让下标为 k 的节点的右节点的左指针指向下标为 k 的节点的左节点.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">int</span> <span class="n">e</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl"> 	<span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">  <span class="n">idx</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">	<span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="n">r</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">r</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为什么没有插入头结点的操作?</p>
+<p>因为我们没有空指针, 所以直接使用 add 方法来找到对应的位置即可插入头结点</p>
+<p>注释</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="c1">//声明静态链表长度, 一般由输入的数据量决定
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">100010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//e[i]表示下标为i的节点的值, l[i]表示下标为i的节点的左指针(左节点下标), r[i]表示下标为i的节点的右指针(右节点下标), idx 表示正在处理的节点的下标
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">e</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">r</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//双链表使用两个节点来初始化, 分别是 head 节点和 tail 节点, 互相指向表示空链表, 同时这两个节点可以定义出链表的边界
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">init</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让 head 节点指向 tail 节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让 tail 节点指向 head 节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span> 	<span class="n">l</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="c1">//由于 0 1 位置被占用了, 所以 idx 从 2 开始
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">idx</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//add操作表示在 idx 为 k 的节点右边插入节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//存储节点值
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">e</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让当前操作节点右指针指向下标为k的节点的右节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>	<span class="n">r</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让当前操作节点左指针指向下标为k的节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">l</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让下标为k的节点的右节点的左指针指向当前节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让下标为k的节点的右指针指向当前节点 --- 这一步不能和上一步调换
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">idx</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//操作下一个节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">idx</span><span class="o">++</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//注意: 这里的 k 指的值要执行的节点下标而不是说删除第 k 个节点的右一个节点 --- 这是和单链表不同的地方
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">void</span> <span class="nf">remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让待删除节点的 左节点的右指针 指向 待删除节点的右节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">r</span><span class="p">[</span><span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//让待删除节点的 右节点的左指针 指向 待删除节点的左节点
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">l</span><span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">l</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="单链表和双链表的区别">单链表和双链表的区别</h3>
+<p>我们都是用数组来模拟链表, 但是这里的模拟方式有区别</p>
+<p>① 单链表有空指针, 所以有head 可以为 -1</p>
+<p>​	双链表不表示空指针, 而是直接用固定的两个点0 1 表示 head 节点和 tail 节点, 但是这两个节点不存储任何数据, 仅仅用来限制整个链表的边界</p>
+<p>② 初始化方法不同</p>
+<p>​	单链表由于存在空指针, 所以一开始直接让 head 为空指针-1</p>
+<p>​	双链表不存在空指针, 所以用两个端点互相指向来完成初始化</p>
+<p>③ 单链表的 head 是表示下标(指针的含义); 双链表的 head, tail 表示的是不存储数值的节点</p>
+<p>④ 删除节点操作在单链表中指的是删除 idx 为k 的下一个节点, 在双链表中指的是 idx 为 k 的这个节点本身. 添加节点则和单链表意思一致</p>
+<p>题目</p>
+<p><a class="link" href="https://www.acwing.com/problem/content/829/"  target="_blank" rel="noopener"
+    >双链表</a></p>
+<h1 id="栈">栈</h1>
+<p>数组模拟栈</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c++" data-lang="c++"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">1000010</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//tt 表示栈顶指针, 这里我们以 0 表示栈中没有元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">int</span> <span class="n">stk</span><span class="p">[</span><span class="n">N</span><span class="p">],</span> <span class="n">tt</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//向栈顶插入元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">stk</span><span class="p">[</span> <span class="o">++</span> <span class="n">tt</span> <span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//弹出元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">tt</span><span class="o">--</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//获取栈顶元素
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">stk</span><span class="p">[</span><span class="n">tt</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl"><span class="c1">//判空
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">if</span><span class="p">(</span><span class="n">tt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="n">not</span> <span class="n">empty</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+</section>
+
+
+    <footer class="article-footer">
+    
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2024 Asher blog
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
