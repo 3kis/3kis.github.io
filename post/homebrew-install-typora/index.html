@@ -383,6 +383,84 @@
 <pre tabindex="0" class="chroma"><code class="language-Bash" data-lang="Bash"><span class="line"><span class="cl">brew install --cask <span class="si">${</span><span class="nv">typora</span><span class="p">.rb的绝对路径</span><span class="si">}</span>
 </span></span></code></pre></td></tr></table>
 </div>
+</div><p>下面贴一个 bartender4 的 brew 脚本, 就不用去 github 找了</p>
+<p><code>bartender.rb</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rb" data-lang="rb"><span class="line"><span class="cl"><span class="n">cask</span> <span class="s2">&#34;bartender&#34;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">  <span class="n">version</span> <span class="s2">&#34;4.2.25&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sha256</span> <span class="s2">&#34;7e594d4955808df139bc3aa4a408a8bacbfdb64e18970e843d381eadce487299&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">url</span> <span class="s2">&#34;https://macbartender.com/B2/updates/</span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">minor</span><span class="si">}</span><span class="s2">-</span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&#34;0&#34;</span><span class="p">)</span><span class="si">}</span><span class="s2">/Bartender%20</span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s2">.dmg&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="ss">referer</span><span class="p">:</span> <span class="s2">&#34;https://www.macbartender.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nb">name</span> <span class="s2">&#34;Bartender&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">desc</span> <span class="s2">&#34;Menu bar icon organizer&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">homepage</span> <span class="s2">&#34;https://www.macbartender.com/&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">livecheck</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">    <span class="n">url</span> <span class="s2">&#34;https://www.macbartender.com/B2/updates/AppcastB</span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s2">.xml&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">strategy</span> <span class="ss">:sparkle</span><span class="p">,</span> <span class="o">&amp;</span><span class="ss">:short_version</span>
+</span></span><span class="line"><span class="cl">  <span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">auto_updates</span> <span class="kp">true</span>
+</span></span><span class="line"><span class="cl">  <span class="n">depends_on</span> <span class="ss">macos</span><span class="p">:</span> <span class="s2">&#34;&gt;= :big_sur&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">app</span> <span class="s2">&#34;Bartender </span><span class="si">#{</span><span class="n">version</span><span class="o">.</span><span class="n">major</span><span class="si">}</span><span class="s2">.app&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">uninstall</span> <span class="ss">delete</span><span class="p">:</span>    <span class="o">[</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;/Library/Audio/Plug-Ins/HAL/BartenderAudioPlugIn.plugin&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;/Library/PrivilegedHelperTools/com.surteesstudios.Bartender.BartenderInstallHelper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;/Library/ScriptingAdditions/BartenderHelper.osax&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="s2">&#34;/System/Library/ScriptingAdditions/BartenderSystemHelper.osax&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="o">]</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">launchctl</span><span class="p">:</span> <span class="s2">&#34;com.surteesstudios.Bartender.BartenderInstallHelper&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="ss">quit</span><span class="p">:</span>      <span class="s2">&#34;com.surteesstudios.Bartender&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">zap</span> <span class="ss">trash</span><span class="p">:</span> <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;~/Library/Caches/com.surteesstudios.Bartender&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;~/Library/Cookies/com.surteesstudios.Bartender.binarycookies&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;~/Library/Preferences/com.surteesstudios.Bartender.plist&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
 </div>
 </section>
 
