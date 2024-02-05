@@ -1559,7 +1559,42 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;killall Dock
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;</description>
+&lt;/div&gt;&lt;h1 id=&#34;一些在brew之外下载的软件&#34;&gt;一些在brew之外下载的软件&lt;/h1&gt;
+&lt;h3 id=&#34;右键专业助手&#34;&gt;右键专业助手&lt;/h3&gt;
+&lt;p&gt;为了解决在 Finder 中右键连文件都创建不了的缺陷😒&lt;/p&gt;
+&lt;p&gt;长这样&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/newmac-init-config/image-20240205150834534.png&#34;
+	width=&#34;250&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://betaller99.github.io/post/newmac-init-config/image-20240205150834534_huea2f59988f2c0d6b75a706f6c0852021_40993_480x0_resize_box_3.png 480w, https://betaller99.github.io/post/newmac-init-config/image-20240205150834534_huea2f59988f2c0d6b75a706f6c0852021_40993_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20240205150834534&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;91&#34;
+		data-flex-basis=&#34;220px&#34;
+	
+&gt;&lt;/p&gt;
+&lt;h3 id=&#34;输入法控制&#34;&gt;输入法控制&lt;/h3&gt;
+&lt;p&gt;为了解决某些软件自动把我的搜狗输入法切成系统原生 abc 输入法&lt;/p&gt;
+&lt;p&gt;虽然可以通过 plist 等工具直接把 abc 输入法删除, 但是不确定删除之后进入系统安全模式时还能否正常使用键盘&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://betaller99.github.io/post/newmac-init-config/image-20240205141902376.png&#34;
+	width=&#34;1406&#34;
+	height=&#34;1074&#34;
+	srcset=&#34;https://betaller99.github.io/post/newmac-init-config/image-20240205141902376_hu9d7f7c04600d39ebe9da94e96a1d529c_243124_480x0_resize_box_3.png 480w, https://betaller99.github.io/post/newmac-init-config/image-20240205141902376_hu9d7f7c04600d39ebe9da94e96a1d529c_243124_1024x0_resize_box_3.png 1024w&#34;
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image-20240205141902376&#34;
+	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;130&#34;
+		data-flex-basis=&#34;314px&#34;
+	
+&gt;&lt;/p&gt;
+</description>
         </item>
         <item>
         <title>Homebrew安装旧版typora</title>
