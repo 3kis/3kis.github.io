@@ -52,20 +52,54 @@ e数组和 ne数组关联的方式是下标来关联
 那么对于链表的每个点, 他有两个值, 一个是 e, 一个是 ne, 他们使用下标关联起来的
 构造一个单链表并给基本的操作方法
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 const int N = 100010 int e[N], ne[N], head, idx; void init(){ head = -1; idx = 0; } void addToHead(int x) { e[idx] = x; ne[idx] = head; head = idx; idx&#43;&#43;; } void add(int k, int x) { e[idx] = x; ne[idx] = ne[k]; ne[k] = idx; idx&#43;&#43;; } void remove(int k) { ne[k] = ne[ne[k]]; } 注释版">
+
+
+
+
+
+
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.8/katex.min.css" integrity="sha384-26tGhwA7XzaiZ8t1bz4gJwnCVOv/QuSG/lgJ7HrQRriqC1iVe+vmHME3XT0F0VlF" crossorigin="anonymous">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.8/katex.min.js" integrity="sha384-RDUPx7vF+fpjW3y2mUpt5J2bA21RrAaTLFZ5vG6P/Q7xoxotKVgmTp2ovq5XIPho" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.13.8/contrib/auto-render.min.js" integrity="sha384-rFMmbMxMD0fRNqOtXoexvcl+yTMfCF/gGbvjgWFS07BzhiwHYj1xxh2IgfqQ5/5I" crossorigin="anonymous"></script>
+
 <script>
-    window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],  
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],  
-        processEscapes: true,
-        tags: 'ams'  
-      },
-      svg: {
-        fontCache: 'global'
-      }
-    };
-  </script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+
+
+
+
+
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+          delimiters: [
+              {left: "$$", right: "$$", display: true},
+              {left: "\\(", right: "\\)", display: false},
+              {left: "\\[", right: "\\]", display: true},
+              {left: "\\begin{equation}", right: "\\end{equation}", display: true},
+              {left: "\\begin{align}", right: "\\end{align}", display: true}
+              
+          ],
+          throwOnError: false,  
+          errorColor: "#cc0000",  
+          strict: "warn",  
+          maxSize: 10,  
+          maxExpand: 100,  
+          macros: {  
+              "\\RR": "\\mathbb{R}",
+              "\\bold": "\\mathbf"
+              
+          }
+          
+      });
+  });
+</script>
         
     </head>
     <body class="
