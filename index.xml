@@ -931,10 +931,14 @@
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;$\begin{align}
-b_1 &amp;amp;= a_1 \
-b_2 &amp;amp;= a_2 - a_1 \
-b_3 &amp;amp;= a_3 - a_2 \
-&amp;amp; \ \vdots \
+b_1 &amp;amp;= a_1
+\
+b_2 &amp;amp;= a_2 - a_1
+\
+b_3 &amp;amp;= a_3 - a_2
+\
+&amp;amp; \ \vdots
+\
 b_n &amp;amp;= a_n - a_{n-1}
 \end{align}$&lt;/p&gt;
 &lt;blockquote&gt;
