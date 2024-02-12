@@ -927,9 +927,7 @@
         <guid>https://betaller99.github.io/post/algorithm1230-difference/</guid>
         <description>&lt;p&gt;差分是前缀和的逆运算&lt;/p&gt;
 &lt;p&gt;对于数组 $a_1, a_2, a_3, \ldots, a_n$ 和数组$b_1, b_2, b_3, \ldots, b_n$  如果 $a_i = b_1+b_2+b_3+..+b_i$, 那么我们称 a 数组是 b 数组的前缀和, b 数组是 a 数组的差分. 对于任意 bi 有 $b_i = a_i - a_{i-1}$&lt;/p&gt;
-&lt;p&gt;如何构造出 $b_n$ 呢?&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;由上可得$a_i$与 $b_i$的关系, 那么反过来 $b_i = f(a_i) ?$&lt;/p&gt;
 &lt;p&gt;$\begin{align}
 b_1 &amp;amp;= a_1
 \
@@ -941,8 +939,6 @@ b_3 &amp;amp;= a_3 - a_2
 \
 b_n &amp;amp;= a_n - a_{n-1}
 \end{align}$&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;/blockquote&gt;
 &lt;h1 id=&#34;差分有什么用&#34;&gt;差分有什么用?&lt;/h1&gt;
 &lt;p&gt;假设我们已经有b 数组了, 那么我们如果想要求a数组, 只要求一遍前缀和就可以了.&lt;/p&gt;
 &lt;p&gt;那么我们就可以 以 O(N)的时间从 b 数组得到 a 数组&lt;/p&gt;
