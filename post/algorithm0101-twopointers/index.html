@@ -335,7 +335,7 @@
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="c1">//一重循环, i 从 0开始, j 从某个点开始, 这里以 0 开始作为演示.  然后 i 把整个序列扫描一遍
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">//对于 j, 每次 i 更新完之后我们要更新我们的 j, 第一个判断条件是 j 的范围, 一定要在合法范围内,这里用 j&lt;=i 来演示. 
+</span></span><span class="line"><span class="cl">    <span class="c1">//对于 j, 每次 i 更新完之后我们要更新我们的 j, 第一个判断条件是 j 的范围, 一定要在合法范围内,这里用 j&lt;i 来演示. 
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="c1">//第二个条件就是满足某一个性质, 两个条件都满足, 则j++
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">while</span><span class="o">(</span><span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span> <span class="o">&amp;&amp;</span> <span class="n">check</span><span class="o">(</span><span class="n">i</span><span class="o">,</span><span class="n">j</span><span class="o">))</span> <span class="n">j</span><span class="o">++;</span>
 </span></span><span class="line"><span class="cl">    
