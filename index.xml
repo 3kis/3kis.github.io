@@ -984,7 +984,7 @@ $$&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;&lt;strong&gt;假设 a 数组全部是 0, 那么差分数组 b 也就全部是 0&lt;/strong&gt; &amp;mdash;- 这是我们不需要考虑构造 b 数组的关键, 我们只需要考虑插入就可以了&lt;/p&gt;
 &lt;p&gt;但是现在 a 数组不是 0, 我们可以看成是让原数组进行了 n 次加c操作进而得到了a 数组, 第一次是让数组[1,1]加上$a_1$,第二次是让原数组[2,2]区间加上 $a_2$ ,第三次是让原数组[3,3]区间间加上 $a_3$ , 一直到第 n 次是让原数组[n,n]区间加上了 $a_n$&lt;/p&gt;
-&lt;p&gt;我们知道, 要让原数组a加上&lt;code&gt;c&lt;/code&gt;只需要在差分数组中进行 $b_l + c$ 和$b_{r+1}-c$ 即可, 那么在这里就是 $(b_1 +a_1$ &amp;amp;&amp;amp; $b_2-a_1)$ 即可确定对应原数组中区间[1,1]的数, $b_2+a_2 $ &amp;amp;&amp;amp; $ b_3-a_2$ 即可确定原数组区间[2,2]的数, 以此类推 $(b_n+a_n$ &amp;amp;&amp;amp; $b_{n+1}-a_n)$原数组区间[n,n]的数.&lt;/p&gt;
+&lt;p&gt;我们知道, 要让原数组a加上&lt;code&gt;c&lt;/code&gt;只需要在差分数组中进行 $b_l + c$ 和$b_{r+1}-c$ 即可, 那么在这里就是 $(b_1 +a_1$ &amp;amp;&amp;amp; $b_2-a_1)$ 即可确定对应原数组中区间[1,1]的数, $(b_2+a_2 $ &amp;amp;&amp;amp; $ b_3-a_2)$ 即可确定原数组区间[2,2]的数, 以此类推 $(b_n+a_n$ &amp;amp;&amp;amp; $b_{n+1}-a_n)$原数组区间[n,n]的数.&lt;/p&gt;
 &lt;p&gt;对于原地插入, 直接调用函数 &lt;code&gt;insert(1,1,a[1]);   insert(2,2,a[2]);  insert(3,3,a[3]); .... insert(n,n,a[n]); &lt;/code&gt; 即可保证能从b 数组求出前缀和&lt;/p&gt;
 &lt;p&gt;要利用 b 数组原地(空间复杂度O(1))求前缀和, 直接 $b_i = b_i+b_{i-1}$  这样遍历后的的 b 数组直接和 a 数组的值一样了&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;求前缀和是一个递推过程&lt;/strong&gt;&lt;/p&gt;
