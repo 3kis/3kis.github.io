@@ -853,7 +853,8 @@
         <pubDate>Sat, 30 Dec 2023 21:12:59 +0800</pubDate>
         
         <guid>https://betaller99.github.io/post/markdownsyntax/</guid>
-        <description>&lt;h1 id=&#34;markdown-自带上标下标&#34;&gt;markdown 自带上标下标&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;markdown-自带上标下标&#34;&gt;&lt;del&gt;markdown 自带上标下标&lt;/del&gt;&lt;/h1&gt;
+&lt;p&gt;该功能不是所有的 markdown 渲染器都支持, 所以更建议使用 latex 来表示上下标&lt;/p&gt;
 &lt;p&gt;b~1~   &amp;ndash;&amp;gt; &lt;code&gt;b~1~&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;b^2^   &amp;mdash;&amp;gt; &lt;code&gt;b^2^&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;b^3x-2^ &amp;mdash;&amp;gt; &lt;code&gt;b^3x-2^&lt;/code&gt;&lt;/p&gt;
@@ -875,6 +876,7 @@
 &lt;p&gt;&lt;code&gt;\,&lt;/code&gt;表示小一些的空格,  比如 &lt;code&gt;a\,b&lt;/code&gt; 的效果为 $a,b$&lt;/p&gt;
 &lt;h1 id=&#34;在latex-中换行&#34;&gt;在latex 中换行&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;\\&lt;/code&gt; 用于换行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;\newline&lt;/code&gt; 也可用于换行, 更推荐这个&lt;/p&gt;
 &lt;h1 id=&#34;在-latex-中表示&#34;&gt;在 latex 中表示~&lt;/h1&gt;
 &lt;p&gt;&lt;code&gt;\sim{}&lt;/code&gt;  ===&amp;gt; $\sim{2}+1$&lt;/p&gt;
 </description>
