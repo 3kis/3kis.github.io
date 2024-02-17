@@ -55,6 +55,8 @@
 &lt;p&gt;n 往往需要进行从字符到下标的映射或者从数字到下标的映射&lt;/p&gt;
 &lt;p&gt;从字符到下标: &lt;code&gt;int j = ch - &#39;a&#39;&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;从数字到下标: &lt;code&gt;int j = number &amp;gt;&amp;gt; i &amp;amp; 1&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;在上图中, 使用☆标记了每个字符串的结尾, 所以可以定义一个&lt;code&gt;cnt[]&lt;/code&gt; 数组来记录每个字符串出现的次数&lt;/p&gt;
+&lt;p&gt;图中每个节点是有值的, 但是这个值和字符串无关, 我们定义出一个 &lt;code&gt;idx&lt;/code&gt; 指针来指向当前最新的节点, 并在每一次插入时把&lt;code&gt;idx&lt;/code&gt;自增, 自增后的坐标值分配给新的节点. 这里 &lt;code&gt;idx&lt;/code&gt; 和数组模拟链表中的指针含义类似&lt;/p&gt;
 &lt;p&gt;模板:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -306,6 +308,7 @@
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;题目 &lt;a class=&#34;link&#34; href=&#34;https://www.acwing.com/problem/content/145/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;最大异或对&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;这题可以理解数字如何通过二进制表示映射为数组中的二维下标&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt; 1
