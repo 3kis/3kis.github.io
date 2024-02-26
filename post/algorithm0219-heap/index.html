@@ -1,18 +1,75 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='MySQL 的一些知识点'>
-<title>MySQL 学习笔记</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='如何手写一个堆? 堆对外提供哪些 api ?
+① 插入一个元素
+② 求集合中的最小值
+③ 删除最小值
+延伸操作:
+④ 删除任意一个元素
+⑤ 修改任意一个元素
+堆的基本结构 堆是一个完全二叉树
+完全二叉树: 除了最后一层, 其它层全是非空节点. 最后一层的节点按照从左往右排列, 中间没有空节点
+小根堆的性质: 每一个节点都是小于等于左右儿子节点
+堆的存储方式 一维数组
+完全二叉树都是用一维数组存的
+堆的基本操作 一维数组 heap[] 和 数组长度 int size 来完成下面的操作
+数组存储所有元素, size 表示有效元素的长度
+down 操作 down(x) 将指定元素下沉
+当我们修改一个元素后进行 down 操作, 过程如下图
+up 操作 up(x) 将指定元素上升
+如何从一个一维数组建堆 如果是每次插入一个元素就开始 down, 那么时间复杂度是 NlogN
+从 $\frac{n}{2}$ 开始往树根 down 元素, 可以达到 O(N)的时间复杂度
+如下图, 对于树中到最后一层节点, 我们是不需要进行 down 操作的, 因为 他们没有儿子节点, down 了也没用, 所以我们从 $\frac{n}{2}$ 开始往树根 down 元素, 也就是圈起来的那一层.'>
+<title>heap</title>
 
-<link rel='canonical' href='https://betaller99.github.io/post/mysql-notes/'>
+<link rel='canonical' href='https://betaller99.github.io/post/algorithm0219-heap/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='MySQL 学习笔记'>
-<meta property='og:description' content='MySQL 的一些知识点'>
-<meta property='og:url' content='https://betaller99.github.io/post/mysql-notes/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='heap'>
+<meta property='og:description' content='如何手写一个堆? 堆对外提供哪些 api ?
+① 插入一个元素
+② 求集合中的最小值
+③ 删除最小值
+延伸操作:
+④ 删除任意一个元素
+⑤ 修改任意一个元素
+堆的基本结构 堆是一个完全二叉树
+完全二叉树: 除了最后一层, 其它层全是非空节点. 最后一层的节点按照从左往右排列, 中间没有空节点
+小根堆的性质: 每一个节点都是小于等于左右儿子节点
+堆的存储方式 一维数组
+完全二叉树都是用一维数组存的
+堆的基本操作 一维数组 heap[] 和 数组长度 int size 来完成下面的操作
+数组存储所有元素, size 表示有效元素的长度
+down 操作 down(x) 将指定元素下沉
+当我们修改一个元素后进行 down 操作, 过程如下图
+up 操作 up(x) 将指定元素上升
+如何从一个一维数组建堆 如果是每次插入一个元素就开始 down, 那么时间复杂度是 NlogN
+从 $\frac{n}{2}$ 开始往树根 down 元素, 可以达到 O(N)的时间复杂度
+如下图, 对于树中到最后一层节点, 我们是不需要进行 down 操作的, 因为 他们没有儿子节点, down 了也没用, 所以我们从 $\frac{n}{2}$ 开始往树根 down 元素, 也就是圈起来的那一层.'>
+<meta property='og:url' content='https://betaller99.github.io/post/algorithm0219-heap/'>
 <meta property='og:site_name' content='Asher blog'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-12-14T21:12:59&#43;08:00'/><meta property='article:modified_time' content='2023-12-14T21:12:59&#43;08:00'/>
-<meta name="twitter:title" content="MySQL 学习笔记">
-<meta name="twitter:description" content="MySQL 的一些知识点">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2024-02-19T12:05:21&#43;08:00'/><meta property='article:modified_time' content='2024-02-19T12:05:21&#43;08:00'/>
+<meta name="twitter:title" content="heap">
+<meta name="twitter:description" content="如何手写一个堆? 堆对外提供哪些 api ?
+① 插入一个元素
+② 求集合中的最小值
+③ 删除最小值
+延伸操作:
+④ 删除任意一个元素
+⑤ 修改任意一个元素
+堆的基本结构 堆是一个完全二叉树
+完全二叉树: 除了最后一层, 其它层全是非空节点. 最后一层的节点按照从左往右排列, 中间没有空节点
+小根堆的性质: 每一个节点都是小于等于左右儿子节点
+堆的存储方式 一维数组
+完全二叉树都是用一维数组存的
+堆的基本操作 一维数组 heap[] 和 数组长度 int size 来完成下面的操作
+数组存储所有元素, size 表示有效元素的长度
+down 操作 down(x) 将指定元素下沉
+当我们修改一个元素后进行 down 操作, 过程如下图
+up 操作 up(x) 将指定元素上升
+如何从一个一维数组建堆 如果是每次插入一个元素就开始 down, 那么时间复杂度是 NlogN
+从 $\frac{n}{2}$ 开始往树根 down 元素, 可以达到 O(N)的时间复杂度
+如下图, 对于树中到最后一层节点, 我们是不需要进行 down 操作的, 因为 他们没有儿子节点, down 了也没用, 所以我们从 $\frac{n}{2}$ 开始往树根 down 元素, 也就是圈起来的那一层.">
 
 <script>
   window.MathJax = {
@@ -272,27 +329,24 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#mysql-架构">MySQL 架构</a>
+    <li><a href="#如何手写一个堆">如何手写一个堆?</a></li>
+    <li><a href="#堆的基本结构">堆的基本结构</a></li>
+    <li><a href="#堆的存储方式">堆的存储方式</a></li>
+    <li><a href="#堆的基本操作">堆的基本操作</a>
       <ol>
         <li>
           <ol>
-            <li><a href="#mysql-存储">MySQL 存储</a></li>
+            <li><a href="#down-操作">down 操作</a></li>
+            <li><a href="#up-操作">up 操作</a></li>
+            <li><a href="#如何从一个一维数组建堆">如何从一个一维数组建堆</a></li>
+            <li><a href="#新增元素">新增元素</a></li>
+            <li><a href="#修改元素">修改元素</a></li>
+            <li><a href="#删除元素">删除元素</a></li>
+            <li><a href="#取堆顶元素---求集合当中的最小值">取堆顶元素&mdash;求集合当中的最小值</a></li>
           </ol>
         </li>
       </ol>
     </li>
-    <li><a href="#mysql-执行流程">MySQL 执行流程</a>
-      <ol>
-        <li>
-          <ol>
-            <li><a href="#简化版">简化版</a></li>
-            <li><a href="#详细版">详细版</a></li>
-          </ol>
-        </li>
-      </ol>
-    </li>
-    <li><a href="#mysql对-sql-的执行顺序">MySQL对 SQL 的执行顺序</a></li>
-    <li><a href="#mysql索引原理">mysql索引原理</a></li>
   </ol>
 </nav>
         </div>
@@ -312,13 +366,9 @@
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/mysql-notes/">MySQL 学习笔记</a>
+            <a href="/post/algorithm0219-heap/">heap</a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            MySQL 的一些知识点
-        </h3>
         
     </div>
 
@@ -338,7 +388,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Dec 14, 2023</time>
+                <time class="article-time--published">Feb 19, 2024</time>
             </div>
         
 
@@ -353,7 +403,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -368,156 +418,68 @@
     <section class="article-content">
     
     
-    <h1 id="mysql-架构">MySQL 架构</h1>
-<p><img src="/post/mysql-notes/image-20231214211424094.png"
-	width="1250"
-	height="776"
-	srcset="/post/mysql-notes/image-20231214211424094_hu7536b255a23a370637521a726753905b_1234189_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231214211424094_hu7536b255a23a370637521a726753905b_1234189_1024x0_resize_box_3.png 1024w"
+    <h1 id="如何手写一个堆">如何手写一个堆?</h1>
+<p>堆对外提供哪些 api ?</p>
+<p>① 插入一个元素</p>
+<p>② 求集合中的最小值</p>
+<p>③ 删除最小值</p>
+<p>延伸操作:</p>
+<p>④ 删除任意一个元素</p>
+<p>⑤ 修改任意一个元素</p>
+<h1 id="堆的基本结构">堆的基本结构</h1>
+<p>堆是一个<strong>完全二叉树</strong></p>
+<p><strong>完全二叉树</strong>: 除了最后一层, 其它层全是非空节点. 最后一层的节点按照从左往右排列, 中间没有空节点</p>
+<p><strong>小根堆</strong>的性质: 每一个节点都是小于等于左右儿子节点</p>
+<h1 id="堆的存储方式">堆的存储方式</h1>
+<p><strong>一维数组</strong></p>
+<p>完全二叉树都是用一维数组存的</p>
+<h1 id="堆的基本操作">堆的基本操作</h1>
+<p>一维数组 <code>heap[]</code> 和 数组长度 <code>int size</code> 来完成下面的操作</p>
+<p>数组存储所有元素, size 表示有效元素的长度</p>
+<h3 id="down-操作">down 操作</h3>
+<p><code>down(x)</code>  <strong>将指定元素下沉</strong></p>
+<p>当我们修改一个元素后进行 down 操作, 过程如下图</p>
+<p><img src="/post/algorithm0219-heap/image-20240219130434771.png"
+	width="3853"
+	height="2342"
+	srcset="/post/algorithm0219-heap/image-20240219130434771_hu1e43789fed9b6ac433ab3b8397be0269_456417_480x0_resize_box_3.png 480w, /post/algorithm0219-heap/image-20240219130434771_hu1e43789fed9b6ac433ab3b8397be0269_456417_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
-		alt="image-20231214211424094"
+		alt="image-20240219130434771"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="161"
-		data-flex-basis="386px"
+		data-flex-grow="164"
+		data-flex-basis="394px"
 	
 ></p>
-<p>从上往下, 从左往右是数据的流动顺序:</p>
-<p><strong>Connetors</strong>: 一些连接 MySQL 的 client, 比如我们常用 jdbc.</p>
-<p><strong>Connection Pool</strong>(MySQL 的网络模块): client 的连接在 Connection Pool 中进行统一的管理, 比如身份认证, 线程的复用, 连接数量限制.</p>
-<p>这一部分的 IO 操作模式是 BIO, 由于是 BIO, 所以能力较弱</p>
-<p><strong>SQL Interface</strong>: sql 的接口, 会尝试查缓存, 查不到走 Parser</p>
-<p><strong>Parser</strong>: sql 解析, 知道我们要拿什么数据, 要处理什么数据</p>
-<p><strong>Optimizer</strong>: 对复杂的 sql 进行优化</p>
-<p><strong>Caches &amp; Buffers</strong>: 如果能命中缓存, 可能就直接从缓存走了</p>
-<p><strong>Pluggable Storage Engines</strong>: 可插拔的组件, 组件可以使用内存, 索引 和管理存储空间</p>
-<p><strong>File System</strong>: 文件系统, 存储各种文件如日志文件(redo log, undo log 等等) , 索引文件</p>
-<p><strong>Enterprise Management</strong>: 企业管理工具, 有备份, 回复, 复制, 等功能</p>
-<p>在上面的这些组成部分中, <strong>Pluggable Storage Engine</strong> 是可以替换的, 也是我们想要对 MySQL 拓展时能进行拓展的点</p>
-<h3 id="mysql-存储">MySQL 存储</h3>
-<p>MySQL 对于表的相关信息存储可分为共享模式和独占模式, 独占模式是默认的.
-<strong>独占模式</strong>: 一个 database(schema) 中各个表的相关信息分开存放, 放在不同的文件里
-<strong>共享模式</strong>: 一个 database(schema) 中所有表的信息放一个文件里.</p>
-<p>在<strong>独占模式</strong>下有以下几种文件:</p>
-<ol>
-<li>日志组文件: *.ib_logfile0, *.ib_logfile1   默认大小为 5M, ib 是 innnodb 的缩写</li>
-<li>独占表空间文件: *.ibd   在独占模式下, 每个表都会用一个文件存储自己的信息, ibd 表示 innodb 的 data</li>
-<li>表结构文件: *.frm</li>
-<li>字符集和排序规则文件: db.opt       opt 表示option</li>
-<li>binlog 二进制文件: 记录主数据库服务器 DDL 和 DML 的操作, 也就是记录对数据库本身的结构做的修改操作和对数据的修改操作</li>
-<li>二进制日志索引文件: master-bin.index</li>
-</ol>
-<p>通过设置<code>innodb_file_per_table=OFF</code> 即可改为共享模式</p>
-<p>在<strong>共享模式</strong>下:</p>
-<p>​	一个 schema 的所有表空间文件内容和表结构文件内容会放到一个文件里, 这个共享表文件的名称为<code>ibdata1</code></p>
-<p>从物理上和逻辑上理解独占模式和共享模式的区别(如下图): 在物理上, 我们认为一个MySQL数据库就是 MySQL运行的服务器, 里面管理着多个逻辑上的数据库(database 或者叫 schema), 也就是说一个物理的MySQL Server 的实例可以放多个逻辑数据库</p>
-<p>我们说MySQL Server 这个进程or 这个服务器 时指的是一个 MySQL实例.</p>
-<p>当我们说存取数据的基本单元的时候, 我们说的是逻辑的一个一个 schema</p>
-<p>每个 database(schema) 在MySQL 的数据文件夹下是一个单独的子文件夹, 里面存放里自己的表结构文件和表空间文件. 默认情况下(也就是独占模式 ), 每个表都会有自己的独占表空间文件和表结构文件</p>
-<p><img src="/post/mysql-notes/image-20231217104011781.png"
-	width="715"
-	height="875"
-	srcset="/post/mysql-notes/image-20231217104011781_hu02f2bd207e4f12cef096e37a7d094f14_53562_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217104011781_hu02f2bd207e4f12cef096e37a7d094f14_53562_1024x0_resize_box_3.png 1024w"
+<h3 id="up-操作">up 操作</h3>
+<p><code>up(x)</code>  <strong>将指定元素上升</strong></p>
+<h3 id="如何从一个一维数组建堆">如何从一个一维数组建堆</h3>
+<p>如果是每次插入一个元素就开始 down, 那么时间复杂度是 <code>NlogN</code></p>
+<p>从 $\frac{n}{2}$ 开始往树根 down 元素, 可以达到 O(N)的时间复杂度</p>
+<p>如下图, 对于树中到最后一层节点, 我们是不需要进行 down 操作的, 因为 他们没有儿子节点, down 了也没用, 所以我们从 $\frac{n}{2}$ 开始往树根 down 元素, 也就是圈起来的那一层. 对于这一层, 有 <code>n/4</code> 个元素, 他们需要往下 down 1次, 在往上一层有 $\frac{1}{2} * \frac{n}{4} = \frac{n}{8}$ 个元素, 他们需要往下 down 两次, 以此类推</p>
+<p><img src="/post/algorithm0219-heap/%E8%8D%89%E7%A8%BF%E6%9C%AC-18.jpg"
+	width="2182"
+	height="3086"
+	srcset="/post/algorithm0219-heap/%E8%8D%89%E7%A8%BF%E6%9C%AC-18_huf05ebebbdefc9bbde986a919998c8ce1_568369_480x0_resize_q75_box.jpg 480w, /post/algorithm0219-heap/%E8%8D%89%E7%A8%BF%E6%9C%AC-18_huf05ebebbdefc9bbde986a919998c8ce1_568369_1024x0_resize_q75_box.jpg 1024w"
 	loading="lazy"
 	
-		alt="image-20231217104011781"
+		alt="证明过程"
 	
 	
 		class="gallery-image" 
-		data-flex-grow="81"
-		data-flex-basis="196px"
+		data-flex-grow="70"
+		data-flex-basis="169px"
 	
 ></p>
-<h1 id="mysql-执行流程">MySQL 执行流程</h1>
-<h3 id="简化版">简化版</h3>
-<p><img src="/post/mysql-notes/image-20231217105536439.png"
-	width="1612"
-	height="1314"
-	srcset="/post/mysql-notes/image-20231217105536439_hu4a1f778cf947c1d7a0189640a41cc675_1499322_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217105536439_hu4a1f778cf947c1d7a0189640a41cc675_1499322_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231217105536439"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="122"
-		data-flex-basis="294px"
-	
-></p>
-<p>先查询缓存, 如果缓存中存在对应的查询记录, 并且从上一次到这一次的时间段之内数据没有被修改过, 那么就直接把缓存结果返回.</p>
-<p>查不到缓存, 解析器对 sql 语句进行解析得到 一颗抽象语法树 AST, 交由预处理器预处理, 接下来优化器来进行优化判断什么方式是最优的(相当于我们打车, 得到几条打车路线, 这几条打车路线哪个最快? 接下来就要考虑那条路线是最优的), 得到他认为执行效率最高的方式(最优的路径)之后, 生成<strong>执行计划</strong> , 将执行计划发送给引擎, 存储引擎按照执行计划的操作方式去查表, 查索引, 数据拼接,返回结果给调用方并存入缓存.</p>
-<h3 id="详细版">详细版</h3>
-<p><img src="/post/mysql-notes/image-20231217105802936.png"
-	width="1494"
-	height="1024"
-	srcset="/post/mysql-notes/image-20231217105802936_hu35f62729a08b7ce26e3236b819de14ed_1359255_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231217105802936_hu35f62729a08b7ce26e3236b819de14ed_1359255_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231217105802936"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="145"
-		data-flex-basis="350px"
-	
-></p>
-<p>从大的层次来看, 可以分成 Server 层和引擎层</p>
-<p>在 Server 层主要做了 &ldquo;接受请求, 语句的解析, 执行计划的生成&rdquo;, 过程如下:</p>
-<p>client 发来一条 update 语句, 连接器首先获取到连接, 然后交给分析器, 分析器查询缓存, 如果存在缓存就直接返回, 否则交给优化器, 优化器生成执行计划, 然后让执行器去调用引擎层来执行</p>
-<p>在引擎层的流程为:</p>
-<ol>
-<li>
-<p>写 undo log, 因为现在是对数据的更新操作, 涉及到事务(此处的事务是隐式的),所以要先写 undo log</p>
-<blockquote>
-<p>Q1: 如果没有手动开启事务的话, 还会写 undo log 吗</p>
-<p>​		会, 即使用户没有显式地使用 <code>START TRANSACTION</code> 或 <code>BEGIN</code> 命令开始一个事务，InnoDB 会为每一个单独的 SQL 语句启		动一个隐式事务，并且在语句执行完毕后立即进行提交</p>
-</blockquote>
-</li>
-<li>
-<p>找记录所在的目标页</p>
-<ol>
-<li>如果目标页在内存中, 直接修改内存</li>
-<li>如果目标页不在内存中, 那么去我们的 file system 中读取记录然后拉到内存中在进行修改</li>
-</ol>
-</li>
-<li>
-<p>写 redo log</p>
-</li>
-<li>
-<p>写 bin log</p>
-</li>
-<li>
-<p>提交事务</p>
-</li>
-<li>
-<p>后续步骤和图中一致</p>
-</li>
-</ol>
-<blockquote>
-<p>Q&amp;A</p>
-<p>Q1: 为什么要先写 undo log 再写别的 log 呢?</p>
-<p>​		因为 undo log 是用来回滚的, 后续的过程比较长, 一旦发生了变动, 那么必须有一个 checkpoint 来进行回退, 所以最开始就得先		写 undolog</p>
-<p>​		redo log 是和事务深度绑定的, 如果我们的事务成功, 但是事务没来得及刷磁盘的数据块, 那么当我们恢复的时候, 还是		会去		执行 redo log 完成刷盘(redo log 用到的磁盘数据块和事务修改对应数据的磁盘数据块不是同一个数据块)</p>
-<p>​		bin log 是用来主从复制的, 所以需要有binlog</p>
-</blockquote>
-<h1 id="mysql对-sql-的执行顺序">MySQL对 SQL 的执行顺序</h1>
-<p><img src="/post/mysql-notes/image-20231219234212777.png"
-	width="1246"
-	height="1098"
-	srcset="/post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_480x0_resize_box_3.png 480w, /post/mysql-notes/image-20231219234212777_hu719e175ee0b80a9266d769ab8c2693bf_614524_1024x0_resize_box_3.png 1024w"
-	loading="lazy"
-	
-		alt="image-20231219234212777"
-	
-	
-		class="gallery-image" 
-		data-flex-grow="113"
-		data-flex-basis="272px"
-	
-></p>
-<p>前三步拿到我们需要的 table (from，on, join 找到需要的表，然后以指定的条件把他们关联在一起得到一个新的虚拟表），接下来对 table 中的数据进行过滤（对上一步拿到的大的虚拟表进行过滤，where 是根据直接条件进行过滤，group by 和 having 是分组之后的条件进行过滤），过滤完之后得到一个过滤结果，接下来考虑如何显示这些数据（因为过滤完之后的结果集可能有几十个字段，所以 select 决定我们显示哪些字段，order by 让我们知道以什么顺序来显示，limit 限制了显示的条数）</p>
-<h1 id="mysql索引原理">mysql索引原理</h1>
+<h3 id="新增元素">新增元素</h3>
+<p>直接作为一个新的节点插入到树上. 然后 up 这个节点, 是否能 up 成功, 我们会在 up 操作中判断</p>
+<h3 id="修改元素">修改元素</h3>
+<p>修改指定元素, 然后无脑执行 up 和 down 操作, 由于 up 操作和 down 操作会自动判断能否 up 或者 down, 所以肯定只有一个操作能成功, 就不需要再修改元素之后考虑应该 up 还是 down 了</p>
+<h3 id="删除元素">删除元素</h3>
+<p>让最后一个元素覆盖掉指定的元素, 然后 size&ndash;. 并且对覆盖后的元素进行 down 操作</p>
+<h3 id="取堆顶元素---求集合当中的最小值">取堆顶元素&mdash;求集合当中的最小值</h3>
 
 </section>
 
