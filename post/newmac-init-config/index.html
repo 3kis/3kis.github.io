@@ -412,12 +412,14 @@
 </span><span class="lnt">49
 </span><span class="lnt">50
 </span><span class="lnt">51
+</span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">/bin/bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 替换 USTC中科大 镜像</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BREW_GIT_REMOTE=&#34;https://mirrors.ustc.edu.cn/brew.git&#34;&#39;</span> &gt;&gt; ~/.zshrc
+</span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1">#使用 $USER 作为变量代替用户名避免用户名不同导致失败的情况</span>
 </span></span><span class="line"><span class="cl"><span class="o">(</span>echo<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39;</span><span class="o">)</span> &gt;&gt; /Users/<span class="nv">$USER</span>/.zprofile
@@ -462,9 +464,9 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;PROMPT=&#34;%1~ %# &#34;&#39;</span> &gt;&gt; ~/.zshrc
 </span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">brew install golang
+</span></span><span class="line"><span class="cl">brew install golang maven
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">brew install --cask maccy keka iina google-chrome intellij-idea utools macs-fan-control wechat goland apifox postman
+</span></span><span class="line"><span class="cl">brew install --cask maccy keka iina google-chrome  utools macs-fan-control wechat apifox postman
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>homebrew中科大源</p>
