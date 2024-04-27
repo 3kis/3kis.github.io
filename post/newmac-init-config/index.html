@@ -363,7 +363,9 @@
     <section class="article-content">
     
     
-    <div class="highlight"><div class="chroma">
+    <p>/bin/bash -c &ldquo;$(curl -fsSL <a class="link" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh%29%22"  target="_blank" rel="noopener"
+    >https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a></p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -399,28 +401,9 @@
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">/bin/bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 替换 USTC中科大 镜像</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BREW_GIT_REMOTE=&#34;https://mirrors.ustc.edu.cn/brew.git&#34;&#39;</span> &gt;&gt; ~/.zshrc
 </span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
@@ -428,30 +411,13 @@
 </span></span><span class="line"><span class="cl"><span class="c1">#使用 $USER 作为变量代替用户名避免用户名不同导致失败的情况</span>
 </span></span><span class="line"><span class="cl"><span class="o">(</span>echo<span class="p">;</span> <span class="nb">echo</span> <span class="s1">&#39;eval &#34;$(/opt/homebrew/bin/brew shellenv)&#34;&#39;</span><span class="o">)</span> &gt;&gt; /Users/<span class="nv">$USER</span>/.zprofile
 </span></span><span class="line"><span class="cl"><span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>/opt/homebrew/bin/brew shellenv<span class="k">)</span><span class="s2">&#34;</span>
-</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">  
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">brew install --cask iterm2
-</span></span><span class="line"><span class="cl"><span class="c1"># 后续可使用iterm2 进行操作, 也可继续在 terminal 内操作</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># 在 terminal 中打开 iterm2</span>
-</span></span><span class="line"><span class="cl"><span class="c1">#open -a iTerm</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># install oh-my-zsh</span>
-</span></span><span class="line"><span class="cl">sh -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&#34;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># used to edit .zshrc easily</span>
 </span></span><span class="line"><span class="cl">brew install --cask visual-studio-code
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/.oh-my-zsh/custom/plugins/
-</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> ~/.oh-my-zsh/custom/plugins/
-</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-</span></span><span class="line"><span class="cl">code ~/.zshrc
-</span></span><span class="line"><span class="cl"><span class="c1">#  手动在 vscode 上修改plugin， 添加 zsh-syntax-highlighting和zsh-autosuggestions, zsh-syntax-highlighting一定要写在最后</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="c1"># 8无法安装在m1上, 选择安装jdk11</span>
 </span></span><span class="line"><span class="cl">brew install openjdk@11
@@ -477,9 +443,56 @@
 <p><a class="link" href="https://mirrors.ustc.edu.cn/help/brew.git.html"  target="_blank" rel="noopener"
     >https://mirrors.ustc.edu.cn/help/brew.git.html</a></p>
 <p>如果一开始就无法从 github 拉去下载文件, 那么就通过上面中科大的链接中的镜像路径替换掉脚本的第一行</p>
-<p><a class="link" href="https://www.jianshu.com/p/75eff447613c"  target="_blank" rel="noopener"
+<p>iterm2 or 其他插件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-cmd" data-lang="cmd"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">brew install --cask iterm2
+</span></span><span class="line"><span class="cl"># 后续可使用iterm2 进行操作, 也可继续在 terminal 内操作
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 在 terminal 中打开 iterm2
+</span></span><span class="line"><span class="cl">#open -a iTerm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># install oh-my-zsh
+</span></span><span class="line"><span class="cl">sh -c <span class="s2">&#34;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> ~/.oh-my-zsh/custom/plugins/
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-autosuggestions
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">cd</span> ~/.oh-my-zsh/custom/plugins/
+</span></span><span class="line"><span class="cl">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+</span></span><span class="line"><span class="cl">code ~/.zshrc
+</span></span><span class="line"><span class="cl">#  手动在 vscode 上修改plugin， 添加 zsh-syntax-highlighting和zsh-autosuggestions, zsh-syntax-highlighting一定要写在最后
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a class="link" href="https://www.jianshu.com/p/75eff447613c"  target="_blank" rel="noopener"
     >简书:Mac中iTerm22+Oh My Zsh安装、配置和使用</a></p>
-<p>安装插件后再<code>.zshrc</code> 中写好插件名(如下图):</p>
+<p>安装插件后再 <code>.zshrc</code> 中写好插件名(如下图):</p>
 <p><img src="/post/newmac-init-config/3c443a42-5246-4d7e-8f70-ebb7cd066cfd.png"
 	width="1068"
 	height="372"
