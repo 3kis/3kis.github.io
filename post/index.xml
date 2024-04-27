@@ -2631,7 +2631,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;34
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-Shell&#34; data-lang=&#34;Shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# 替换 USTC中科大 镜像&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s1&#34;&gt;&amp;#39;export HOMEBREW_BREW_GIT_REMOTE=&amp;#34;https://mirrors.ustc.edu.cn/brew.git&amp;#34;&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.zshrc
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nb&#34;&gt;source&lt;/span&gt; ~/.zshrc
@@ -2664,7 +2664,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install golang maven
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome  utools macs-fan-control wechat apifox  monitorcontrol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome  utools macs-fan-control qq wechat apifox  monitorcontrol mos snipaste wpsoffice-cn orbstack
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;homebrew中科大源&lt;/p&gt;
@@ -2912,6 +2912,7 @@ $$&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;keka&lt;/strong&gt; 解压缩&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;monitorcontrol&lt;/strong&gt; 控制外接显示器亮度&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;iina&lt;/strong&gt; 视频播放器&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;mos&lt;/strong&gt; 触控板与鼠标滑动逻辑分离&lt;/p&gt;
 &lt;h1 id=&#34;一些还不错的mac配置文章&#34;&gt;一些还不错的mac配置文章&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://44maker.github.io/wiki/Mac/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://44maker.github.io/wiki/Mac/index.html&lt;/a&gt;&lt;/p&gt;
