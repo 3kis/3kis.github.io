@@ -2698,7 +2698,7 @@ $$&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install golang maven
 &lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome  utools macs-fan-control wechat apifox postman  monitorcontrol
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;brew install --cask maccy keka iina google-chrome  utools macs-fan-control wechat apifox  monitorcontrol
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;homebrew中科大源&lt;/p&gt;
@@ -2895,6 +2895,10 @@ $$&lt;/p&gt;
 		data-flex-basis=&#34;314px&#34;
 	
 &gt;&lt;/p&gt;
+&lt;h1 id=&#34;brew安装的软件说明&#34;&gt;brew安装的软件说明&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;keka&lt;/strong&gt; 解压缩&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;monitorcontrol&lt;/strong&gt; 控制外接显示器亮度&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;iina&lt;/strong&gt; 视频播放器&lt;/p&gt;
 &lt;h1 id=&#34;一些还不错的mac配置文章&#34;&gt;一些还不错的mac配置文章&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://44maker.github.io/wiki/Mac/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://44maker.github.io/wiki/Mac/index.html&lt;/a&gt;&lt;/p&gt;
