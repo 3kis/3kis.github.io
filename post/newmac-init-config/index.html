@@ -281,6 +281,7 @@
             <li><a href="#datagrip">DataGrip</a></li>
             <li><a href="#右键专业助手">右键专业助手</a></li>
             <li><a href="#输入法控制">输入法控制</a></li>
+            <li><a href="#软件损坏解决">软件损坏解决</a></li>
           </ol>
         </li>
       </ol>
@@ -363,9 +364,7 @@
     <section class="article-content">
     
     
-    <p>/bin/bash -c &ldquo;$(curl -fsSL <a class="link" href="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh%29%22"  target="_blank" rel="noopener"
-    >https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</a></p>
-<div class="highlight"><div class="chroma">
+    <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -401,9 +400,11 @@
 </span><span class="lnt">32
 </span><span class="lnt">33
 </span><span class="lnt">34
+</span><span class="lnt">35
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl"> 
+<pre tabindex="0" class="chroma"><code class="language-Shell" data-lang="Shell"><span class="line"><span class="cl">/bin/bash -c <span class="s2">&#34;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="k">)</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"> 
 </span></span><span class="line"><span class="cl"><span class="c1"># 替换 USTC中科大 镜像</span>
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s1">&#39;export HOMEBREW_BREW_GIT_REMOTE=&#34;https://mirrors.ustc.edu.cn/brew.git&#34;&#39;</span> &gt;&gt; ~/.zshrc
 </span></span><span class="line"><span class="cl"><span class="nb">source</span> ~/.zshrc
@@ -680,6 +681,30 @@
 		data-flex-basis="314px"
 	
 ></p>
+<h3 id="软件损坏解决">软件损坏解决</h3>
+<p><img src="/post/newmac-init-config/image/index/1715264310188.png"
+	width="520"
+	height="440"
+	srcset="/post/newmac-init-config/image/index/1715264310188_hu6123922e36aa92e92e07ddd1982e71da_66244_480x0_resize_box_3.png 480w, /post/newmac-init-config/image/index/1715264310188_hu6123922e36aa92e92e07ddd1982e71da_66244_1024x0_resize_box_3.png 1024w"
+	loading="lazy"
+	
+		alt="1715264310188"
+	
+	
+		class="gallery-image" 
+		data-flex-grow="118"
+		data-flex-basis="283px"
+	
+></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">sudo xattr -r -c /Applications/LockedApp.app
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>然后打开软件还是会出现上图的提示, 这个时候要去设置&ndash;&ldquo;隐私和安全性&rdquo;&ndash;&ldquo;打开&rdquo;  这样就可以打开软件了</p>
 <h1 id="brew安装的软件说明">brew安装的软件说明</h1>
 <p><strong>keka</strong> 解压缩</p>
 <p><strong>monitorcontrol</strong> 控制外接显示器亮度</p>
